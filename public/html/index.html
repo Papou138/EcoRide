@@ -1,13 +1,53 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoRide</title>
-    <link rel="stylesheet" href="../css/styles.css">
-</head>
-<body>
-    <h1>Bienvenue sur EcoRide</h1>
-    <script src="../js/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoRide - Covoiturage Écologique</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>EcoRide</h1>
+      <nav>
+        <ul>
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#">Covoiturages</a></li>
+          <li><a href="#">Connexion</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="presentation">
+        <h2>Bienvenue sur EcoRide</h2>
+        <p>
+          EcoRide est votre solution de covoiturage écologique. Réduisez votre
+          empreinte carbone en partageant vos trajets avec d'autres
+          utilisateurs.
+        </p>
+        <img src="../images/EcoRide-Picture.png" alt="Voiture écologique" />
+      </section>
+      <section id="recherche">
+        <h2>Rechercher un itinéraire</h2>
+        <form>
+          <label for="depart">Départ :</label>
+          <input type="text" id="depart" name="depart" required />
+          <label for="arrivee">Arrivée :</label>
+          <input type="text" id="arrivee" name="arrivee" required />
+          <label for="date">Date :</label>
+          <input type="date" id="date" name="date" required />
+          <button type="submit">Rechercher</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Contactez-nous :
+        <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+      </p>
+      <p><a href="#">Mentions légales</a></p>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
 </html>
