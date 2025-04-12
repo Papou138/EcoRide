@@ -2,6 +2,9 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f0f8ff;
   color: #333;
+  min-height: 100vh; /* Assure que le body prend au moins la hauteur de la fenêtre */
+  display: flex; /* Utilisation de flexbox pour le layout */
+  flex-direction: column; /* Colonne pour le header, main et footer */
   margin: 0;
   padding: 0;
 }
@@ -54,7 +57,8 @@ nav ul li a:hover {
 }
 
 main {
-  padding: 20px;
+  flex: 1; /* Permet au main de prendre tout l'espace restant */
+  padding-top: 2rem; /* Espace pour éviter que le contenu ne soit caché par le footer*/
 }
 
 #presentation {
@@ -63,7 +67,7 @@ main {
 }
 
 #presentation img {
-  max-width: 40%;
+  max-width: 60%;
   height: auto;
 }
 
@@ -91,6 +95,16 @@ main {
   margin: 5px 0;
   border: 2px solid #ccc;
   border-radius: 4px;
+}
+
+#recherche select,
+#recherche input[type="number"] {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(100% - 22px); /* Ajustement pour le padding et la bordure */
+  box-sizing: border-box; /* Inclure le padding et la bordure dans la largeur totale */
 }
 
 #recherche button {
@@ -130,11 +144,12 @@ main {
 }
 
 footer {
+  position: relative; /* Au lieu de fixed/absolute */
+  bottom: 0;
+  width: 100%;
   background-color: #4caf50;
   color: white;
+  padding: 1rem 0;
+  margin-top: auto; /* Assure que le footer est en bas de la page */
   text-align: center;
-  padding: 10px;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
 }

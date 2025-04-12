@@ -12,28 +12,90 @@ document.addEventListener("DOMContentLoaded", function () {
       const departInput = document.getElementById("depart");
       const arriveeInput = document.getElementById("arrivee");
       const dateInput = document.getElementById("date");
+      const ecologiqueInput = document.getElementById("ecologique");
+      const prixInput = document.getElementById("prix");
+      const dureeInput = document.getElementById("duree");
+      const noteInput = document.getElementById("note");
       const resultsDiv = document.getElementById("results");
 
       // Vérifier si tous les éléments existent
-      if (departInput && arriveeInput && dateInput && resultsDiv) {
+      if (
+        departInput &&
+        arriveeInput &&
+        dateInput &&
+        ecologiqueInput &&
+        prixInput &&
+        dureeInput &&
+        noteInput &&
+        resultsDiv
+      ) {
         // Récupérer les valeurs
         const depart = departInput.value || "Non spécifié";
         const arrivee = arriveeInput.value || "Non spécifié";
         const date = dateInput.value || "Non spécifiée";
+        const ecologique = ecologiqueInput.value || "Non spécifié";
+        const prix = prixInput.value || "Non spécifié";
+        const duree = dureeInput.value || "Non spécifiée";
+        const note = noteInput.value || "Non spécifiée";
+
+        // Formatage de la date en français / Utilisation de l'API Intl.DateTimeFormat
+        const dateFr = date
+          ? new Intl.DateTimeFormat("fr-FR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }).format(new Date(date))
+          : "Non spécifiée";
+
+        // Filtrer les résultats (simulation)
+        let results = `
+        <h3>Résultats pour le trajet de ${depart} à ${arrivee} le ${dateFr} :</h3>
+        <ul>`;
+
+        // Exemple de données simulées
+        const trajets = [
+          {
+            depart: "Paris",
+            arrivee: "Lyon",
+            date: "12-04-2025",
+            ecologique: "oui",
+            prix: 20,
+            duree: 4,
+            note: 4.5,
+          },
+          {
+            depart: "Paris",
+            arrivee: "Lyon",
+            date: "12-04-2025",
+            ecologique: "non",
+            prix: 25,
+            duree: 5,
+            note: 4.0,
+          },
+        ];
+
+        // Filtrer les trajets
+        trajets.forEach((trajet) => {
+          if (
+            (!ecologique || trajet.ecologique === ecologique) &&
+            (!prix || trajet.prix <= prix) &&
+            (!duree || trajet.duree <= duree) &&
+            (!note || trajet.note >= note)
+          ) {
+            results += `<li>Trajet de ${trajet.depart} à ${trajet.arrivee}, ${
+              trajet.date
+            }, ${trajet.ecologique ? "Ecologique" : "Non écologique"}, ${
+              trajet.prix
+            }€, ${trajet.duree} heures, Note: ${trajet.note}</li>`;
+          }
+        });
 
         // Afficher les résultats
-        resultsDiv.innerHTML = `
-                  <h3>Résultats pour le trajet de ${depart} à ${arrivee} le ${date}:</h3>
-                  <ul>
-                      <li>Trajet 1: Départ à 8h, 3 places disponibles, 20€</li>
-                      <li>Trajet 2: Départ à 9h, 2 places disponibles, 25€</li>
-                  </ul>
-              `;
-      } else {
-        console.error("Certains éléments du formulaire sont manquants");
+        results += `</ul>`;
+        if (resultsDiv) {
+          resultsDiv.innerHTML = results;
+        }
       }
     });
-  } else {
-    console.error("Le formulaire de recherche n'a pas été trouvé");
   }
 });

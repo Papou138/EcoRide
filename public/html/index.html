@@ -52,6 +52,22 @@
           <label for="date">Date :</label>
           <input type="date" id="date" name="date" required />
 
+          <label for="ecologique">Ecologique</label>
+          <select name="ecologique" id="ecologique">
+            <option value="">Tous</option>
+            <option value="oui">Oui</option>
+            <option value="non">Non</option>
+          </select>
+
+          <label for="prix">Prix Maximum</label>
+          <input type="number" id="prix" name="prix" placeholder="Ex: 30" />
+
+          <label for="duree">Durée Maximum (heures)</label>
+          <input type="number" id="duree" name="duree" placeholder="Ex: 5" />
+
+          <label for="note">Note Minimum</label>
+          <input type="number" id="note" name="note" placeholder="Ex: 4" />
+
           <button type="submit">Rechercher</button>
         </form>
         <div id="results"></div>
