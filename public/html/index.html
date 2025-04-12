@@ -30,15 +30,31 @@
       </section>
       <section id="recherche">
         <h2>Rechercher un itinéraire</h2>
-        <form>
+        <form id="search-form">
           <label for="depart">Départ :</label>
-          <input type="text" id="depart" name="depart" required />
+          <input
+            type="text"
+            id="depart"
+            name="depart"
+            required
+            placeholder="Ex: Paris"
+          />
+
           <label for="arrivee">Arrivée :</label>
-          <input type="text" id="arrivee" name="arrivee" required />
+          <input
+            type="text"
+            id="arrivee"
+            name="arrivee"
+            required
+            placeholder="Ex: Lyon"
+          />
+
           <label for="date">Date :</label>
           <input type="date" id="date" name="date" required />
+
           <button type="submit">Rechercher</button>
         </form>
+        <div id="results"></div>
       </section>
     </main>
     <footer>
@@ -48,6 +64,6 @@
       </p>
       <p><a href="#">Mentions légales</a></p>
     </footer>
-    <script src="js/main.js"></script>
+    <script src="../js/main.js"></script>
   </body>
 </html>
