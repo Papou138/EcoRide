@@ -82,11 +82,14 @@ document.addEventListener("DOMContentLoaded", function () {
             (!duree || trajet.duree <= duree) &&
             (!note || trajet.note >= note)
           ) {
-            results += `<li>Trajet de ${trajet.depart} à ${trajet.arrivee}, ${
-              trajet.date
-            }, ${trajet.ecologique ? "Ecologique" : "Non écologique"}, ${
-              trajet.prix
-            }€, ${trajet.duree} heures, Note: ${trajet.note}</li>`;
+            results += `<li>
+            <p>
+            Trajet de ${trajet.depart} à ${trajet.arrivee}, ${trajet.date}, ${
+              trajet.ecologique ? "Ecologique" : "Non écologique"
+            }, ${trajet.prix}€, ${trajet.duree} heures, Note: ${trajet.note}
+            </p>
+            <a href="detail.html?id=${trajet.id}">Voir les détails</a>
+            </li>`;
           }
         });
 

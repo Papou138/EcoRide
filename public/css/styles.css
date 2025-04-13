@@ -143,6 +143,29 @@ main {
   border-radius: 4px;
 }
 
+/* Style de la page de détails */
+#covoiturage-details {
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#covoiturage-details h2 {
+  color: #4caf50;
+}
+
+#covoiturage-details p {
+  margin: 5px 0;
+}
+
+#covoiturage-details h3 {
+  margin-top: 20px;
+  color: #333;
+}
+
 footer {
   position: relative; /* Au lieu de fixed/absolute */
   bottom: 0;
