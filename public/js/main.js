@@ -134,3 +134,74 @@ function participer() {
     // window.location.href = "login.html"; // Remplace par l'URL de la page de connexion
   }
 }
+
+/*
+Fonction pour gérer la soumission du formulaire
+Cette fonction vérifie que les informations fournies sont valides
+et simule l'enregistrement de l'utilisateur
+*/
+document.addEventListener("DOMContentLoaded", function () {
+  const registerForm = document.getElementById("register-form");
+
+  if (registerForm) {
+    registerForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Récupérer les valeurs du formulaire
+      const pseudoInput = document.getElementById("pseudo");
+      const emailInput = document.getElementById("email");
+      const passwordInput = document.getElementById("password");
+
+      // Vérifier si les élémenents existent
+      if (pseudoInput && emailInput && passwordInput) {
+        const pseudo = pseudoInput.value.trim();
+        const email = emailInput.value.trim();
+        const password = passwordInput.value;
+
+        // Validation des champs
+        if (!pseudo) {
+          alert("Le pseudo est obligatoire.");
+          pseudoInput.focus();
+          return;
+        }
+
+        if (!email || !email.includes("@")) {
+          alert("Veuiller entrer une adresse email valide.");
+          emailInput.focus();
+          return;
+        }
+
+        if (password.length < 8) {
+          alert("Le mot de passe doit contenir au moins 8 caractères.");
+          passwordInput.focus();
+          return;
+        }
+
+        try {
+          // Simuler l'enregistrement de l'utilisateur
+          alert(
+            `Compte créé avec succès pour ${pseudo}! Vous recevez 20 crédits.`
+          );
+
+          // Réinitialiser le formulaire
+          registerForm.reset();
+
+          // Redirection (simultation)
+          setTimeout(() => {
+            window.location.href = "index.html"; // Remplace par l'URL de la page d'accueil
+          }, 1500);
+        } catch (error) {
+          console.error("Erreur lors de l'inscription :", error);
+          alert(
+            "Une erreur est survenue lors de l'inscription. Veuillez réessayer"
+          );
+        }
+      } else {
+        console.error("Certains éléments du formulaire sont manquants.");
+        alert("Une erreur est survenue. Veuillez réessayer.");
+      }
+    });
+  } else {
+    console.error("Le formulaire d'inscription n'a pas été trouvé.");
+  }
+});
