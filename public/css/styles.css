@@ -116,6 +116,7 @@ main {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 1.2rem; /* Augmente la taille du texte */
 }
 
 #recherche button:hover {
@@ -165,7 +166,7 @@ main {
   color: #333;
 }
 
-/* Style du bouton "Participer" - Page detail.html */
+/* ---- Style du bouton "Participer" - Page detail.html ---- */
 #participer-btn {
   padding: 10px 20px;
   margin-top: 20px;
@@ -175,13 +176,14 @@ main {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  font-size: 1.2rem; /* Augmente la taille du texte */
 }
 
 #participer-btn:hover {
   background-color: #45a049;
 }
 
-/* Style du formulaire d'inscription */
+/* ---- Style du formulaire d'inscription ---- */
 #register {
   padding: 20px;
   max-width: 400px;
@@ -225,6 +227,63 @@ main {
 }
 
 #register button:hover {
+  background-color: #45a049;
+}
+
+/* ---- Style de la page Espace Utilisateur ---- */
+#user-profile {
+  padding: 20px;
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#user-profile h2 {
+  text-align: center;
+  color: #4caf50;
+}
+
+#user-profile form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Ajout d'un espacement uniforme entre les éléments */
+}
+
+#user-profile label {
+  margin-bottom: 5px;
+  font-weight: bold; /* Met en évidence les étiquettes */
+}
+
+#user-profile input,
+#user-profile select,
+#user-profile textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%; /* Assure que les champs prennent toute la largeur disponible */
+  box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur totale */
+}
+
+#user-profile textarea {
+  resize: vertical; /* Permet uniquement le redimensionnement vertical */
+  min-height: 100px; /* Définit une hauteur minimale pour le champ texte */
+}
+
+#user-profile button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 1.2rem; /* Augmente la taille du texte */
+  align-self: center; /* Centre le bouton dans le formulaire */
+}
+
+#user-profile button:hover {
   background-color: #45a049;
 }
 

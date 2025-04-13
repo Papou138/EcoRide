@@ -205,3 +205,54 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("Le formulaire d'inscription n'a pas été trouvé.");
   }
 });
+
+/*
+Fonction pour gérer l'affichage des informations spécifiques au rôle de l'utilisateur
+*/
+document.addEventListener("DOMContentLoaded", function () {
+  // Gestion du changement de rôle
+  const roleSelect = document.getElementById("role");
+  const chauffeurInfo = document.getElementById("chauffeur-info");
+
+  if (roleSelect && chauffeurInfo) {
+    roleSelect.addEventListener("change", function () {
+      try {
+        if (this.value === "chauffeur" || this.value === "les_deux") {
+          chauffeurInfo.style.display = "block";
+        } else {
+          chauffeurInfo.style.display = "none";
+        }
+      } catch (error) {
+        console.error("Erreur lors du changement de rôle :", error);
+      }
+    });
+  } else {
+    console.error("Éléments du sélecteur de rôle non trouvés");
+  }
+
+  // Gestion du formulaire de profil
+  const profileForm = document.getElementById("profile-form");
+
+  if (profileForm) {
+    profileForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      try {
+        // Simuler l'enregistrement des informations
+        alert("Vos informations ont été enregistrées avec succès !");
+
+        // Réinitialiser le formulaire (optionnel)
+        if (profileForm instanceof HTMLFormElement) {
+          profileForm.reset();
+        }
+      } catch (error) {
+        console.error("Erreur lors de l'enregistrement du profil :", error);
+        alert(
+          "Une erreur est survenue lors de l'enregistrement. Veuillez réessayer."
+        );
+      }
+    });
+  } else {
+    console.error("Le formulaire de profil n'a pas été trouvé");
+  }
+});

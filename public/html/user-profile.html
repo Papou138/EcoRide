@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espace Utilisateur - EcoRide</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>EcoRide - Espace Utilisateur</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Retour à l'accueil</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="user-profile">
+        <h2>Votre Profil</h2>
+        <form id="profile-form">
+          <label for="pseudo">Pseudo :</label>
+          <input
+            type="text"
+            id="pseudo"
+            name="pseudo"
+            value="Alfred Dupont"
+            readonly
+          />
+
+          <label for="email">Email :</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="alfred.dupont@example.com"
+            readonly
+          />
+
+          <label for="role">Rôle :</label>
+          <select id="role" name="role">
+            <option value="passager">Passager</option>
+            <option value="chauffeur">Chauffeur</option>
+            <option value="les_deux">Les deux</option>
+          </select>
+
+          <div id="chauffeur-info" style="display: none">
+            <h3>Informations Chauffeur</h3>
+            <label for="plaque">Plaque d'immatriculation :</label>
+            <input type="text" id="plaque" name="plaque" />
+
+            <label for="date-immat">Date de première immatriculation :</label>
+            <input type="date" id="date-immat" name="date-immat" />
+
+            <label for="vehicule">Modèle et Marque du Véhicule :</label>
+            <input type="text" id="vehicule" name="vehicule" />
+
+            <label for="places">Nombre de places disponibles :</label>
+            <input type="number" id="places" name="places" />
+
+            <label for="preferences">Préférences :</label>
+            <textarea id="preferences" name="preferences"></textarea>
+          </div>
+
+          <button type="submit">Enregistrer</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Contactez-nous :
+        <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+      </p>
+      <p><a href="#">Mentions légales</a></p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
