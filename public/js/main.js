@@ -256,3 +256,91 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("Le formulaire de profil n'a pas été trouvé");
   }
 });
+
+/*
+Fonction pour gérer la soumission du formulaire de Saisie de voyage
+*/
+document.addEventListener("DOMContentLoaded", function () {
+  const tripForm = document.getElementById("trip-form");
+
+  if (tripForm) {
+    tripForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Récupérer les valeurs du formulaire de Saisie de voyage
+      const departInput = document.getElementById("depart");
+      const arriveeInput = document.getElementById("arrivee");
+      const dateInput = document.getElementById("date");
+      const heureDepartInput = document.getElementById("heure-depart");
+      const prixInput = document.getElementById("prix");
+      const vehiculeInput = document.getElementById("vehicule");
+      const placesInput = document.getElementById("places");
+
+      if (
+        departInput &&
+        arriveeInput &&
+        dateInput &&
+        heureDepartInput &&
+        prixInput &&
+        vehiculeInput &&
+        placesInput
+      ) {
+        // Récupérer les éléments du formulaire
+        const depart = departInput.value || "Non spécifié";
+        const arrivee = arriveeInput.value || "Non spécifié";
+        const heureDepart = heureDepartInput.value || "Non spécifié";
+        const prix = prixInput.value || "Non spécifié";
+        const places = placesInput.value || "Non spécifié";
+        // Formatage de la date en français
+        // Utilisation de l'API Intl.DateTimeFormat pour formater la date
+        const date = dateInput.value
+          ? new Intl.DateTimeFormat("fr-FR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }).format(new Date(dateInput.value))
+          : "Non spécifié";
+
+        try {
+          // Simuler l'enregistrement d'un trajet
+          // Créer un simple message pour confirmer les détails du voyage
+          let message = "Voyage proposé avec succès !\n\n";
+          message += "Départ : " + depart + "\n";
+          message += "Arrivée : " + arrivee + "\n";
+          message += "Date : " + date + "\n";
+          message += "Heure : " + heureDepart + "\n";
+          message += "Prix : " + prix + " €\n";
+
+          // Gestion du singulier ou pluriel si place = 1 ou plus
+          let placesMessage = "";
+          if (places == 1) {
+            placesMessage = "1 place disponible";
+          } else {
+            placesMessage = places + " places disponibles";
+          }
+          message += placesMessage;
+
+          // Afficher le message
+          alert(message);
+
+          // Réinitialiser le formulaire
+          if (tripForm instanceof HTMLFormElement) {
+            tripForm.reset();
+          }
+        } catch (error) {
+          console.error("Erreur lors de l'enregistrement du trajet :", error);
+          alert("Une erreur est survenue. Veuillez réessayer.");
+        }
+      } else {
+        console.error(
+          "Certains éléments du formulaire sont manquants ou invalides."
+        );
+        alert(
+          "Une erreur est survenue. Veuillez vérifier les champs du formulaire."
+        );
+      }
+    });
+  } else {
+    console.error("Le formulaire de saisie de voyage n'a pas été trouvé");
+  }
+});

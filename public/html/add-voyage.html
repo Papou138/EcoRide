@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proposer un Voyage - EcoRide</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>EcoRide - Proposer un Voyage</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Retour à l'accueil</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="add-trip">
+        <h2>Proposer un Nouveau Voyage</h2>
+        <form id="trip-form">
+          <label for="depart">Départ :</label>
+          <input type="text" id="depart" name="depart" required />
+
+          <label for="arrivee">Arrivée :</label>
+          <input type="text" id="arrivee" name="arrivee" required />
+
+          <label for="date">Date :</label>
+          <input type="date" id="date" name="date" required />
+
+          <label for="heure-depart">Heure de Départ :</label>
+          <input type="time" id="heure-depart" name="heure-depart" required />
+
+          <label for="prix">Prix (en €) :</label>
+          <input type="number" id="prix" name="prix" required min="1" />
+
+          <label for="vehicule">Véhicule :</label>
+          <select id="vehicule" name="vehicule">
+            <option value="vehicule1">Hyundai Ioniq 5</option>
+            <option value="vehicule2">Kia EV6</option>
+            <option value="vehicule3">Peugeot e-208</option>
+            <option value="vehicule4">Renault Zoe</option>
+            <option value="vehicule5">Renault Megane E-Tech</option>
+            <option value="vehicule6">Skoda Enyaq iV</option>
+            <option value="vehicule7">Tesla Model 3</option>
+            <option value="vehicule8">Volkswagen ID.3</option>
+            <!-- Ajouter d'autres options selon les véhicules disponibles -->
+          </select>
+
+          <label for="places">Places Disponibles :</label>
+          <input type="number" id="places" name="places" required min="1" />
+
+          <button type="submit">Proposer le Voyage</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Contactez-nous :
+        <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+      </p>
+      <p><a href="#">Mentions légales</a></p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
