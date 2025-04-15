@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espace Administrateur - EcoRide</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>EcoRide - Espace Administrateur</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Retour à l'accueil</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="admin-dashboard">
+        <h2>Tableau de Bord Administrateur</h2>
+        <div id="employee-management">
+          <h3>Gestion des Comptes Employés</h3>
+          <form id="create-employee-form">
+            <label for="employee-email">Email de l'Employé :</label>
+            <input
+              type="email"
+              id="employee-email"
+              name="employee-email"
+              required
+            />
+            <button type="submit">Créer Compte Employé</button>
+          </form>
+        </div>
+        <div id="performance">
+          <h3>Performance de la Plateforme</h3>
+          <div id="chart-covoiturages">
+            <h4>Nombre de Covoiturages par Jour</h4>
+            <!-- Graphique ici -->
+            <canvas id="covoituragesChart"></canvas>
+          </div>
+          <div id="chart-credits">
+            <h4>Crédits Gagnés par la Plateforme</h4>
+            <!-- Graphique ici -->
+            <canvas id="creditsChart"></canvas>
+          </div>
+        </div>
+        <div id="suspend-account">
+          <h3>Suspendre un Compte</h3>
+          <form id="suspend-form">
+            <label for="account-email">Email du Compte :</label>
+            <input
+              type="email"
+              id="account-email"
+              name="account-email"
+              required
+            />
+            <button type="submit">Suspendre Compte</button>
+          </form>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Contactez-nous :
+        <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+      </p>
+      <p><a href="#">Mentions légales</a></p>
+    </footer>
+    <script src="../js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+      // Exemple de graphique avec Chart.js
+      const ctxCovoiturages = document
+        .getElementById("covoituragesChart")
+        .getContext("2d");
+      const covoituragesChart = new Chart(ctxCovoiturages, {
+        type: "line",
+        data: {
+          labels: [
+            "Lundi",
+            "Mardi",
+            "Mercredi",
+            "Jeudi",
+            "Vendredi",
+            "Samedi",
+            "Dimanche",
+          ],
+          datasets: [
+            {
+              label: "Nombre de Covoiturages",
+              data: [12, 19, 3, 5, 2, 3, 7],
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+
+      const ctxCredits = document
+        .getElementById("creditsChart")
+        .getContext("2d");
+      const creditsChart = new Chart(ctxCredits, {
+        type: "bar",
+        data: {
+          labels: [
+            "Lundi",
+            "Mardi",
+            "Mercredi",
+            "Jeudi",
+            "Vendredi",
+            "Samedi",
+            "Dimanche",
+          ],
+          datasets: [
+            {
+              label: "Crédits Gagnés",
+              data: [120, 190, 30, 50, 20, 30, 70],
+              backgroundColor: "rgba(75, 192, 192, 0.2)",
+              borderColor: "rgba(75, 192, 192, 1)",
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

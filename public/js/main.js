@@ -403,3 +403,68 @@ function resolveIssue(issueId) {
   // Supprimer l'élément de la liste (simulation)
   document.getElementById(`issue-${issueId}`).remove();
 }
+
+/*
+Fonctions pour gérer la création de comptes employés
+et la suspension de comptes.
+*/
+document.addEventListener("DOMContentLoaded", function () {
+  const createEmployeeForm = document.getElementById("create-employee-form");
+  const suspendForm = document.getElementById("suspend-form");
+
+  if (createEmployeeForm) {
+    createEmployeeForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Récupérer l'email de l'employé
+      const employeeEmailInput = document.getElementById("employee-email");
+
+      if (employeeEmailInput) {
+        try {
+          const employeeEmail = employeeEmailInput.value.trim();
+
+          if (!employeeEmail || !employeeEmail.includes("@")) {
+            alert("Veuillez entrer une adresse email valide.");
+            employeeEmailInput.focus();
+            return;
+          }
+
+          // Simuler la création du compte employé
+          alert(`Compte employé créé avec succès pour ${employeeEmail} !`);
+          createEmployeeForm.reset();
+        } catch (error) {
+          console.error("Erreur lors de la création du compte :", error);
+          alert("Une erreur est survenue. Veuillez réessayer.");
+        }
+      }
+    });
+  }
+
+  if (suspendForm) {
+    suspendForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Récupérer l'email du compte à suspendre
+      const accountEmailInput = document.getElementById("account-email");
+
+      if (accountEmailInput) {
+        try {
+          const accountEmail = accountEmailInput.value.trim();
+
+          if (!accountEmail || !accountEmail.includes("@")) {
+            alert("Veuillez entrer une adresse email valide.");
+            accountEmailInput.focus();
+            return;
+          }
+
+          // Simuler la suspension du compte
+          alert(`Le compte ${accountEmail} a été suspendu avec succès !`);
+          suspendForm.reset();
+        } catch (error) {
+          console.error("Erreur lors de la suspension du compte :", error);
+          alert("Une erreur est survenue. Veuillez réessayer.");
+        }
+      }
+    });
+  }
+});
