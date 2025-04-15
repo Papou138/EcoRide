@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Historique des Covoiturages - EcoRide</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>EcoRide - Historique des Covoiturages</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Retour à l'accueil</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="history">
+        <h2>Votre Historique de Covoiturages</h2>
+        <div id="trips-history">
+          <!-- Exemple de covoiturage -->
+          <div class="trip">
+            <h3>Trajet du 15 avril 2025</h3>
+            <p><strong>De :</strong> Paris</p>
+            <p><strong>À :</strong> Lyon</p>
+            <p><strong>Chauffeur :</strong> Jean Dupont</p>
+            <p><strong>Prix :</strong> 20 €</p>
+            <button onclick="annulVoyage(1)">Annuler</button>
+          </div>
+          <!-- Ajouter d'autres covoiturages ici -->
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Contactez-nous :
+        <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+      </p>
+      <p><a href="#">Mentions légales</a></p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

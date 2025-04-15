@@ -344,3 +344,18 @@ document.addEventListener("DOMContentLoaded", function () {
     console.error("Le formulaire de saisie de voyage n'a pas été trouvé");
   }
 });
+
+/*
+Fonction pour gérer l'annulation d'un covoiturage
+*/
+function annulVoyage(tripId) {
+  // Simuler l'annulation du covoiturage
+  const confirmation = confirm(
+    "Êtes-vous sûr de vouloir annuler ce covoiturage ?"
+  );
+  if (confirmation) {
+    alert("Le covoiturage a été annulé avec succès !");
+    // Supprimer l'élément de la liste (simulation)
+    document.getElementById("trip-" + tripId).remove();
+  }
+}
