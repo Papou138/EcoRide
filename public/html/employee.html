@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Espace Employé - EcoRide</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>EcoRide - Espace Employé</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Retour à l'accueil</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="employee-dashboard">
+        <h2>Tableau de Bord Employé</h2>
+        <div id="les-avis">
+          <h3>Avis à Valider</h3>
+          <!-- Exemple d'avis -->
+          <div class="avis">
+            <p><strong>Chauffeur :</strong> Jean Dupont</p>
+            <p><strong>Avis :</strong> Excellent conducteur, très ponctuel.</p>
+            <button onclick="approveReview(1)">Approuver</button>
+            <button onclick="rejectReview(1)">Rejeter</button>
+          </div>
+          <!-- Ajouter d'autres avis ici -->
+        </div>
+        <div id="les-problemes">
+          <h3>Covoiturages Problématiques</h3>
+          <!-- Exemple de covoiturage problématique -->
+          <div class="probleme">
+            <p><strong>Numéro :</strong> 12345</p>
+            <p><strong>Chauffeur :</strong> Jean Dupont</p>
+            <p><strong>Passager :</strong> Marie Martin</p>
+            <p>
+              <strong>Description :</strong> Problème de communication pendant
+              le trajet.
+            </p>
+            <button onclick="resolveIssue(1)">Résoudre</button>
+          </div>
+          <!-- Ajouter d'autres covoiturages problématiques ici -->
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Contactez-nous :
+        <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+      </p>
+      <p><a href="#">Mentions légales</a></p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>

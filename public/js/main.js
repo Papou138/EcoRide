@@ -378,3 +378,28 @@ function endVoyage() {
   document.getElementById("start-voyage-btn").style.display = "inline-block";
   document.getElementById("end-voyage-btn").style.display = "none";
 }
+
+/*
+Fonctions pour gérer l'approbation et le rejet des avis
+ainsi que la résolution des covoiturage problématiques
+*/
+function approveReview(reviewId) {
+  // Simuler l'approbation de l'avis
+  alert("L'avis a été approuvé avec succès !");
+  // Supprimer l'élément de la liste (simulation)
+  document.getElementById(`review-${reviewId}`).remove();
+}
+
+function rejectReview(reviewId) {
+  // Simuler le rejet de l'avis
+  alert("L'avis a été rejeté avec succès !");
+  // Supprimer l'élément de la liste (simulation)
+  document.getElementById(`review-${reviewId}`).remove();
+}
+
+function resolveIssue(issueId) {
+  // Simuler la résolution du problème
+  alert("Le problème a été résolu avec succès !");
+  // Supprimer l'élément de la liste (simulation)
+  document.getElementById(`issue-${issueId}`).remove();
+}
