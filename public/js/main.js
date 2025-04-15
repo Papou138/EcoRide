@@ -359,3 +359,22 @@ function annulVoyage(tripId) {
     document.getElementById("trip-" + tripId).remove();
   }
 }
+
+/*
+Fonctions pour gérer le démarrage et l'arrêt d'un covoiturage
+*/
+function startVoyage() {
+  // Simuler le démarrage du covoiturage
+  alert("Le covoiturage a commencé !");
+  // Masquer le bouton de démarrage et afficher le bouton d'arrêt
+  document.getElementById("start-voyage-btn").style.display = "none";
+  document.getElementById("end-voyage-btn").style.display = "inline-block";
+}
+
+function endVoyage() {
+  // Simuler l'arrêt du covoiturage
+  alert("Le covoiturage est arrivé à destination !");
+  // Afficher le bouton de démarrage et masquer le bouton d'arrêt
+  document.getElementById("start-voyage-btn").style.display = "inline-block";
+  document.getElementById("end-voyage-btn").style.display = "none";
+}

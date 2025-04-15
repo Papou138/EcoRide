@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestion des Covoiturages - EcoRide</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>EcoRide - Gestion des Covoiturages</h1>
+      <nav>
+        <ul>
+          <li><a href="index.html">Retour à l'accueil</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="manage-voyage">
+        <h2>Gérer vos Covoiturages</h2>
+        <div id="voyage-controls">
+          <h3>Covoiturage du 15 avril 2025</h3>
+          <p><strong>De :</strong> Paris</p>
+          <p><strong>À :</strong> Lyon</p>
+          <button id="start-voyage-btn" onclick="startVoyage()">
+            Démarrer le Covoiturage
+          </button>
+          <button
+            id="end-voyage-btn"
+            onclick="endVoyage()"
+            style="display: none"
+          >
+            Arrivée à Destination
+          </button>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Contactez-nous :
+        <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+      </p>
+      <p><a href="#">Mentions légales</a></p>
+    </footer>
+    <script src="../js/main.js"></script>
+  </body>
+</html>
