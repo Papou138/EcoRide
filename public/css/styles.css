@@ -102,14 +102,32 @@ nav ul li a {
   background-color: #444;
   min-width: 200px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
 }
 
 .dropdown:hover .dropdown-menu {
   display: block;
 }
 
+/* Style pour les liens actifs */
 .active {
-  background-color: #575757;
+  background-color: #e0e0e0e0;
+  color: #333;
+  font-weight: bold;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Style spécifique pour le dropdown actif */
+.dropdown.active .dropdown-toggle {
+  background-color: #e0e0e0;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Style pour les éléments actifs dans le menu déroulant */
+.dropdown-menu .active {
+  border-radius: 4px;
 }
 
 /* Responsive Design 
