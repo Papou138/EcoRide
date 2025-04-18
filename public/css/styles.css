@@ -680,13 +680,34 @@ footer {
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  font-size: 1.2rem; /* Augmente la taille du texte */
-  align-self: flex-start; /* Aligne le bouton à gauche dans le conteneur */
+  font-size: 1.2rem;
+  align-self: flex-start;
 }
 
-.avis button:hover,
 .probleme button:hover {
   background-color: #45a049;
+}
+
+.avis button[onclick*="approveReview"] {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.avis button[onclick*="rejectReview"] {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.avis button[onclick*="approveReview"]:hover {
+  background-color: #45a049;
+}
+
+.avis button[onclick*="rejectReview"]:hover {
+  background-color: #ff6666;
 }
 
 /* ---- Style de la page Espace administrateur ---- */
