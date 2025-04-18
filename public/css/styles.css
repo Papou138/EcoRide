@@ -95,6 +95,27 @@ nav ul li a {
   transition: background-color 0.3s ease;
 }
 
+/* ---- Style du logo ---- */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* Espace entre le logo et le texte */
+  margin-top: 1rem; /* Espace au-dessus du logo */
+  margin-bottom: 1rem; /* Espace en dessous du logo */
+}
+
+.logo {
+  height: 100px;
+  width: auto;
+  border-radius: 25% 10% 5% 10%; /* Arrondir les coins du logo */
+  /* Ajoutez une transition pour un effet hover élégant */
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
 /* ---- Style des dropdowns ---- */
 .dropdown-menu {
   display: none;
