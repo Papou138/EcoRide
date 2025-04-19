@@ -743,6 +743,16 @@ footer {
   font-weight: 600;
 }
 
+/* Style pour les champs de saisie dans le formulaire de gestion des employés et de suspension de compte */
+#employee-management input[type="email"],
+#suspend-account input[type="email"] {
+  font-size: 1.2rem;
+  padding: 6px;
+  width: 100%;
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
 #employee-management button,
 #suspend-account button {
   padding: 10px 20px;
