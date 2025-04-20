@@ -423,7 +423,8 @@ footer {
 }
 
 #register input {
-  padding: 10px;
+  font-size: 1.2rem;
+  padding: 6px;
   margin: 5px 0;
   border: 1px solid #ccc;
   border-radius: 4px;

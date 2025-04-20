@@ -17,8 +17,13 @@
           />
           <h1>EcoRide - Inscription</h1>
         </div>
+        <button id="menu-toggle" aria-label="Menu Principal">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
-      <nav>
+      <nav id="main-nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
           <li><a href="register.html" class="active">Inscription</a></li>
@@ -45,8 +50,11 @@
       <section id="register">
         <h2>Créer un Compte</h2>
         <form id="register-form">
-          <label for="pseudo">Pseudo :</label>
-          <input type="text" id="pseudo" name="pseudo" required />
+          <label for="nom">Nom :</label>
+          <input type="text" id="nom" name="nom" required />
+
+          <label for="prenom">Prénom :</label>
+          <input type="text" id="prenom" name="prenom" required />
 
           <label for="email">Email :</label>
           <input type="email" id="email" name="email" required />
@@ -60,7 +68,12 @@
             minlength="8"
           />
 
-          <button type="submit">S'inscrire</button>
+          <button
+            type="button"
+            onclick="createUser(nom.value, prenom.value, email.value, password.value)"
+          >
+            S'inscrire
+          </button>
         </form>
       </section>
     </main>

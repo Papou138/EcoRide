@@ -496,3 +496,103 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+
+/* ---------------------------------------------------------------
+Intégration du Backend avec le Frontend
+en utilisant AJAX pour effectuer des appels API
+------------------------------------------------------------------ */
+
+/* ---- Les opérations CRUD (Create Read Update Delete) ---- */
+// Fonction pour créer un nouvel utilisateur (CREATE)
+function createUser(nom, prenom, email, password) {
+  fetch("../../backend/user.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `action=createUser&nom=${encodeURIComponent(
+      nom
+    )}&prenom=${encodeURIComponent(prenom)}&email=${encodeURIComponent(
+      email
+    )}&password=${encodeURIComponent(password)}`,
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      console.log(message);
+      // Mettre à jour l'interface utilisateur ou afficher un message de succès
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+// Exemple d'utilisation
+createUser("Dupont", "Jean", "jean.dupont@example.com", "password123");
+
+// Fonction pour récupérer les utilisateurs (READ)
+function fetchUsers() {
+  // Utiliser fetch pour envoyer une requête GET à l'endpoint API
+  fetch("../../backend/user.php?action=getUsers")
+    .then((response) => {
+      // Vérifier si la réponse est OK
+      if (!response.ok) {
+        throw new Error("Network response was not ok " + response.statusText);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data); // Afficher les données dans la console
+      // Mettre à jour l'interface utilisateur avec les données
+      const userList = document.getElementById("userList");
+      userList.innerHTML = ""; // Vider la liste avant de la remplir
+      data.forEach((user) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${user.nom} ${user.prenom} (${user.email})`;
+        userList.appendChild(listItem);
+      });
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+// Appeler la fonction pour tester
+fetchUsers();
+
+// Fonction pour mettre à jour un utilisateur (UPDATE)
+function updateUser(id, nom, prenom) {
+  fetch("../../backend/user.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `action=updateUser&id=${encodeURIComponent(
+      id
+    )}&nom=${encodeURIComponent(nom)}&prenom=${encodeURIComponent(prenom)}`,
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      console.log(message);
+      // Mettre à jour l'interface utilisateur ou afficher un message de succès
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+// Exemple d'utilisation
+updateUser(1, "Dupont", "Jean-Luc");
+
+// Fonction pour supprimer un utilisateur (DELETE)
+function deleteUser(id) {
+  fetch("../../backend/user.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `action=deleteUser&id=${encodeURIComponent(id)}`,
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      console.log(message);
+      // Mettre à jour l'interface utilisateur ou afficher un message de succès
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+// Exemple d'utilisation
+deleteUser(1);
