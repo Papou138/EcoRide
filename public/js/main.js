@@ -598,3 +598,60 @@ function deleteUser(id) {
 
 // Exemple d'utilisation
 deleteUser(1);
+
+// Fonction pour créer un nouveau voyage (CREATE)
+// Cette fonction envoie une requête POST au backend pour créer un voyage
+function createTrip(depart, arrivee, date, heure, places) {
+  fetch("../../backend/trip.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `action=createTrip&depart=${encodeURIComponent(
+      depart
+    )}&arrivee=${encodeURIComponent(arrivee)}&date=${encodeURIComponent(
+      date
+    )}&heure=${encodeURIComponent(heure)}&nbPlaces=${encodeURIComponent(
+      places
+    )}`,
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      console.log(message);
+      // Mettre à jour l'interface utilisateur ou afficher un message de succès
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+// Fonctions pour démarrer et arreter un voyage
+function startVoyage(tripId) {
+  fetch("../../backend/trip.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `action=startTrip&tripId=${encodeURIComponent(tripId)}`,
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      console.log(message);
+      // Mettre à jour l'interface utilisateur ou afficher un message de succès
+    })
+    .catch((error) => console.error("Error:", error));
+}
+
+function stopVoyage(tripId) {
+  fetch("../../backend/trip.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `action=stopTrip&tripId=${encodeURIComponent(tripId)}`,
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      console.log(message);
+      // Mettre à jour l'interface utilisateur ou afficher un message de succès
+    })
+    .catch((error) => console.error("Error:", error));
+}

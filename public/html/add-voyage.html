@@ -61,7 +61,7 @@
           <label for="date">Date :</label>
           <input type="date" id="date" name="date" required />
 
-          <label for="heure-depart">Heure de Départ :</label>
+          <label for="heure">Heure de Départ :</label>
           <input type="time" id="heure-depart" name="heure-depart" required />
 
           <label for="prix">Prix (en €) :</label>
@@ -85,7 +85,7 @@
 
           <button
             type="button"
-            onclick="createTrip(depart.value, arrivee.value, date.value, heureDepart.value, prix.value, vehicule.value, places.value)"
+            onclick="createTrip(depart.value, arrivee.value, date.value, heure.value, prix.value, places.value)"
           >
             Proposer le Voyage
           </button>
