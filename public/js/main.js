@@ -556,7 +556,7 @@ function fetchUsers() {
 fetchUsers();
 
 // Fonction pour mettre à jour un utilisateur (UPDATE)
-function updateUser(id, nom, prenom) {
+function updateUser(id, nom, prenom, role) {
   fetch("../../backend/user.php", {
     method: "POST",
     headers: {
@@ -564,7 +564,9 @@ function updateUser(id, nom, prenom) {
     },
     body: `action=updateUser&id=${encodeURIComponent(
       id
-    )}&nom=${encodeURIComponent(nom)}&prenom=${encodeURIComponent(prenom)}`,
+    )}&nom=${encodeURIComponent(nom)}&prenom=${encodeURIComponent(
+      prenom
+    )}&role=${encodeURIComponent(role)}`,
   })
     .then((response) => response.text())
     .then((message) => {
@@ -575,7 +577,7 @@ function updateUser(id, nom, prenom) {
 }
 
 // Exemple d'utilisation
-updateUser(1, "Dupont", "Jean-Luc");
+updateUser(1, "Dupont", "Jean-Luc", "chauffeur");
 
 // Fonction pour supprimer un utilisateur (DELETE)
 function deleteUser(id) {
