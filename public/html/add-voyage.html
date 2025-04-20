@@ -83,7 +83,12 @@
           <label for="places">Places Disponibles :</label>
           <input type="number" id="places" name="places" required min="1" />
 
-          <button type="submit">Proposer le Voyage</button>
+          <button
+            type="button"
+            onclick="createTrip(depart.value, arrivee.value, date.value, heureDepart.value, prix.value, vehicule.value, places.value)"
+          >
+            Proposer le Voyage
+          </button>
         </form>
       </section>
     </main>

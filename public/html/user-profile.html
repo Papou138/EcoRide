@@ -49,24 +49,12 @@
     <main>
       <section id="user-profile">
         <h2>Votre Profil</h2>
-        <form id="profile-form">
-          <label for="pseudo">Pseudo :</label>
-          <input
-            type="text"
-            id="pseudo"
-            name="pseudo"
-            value="Alfred Dupont"
-            readonly
-          />
+        <form id="update-profile-form">
+          <label for="newName">Nouveau nom :</label>
+          <input type="text" id="newName" name="newName" required />
 
-          <label for="email">Email :</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value="alfred.dupont@example.com"
-            readonly
-          />
+          <label for="newSurname">Nouveau prénom :</label>
+          <input type="text" id="newSurname" name="newSurname" required />
 
           <label for="role">Rôle :</label>
           <select id="role" name="role">
@@ -74,6 +62,17 @@
             <option value="chauffeur">Chauffeur</option>
             <option value="les_deux">Les deux</option>
           </select>
+
+          <input type="hidden" id="userId" name="userId" value="1" />
+          <!-- Exemple d'ID l'utilisateur -->
+
+          <button
+            type="button"
+            class="update-btn"
+            onclick="updateUser(userId.value, newName.value, newSurname.value, role.value)"
+          >
+            Mettre à Jour le Profil
+          </button>
 
           <div id="chauffeur-info" style="display: none">
             <h3>Informations Chauffeur</h3>

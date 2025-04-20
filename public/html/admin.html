@@ -59,7 +59,9 @@
               name="employee-email"
               required
             />
-            <button type="submit">Créer Compte Employé</button>
+            <button onclick="createCompteEmploye(email)">
+              Créer Compte Employé
+            </button>
           </form>
         </div>
         <div id="performance">
@@ -85,7 +87,7 @@
               name="account-email"
               required
             />
-            <button type="submit">Suspendre Compte</button>
+            <button onclick="suspendCompte(userId)">Suspendre Compte</button>
           </form>
         </div>
       </section>
