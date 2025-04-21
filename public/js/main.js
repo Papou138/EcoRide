@@ -601,17 +601,21 @@ deleteUser(1);
 
 // Fonction pour créer un nouveau voyage (CREATE)
 // Cette fonction envoie une requête POST au backend pour créer un voyage
-function createVoyage(depart, arrivee, date, heure, nbPlaces) {
+function createVoyage(depart, arrivee, date, heure, prix, nbPlaces) {
   fetch("../../backend/voyage.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: `action=createTrip&depart=${encodeURIComponent(
+    body: `action=createVoyage&lieu_depart=${encodeURIComponent(
       depart
-    )}&arrivee=${encodeURIComponent(arrivee)}&date=${encodeURIComponent(
+    )}&lieu_arrivee=${encodeURIComponent(
+      arrivee
+    )}&date_depart=${encodeURIComponent(
       date
-    )}&heure=${encodeURIComponent(heure)}&nbPlaces=${encodeURIComponent(
+    )}&heure_depart=${encodeURIComponent(
+      heure
+    )}&prix_personne=${encodeURIComponent(prix)}&nbPlaces=${encodeURIComponent(
       nbPlaces
     )}`,
   })
@@ -619,39 +623,84 @@ function createVoyage(depart, arrivee, date, heure, nbPlaces) {
     .then((message) => {
       console.log(message);
       // Mettre à jour l'interface utilisateur ou afficher un message de succès
+      alert("Voyage créé avec succès !");
     })
-    .catch((error) => console.error("Error:", error));
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Erreur lors de la création du voyage. Veuillez réessayer.");
+    });
 }
 
 // Fonctions pour démarrer et arreter un voyage
 function startVoyage(tripId) {
-  fetch("../../backend/trip.php", {
+  fetch("../../backend/voyage.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: `action=startTrip&tripId=${encodeURIComponent(tripId)}`,
+    body: `action=startVoyage&tripId=${encodeURIComponent(tripId)}`,
   })
     .then((response) => response.text())
     .then((message) => {
       console.log(message);
       // Mettre à jour l'interface utilisateur ou afficher un message de succès
+      document.getElementById("start-voyage-btn").style.display = "none";
+      document.getElementById("end-voyage-btn").style.display = "inline-block";
     })
-    .catch((error) => console.error("Error:", error));
+    .catch((error) => console.error("Erreur:", error));
 }
 
 function stopVoyage(tripId) {
-  fetch("../../backend/trip.php", {
+  fetch("../../backend/voyage.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: `action=stopTrip&tripId=${encodeURIComponent(tripId)}`,
+    body: `action=stopVoyage&tripId=${encodeURIComponent(tripId)}`,
   })
     .then((response) => response.text())
     .then((message) => {
       console.log(message);
       // Mettre à jour l'interface utilisateur ou afficher un message de succès
+      document.getElementById("start-voyage-btn").style.display =
+        "inline-block";
+      document.getElementById("end-voyage-btn").style.display = "none";
     })
-    .catch((error) => console.error("Error:", error));
+    .catch((error) => console.error("Erreur:", error));
+}
+
+/* ----------------------------------------------------------
+Amélioration de la gestion des erreurs
+Fonction pour gérer les erreurs de fetch
+Cette fonction peut être utilisée dans toutes les requêtes fetch
+------------------------------------------------------------- */
+function handleFetchError(error) {
+  console.error("Erreur:", error);
+  alert(
+    "Une erreur est survenue lors de la communication avec le serveur. Veuillez réessayer."
+  );
+}
+
+// Exemple d'utilisation dans createVoyage :
+function createVoyage(depart, arrivee, date, heure, prix, nbPlaces) {
+  // Validation des données avant envoi
+  if (!depart || !arrivee || !date || !heure || !prix || !nbPlaces) {
+    alert("Tous les champs sont obligatoires");
+    return;
+  }
+
+  fetch("../../backend/voyage.php", {
+    // ... configuration fetch ...
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP: ${response.status}`);
+      }
+      return response.text();
+    })
+    .then((message) => {
+      console.log(message);
+      alert("Voyage créé avec succès!");
+    })
+    .catch(handleFetchError);
 }
