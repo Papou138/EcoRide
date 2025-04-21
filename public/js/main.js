@@ -1,3 +1,7 @@
+import { createUser, updateUser } from "./modules/auth.js";
+import { createVoyage, startVoyage } from "./modules/voyage.js";
+import { updateProfile, toggleChauffeurInfo } from "./modules/profile.js";
+
 // Attendre que le DOM soit chargé
 document.addEventListener("DOMContentLoaded", function () {
   // Récupérer le formulaire
@@ -391,7 +395,7 @@ function annulVoyage(tripId) {
 /*
 Fonctions pour gérer le démarrage et l'arrêt d'un covoiturage
 */
-function startVoyage() {
+/* function startVoyage() {
   // Simuler le démarrage du covoiturage
   alert("Le covoiturage a commencé !");
   // Masquer le bouton de démarrage et afficher le bouton d'arrêt
@@ -405,7 +409,7 @@ function endVoyage() {
   // Afficher le bouton de démarrage et masquer le bouton d'arrêt
   document.getElementById("start-voyage-btn").style.display = "inline-block";
   document.getElementById("end-voyage-btn").style.display = "none";
-}
+} */
 
 /*
 Fonctions pour gérer l'approbation et le rejet des avis
@@ -504,28 +508,28 @@ en utilisant AJAX pour effectuer des appels API
 
 /* ---- Les opérations CRUD (Create Read Update Delete) ---- */
 // Fonction pour créer un nouvel utilisateur (CREATE)
-function createUser(nom, prenom, email, password) {
-  fetch("../../backend/user.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `action=createUser&nom=${encodeURIComponent(
-      nom
-    )}&prenom=${encodeURIComponent(prenom)}&email=${encodeURIComponent(
-      email
-    )}&password=${encodeURIComponent(password)}`,
-  })
-    .then((response) => response.text())
-    .then((message) => {
-      console.log(message);
-      // Mettre à jour l'interface utilisateur ou afficher un message de succès
-    })
-    .catch((error) => console.error("Error:", error));
-}
+// function createUser(nom, prenom, email, password) {
+//   fetch("../../backend/user.php", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/x-www-form-urlencoded",
+//     },
+//     body: `action=createUser&nom=${encodeURIComponent(
+//       nom
+//     )}&prenom=${encodeURIComponent(prenom)}&email=${encodeURIComponent(
+//       email
+//     )}&password=${encodeURIComponent(password)}`,
+//   })
+//     .then((response) => response.text())
+//     .then((message) => {
+//       console.log(message);
+//       // Mettre à jour l'interface utilisateur ou afficher un message de succès
+//     })
+//     .catch((error) => console.error("Error:", error));
+// }
 
-// Exemple d'utilisation
-createUser("Dupont", "Jean", "jean.dupont@example.com", "password123");
+// // Exemple d'utilisation
+// createUser("Dupont", "Jean", "jean.dupont@example.com", "password123");
 
 // Fonction pour récupérer les utilisateurs (READ)
 function fetchUsers() {
@@ -555,7 +559,7 @@ function fetchUsers() {
 // Appeler la fonction pour tester
 fetchUsers();
 
-// Fonction pour mettre à jour un utilisateur (UPDATE)
+/* // Fonction pour mettre à jour un utilisateur (UPDATE)
 function updateUser(id, nom, prenom, role) {
   fetch("../../backend/user.php", {
     method: "POST",
@@ -577,7 +581,7 @@ function updateUser(id, nom, prenom, role) {
 }
 
 // Exemple d'utilisation
-updateUser(1, "Dupont", "Jean-Luc", "chauffeur");
+updateUser(1, "Dupont", "Jean-Luc", "chauffeur"); */
 
 // Fonction pour supprimer un utilisateur (DELETE)
 function deleteUser(id) {
@@ -599,7 +603,7 @@ function deleteUser(id) {
 // Exemple d'utilisation
 deleteUser(1);
 
-// Fonction pour créer un nouveau voyage (CREATE)
+/* // Fonction pour créer un nouveau voyage (CREATE)
 // Cette fonction envoie une requête POST au backend pour créer un voyage
 function createVoyage(depart, arrivee, date, heure, prix, nbPlaces) {
   fetch("../../backend/voyage.php", {
@@ -629,9 +633,9 @@ function createVoyage(depart, arrivee, date, heure, prix, nbPlaces) {
       console.error("Error:", error);
       alert("Erreur lors de la création du voyage. Veuillez réessayer.");
     });
-}
+} */
 
-// Fonctions pour démarrer et arreter un voyage
+/* // Fonctions pour démarrer et arreter un voyage
 function startVoyage(tripId) {
   fetch("../../backend/voyage.php", {
     method: "POST",
@@ -648,9 +652,9 @@ function startVoyage(tripId) {
       document.getElementById("end-voyage-btn").style.display = "inline-block";
     })
     .catch((error) => console.error("Erreur:", error));
-}
+} */
 
-function stopVoyage(tripId) {
+/* function stopVoyage(tripId) {
   fetch("../../backend/voyage.php", {
     method: "POST",
     headers: {
@@ -667,7 +671,7 @@ function stopVoyage(tripId) {
       document.getElementById("end-voyage-btn").style.display = "none";
     })
     .catch((error) => console.error("Erreur:", error));
-}
+} */
 
 /* ----------------------------------------------------------
 Amélioration de la gestion des erreurs
@@ -681,7 +685,7 @@ function handleFetchError(error) {
   );
 }
 
-// Exemple d'utilisation dans createVoyage :
+/* // Exemple d'utilisation dans createVoyage :
 function createVoyage(depart, arrivee, date, heure, prix, nbPlaces) {
   // Validation des données avant envoi
   if (!depart || !arrivee || !date || !heure || !prix || !nbPlaces) {
@@ -703,4 +707,4 @@ function createVoyage(depart, arrivee, date, heure, prix, nbPlaces) {
       alert("Voyage créé avec succès!");
     })
     .catch(handleFetchError);
-}
+} */

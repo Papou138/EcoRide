@@ -120,6 +120,9 @@
         <p>&copy; 2025 EcoRide - Tous droits réservés</p>
       </div>
     </footer>
-    <script src="../js/main.js"></script>
+    <script type="module">
+      import { createVoyage } from "../js/modules/voyage.js";
+      windows.createVoyage = createVoyage;
+    </script>
   </body>
 </html>

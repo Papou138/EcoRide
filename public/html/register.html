@@ -51,10 +51,24 @@
         <h2>Créer un Compte</h2>
         <form id="register-form">
           <label for="nom">Nom :</label>
-          <input type="text" id="nom" name="nom" required />
+          <input
+            type="text"
+            id="nom"
+            name="nom"
+            required
+            pattern="[A-Za-z\s]{2,50}"
+            title="Le nom doit contenir entre 2 et 50 caractères, uniquement des lettres"
+          />
 
           <label for="prenom">Prénom :</label>
-          <input type="text" id="prenom" name="prenom" required />
+          <input
+            type="text"
+            id="prenom"
+            name="prenom"
+            required
+            pattern="[A-Za-z\s]{2,50}"
+            title="Le prénom doit contenir entre 2 et 50 caractères, uniquement des lettres"
+          />
 
           <label for="email">Email :</label>
           <input type="email" id="email" name="email" required />
@@ -66,6 +80,8 @@
             name="password"
             required
             minlength="8"
+            pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+            title="Le mot de passe doit contenir au moins 8 caractères, incluant des lettres et des chiffres"
           />
 
           <button
@@ -105,6 +121,9 @@
         <p>&copy; 2025 EcoRide - Tous droits réservés</p>
       </div>
     </footer>
-    <script src="../js/main.js"></script>
+    <script type="module">
+      import { createUser } from "../js/modules/auth.js";
+      windows.createUser = createUser;
+    </script>
   </body>
 </html>

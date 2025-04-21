@@ -124,6 +124,9 @@
         <p>&copy; 2025 EcoRide - Tous droits réservés</p>
       </div>
     </footer>
-    <script src="../js/main.js"></script>
+    <script type="module">
+      import { updateProfile } from "../js/modules/profile.js";
+      windows.updateProfile = updateProfile;
+    </script>
   </body>
 </html>
