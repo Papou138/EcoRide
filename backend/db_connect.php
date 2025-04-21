@@ -3,8 +3,9 @@ try {
     // Remplace 'root' et '' par les informations de connexion appropriées si nécessaire
     $pdo = new PDO('mysql:host=localhost;dbname=ecoride', 'root', '');
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "Connected successfully"; // Ligne pour vérifier la connexion
+    echo "Connexion BDD réussie";
+    echo "\n"; // Ajout d'un saut de ligne
 } catch (PDOException $e) {
-    die("Connection failed : " . $e->getMessage());
+    die("Echec de connexion à la BDD : " . $e->getMessage());
 }
 ?>

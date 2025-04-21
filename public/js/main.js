@@ -602,7 +602,7 @@ deleteUser(1);
 // Fonction pour créer un nouveau voyage (CREATE)
 // Cette fonction envoie une requête POST au backend pour créer un voyage
 function createVoyage(depart, arrivee, date, heure, places) {
-  fetch("../../backend/trip.php", {
+  fetch("../../backend/voyage.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
