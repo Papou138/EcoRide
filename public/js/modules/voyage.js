@@ -1,3 +1,12 @@
+// Les statuts de voyage sont définis ici
+// Ces statuts peuvent être utilisés pour gérer l'état des voyages dans l'application
+const VOYAGE_STATUS = {
+  PROPOSED: "proposed",
+  STARTED: "started",
+  COMPLETED: "completed",
+  CANCELLED: "cancelled",
+};
+
 // Fonction pour créer un voyage
 // Cette fonction est appelée lors de la soumission du formulaire de création de voyage
 export function createVoyage(depart, arrivee, date, heure, prix, nbPlaces) {

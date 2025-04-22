@@ -42,11 +42,9 @@ export function updateUser(id, nom, prenom, role) {
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },
-    body: `action=updateUser&id=${encodeURIComponent(
-      id
-    )}&nom=${encodeURIComponent(nom)}&prenom=${encodeURIComponent(
-      prenom
-    )}&role=${encodeURIComponent(role)}`,
+    body: `action=updateUser&id=${id}&nom=${encodeURIComponent(
+      nom
+    )}&prenom=${encodeURIComponent(prenom)}&role=${encodeURIComponent(role)}`,
   })
     .then((response) => response.text())
     .then((message) => {

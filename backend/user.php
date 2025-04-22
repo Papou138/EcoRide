@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'getUsers') {
 
 // Update (Mettre à jour un utilisateur)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'updateUser') {
-    $stmt = $pdo->prepare("UPDATE Utilisateur SET nom = ?, prenom = ? WHERE id = ?");
+    $stmt = $pdo->prepare("UPDATE Utilisateur SET nom = ?, prenom = ?, role = ? WHERE id = ?");
     $stmt->execute([$_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['id']]);
     echo "Mise à jour utilisateur réussie";
     echo "\n"; // Ajout d'un saut de ligne
