@@ -59,3 +59,49 @@ export function updateUser(id, nom, prenom, role) {
       alert("Erreur lors de la mise à jour du profil");
     });
 }
+
+// Fonction pour supprimer un utilisateur (DELETE)
+// Cette fonction est appelée lors de la soumission du formulaire de suppression d'un utilisateur
+export function deleteUser(id) {
+  fetch("../../backend/user.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `action=deleteUser&id=${encodeURIComponent(id)}`,
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      alert("Utilisateur supprimé avec succès !");
+      console.log(message);
+      // Mettre à jour l'interface utilisateur ou afficher un message de succès
+    })
+    .catch((error) => {
+      console.error("Erreur : ", error);
+      alert("Erreur lors de la suppression de l'utilisateur");
+    });
+}
+
+// Fonction pour récupérer les utilisateurs (READ)
+// Cette fonction est appelée lors du chargement de la page pour afficher la liste des utilisateurs
+// Elle envoie une requête GET à l'API pour récupérer la liste des utilisateurs
+export function fetchUsers() {
+  fetch("../../backend/user.php?action=getUsers")
+    .then((response) => {
+      if (!response.ok) throw new Error("Erreur réseau");
+      return response.json();
+    })
+    .then((data) => {
+      const userList = document.getElementById("userList");
+      userList.innerHTML = "";
+      data.forEach((user) => {
+        const listItem = document.createElement("li");
+        listItem.textContent = `${user.nom} ${user.prenom} (${user.email})`;
+        userList.appendChild(listItem);
+      });
+    })
+    .catch((error) => {
+      console.error("Erreur : ", error);
+      alert("Erreur lors de la récupération des utilisateurs");
+    });
+}

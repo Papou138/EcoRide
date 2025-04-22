@@ -66,3 +66,28 @@ export function stopVoyage(tripId) {
       alert("Erreur lors de l'arrêt du voyage");
     });
 }
+
+// Fonction pour annuler un voyage
+export function annulVoyage(tripId) {
+  const confirmation = confirm(
+    "Êtes-vous sûr de vouloir annuler ce covoiturage ?"
+  );
+  if (!confirmation) return;
+
+  fetch("../../backend/voyage.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `action=annulVoyage&tripId=${tripId}`,
+  })
+    .then((response) => response.text())
+    .then((message) => {
+      document.getElementById("trip-" + tripId).remove();
+      alert("Le covoiturage a été annulé avec succès !");
+    })
+    .catch((error) => {
+      console.error("Erreur : ", error);
+      alert("Erreur lors de l'annulation du voyage");
+    });
+}

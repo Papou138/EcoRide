@@ -1,116 +1,22 @@
-import { createUser, updateUser } from "./modules/auth.js";
-import { createVoyage, startVoyage } from "./modules/voyage.js";
+import {
+  createUser,
+  updateUser,
+  deleteUser,
+  fetchUsers,
+} from "./modules/auth.js";
+import {
+  createVoyage,
+  startVoyage,
+  stopVoyage,
+  annulVoyage,
+} from "./modules/voyage.js";
 import { updateProfile, toggleChauffeurInfo } from "./modules/profile.js";
+import { approveReview, rejectReview, resolveIssue } from "./modules/review.js";
+import { createEmployeeAccount, suspendAccount } from "./modules/employee.js";
 
 // Attendre que le DOM soit chargé
 document.addEventListener("DOMContentLoaded", function () {
-  // Récupérer le formulaire
-  const searchForm = document.getElementById("search-form");
-
-  // Vérifier si le formulaire existe
-  if (searchForm) {
-    searchForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-
-      // Récupérer les éléments du formulaire
-      const departInput = document.getElementById("depart");
-      const arriveeInput = document.getElementById("arrivee");
-      const dateInput = document.getElementById("date");
-      const ecologiqueInput = document.getElementById("ecologique");
-      const prixInput = document.getElementById("prix");
-      const dureeInput = document.getElementById("duree");
-      const noteInput = document.getElementById("note");
-      const resultsDiv = document.getElementById("results");
-
-      // Vérifier si tous les éléments existent
-      if (
-        departInput &&
-        arriveeInput &&
-        dateInput &&
-        ecologiqueInput &&
-        prixInput &&
-        dureeInput &&
-        noteInput &&
-        resultsDiv
-      ) {
-        // Récupérer les valeurs
-        const depart = departInput.value || "Non spécifié";
-        const arrivee = arriveeInput.value || "Non spécifié";
-        const date = dateInput.value || "Non spécifiée";
-        const ecologique = ecologiqueInput.value || "Non spécifié";
-        const prix = prixInput.value || "Non spécifié";
-        const duree = dureeInput.value || "Non spécifiée";
-        const note = noteInput.value || "Non spécifiée";
-
-        // Formatage de la date en français / Utilisation de l'API Intl.DateTimeFormat
-        const dateFr = date
-          ? new Intl.DateTimeFormat("fr-FR", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            }).format(new Date(date))
-          : "Non spécifiée";
-
-        // Filtrer les résultats (simulation)
-        let results = `
-        <h3>Résultats pour le trajet de ${depart} à ${arrivee} le ${dateFr} :</h3>
-        <ul>`;
-
-        // Exemple de données simulées
-        const trajets = [
-          {
-            depart: "Paris",
-            arrivee: "Lyon",
-            date: "12-04-2025",
-            ecologique: "oui",
-            prix: 20,
-            duree: 4,
-            note: 4.5,
-          },
-          {
-            depart: "Paris",
-            arrivee: "Lyon",
-            date: "12-04-2025",
-            ecologique: "non",
-            prix: 25,
-            duree: 5,
-            note: 4.0,
-          },
-        ];
-
-        // Filtrer les trajets
-        trajets.forEach((trajet) => {
-          if (
-            (!ecologique || trajet.ecologique === ecologique) &&
-            (!prix || trajet.prix <= prix) &&
-            (!duree || trajet.duree <= duree) &&
-            (!note || trajet.note >= note)
-          ) {
-            results += `<li>
-            <p>
-            Trajet de ${trajet.depart} à ${trajet.arrivee}, ${trajet.date}, ${
-              trajet.ecologique ? "Ecologique" : "Non écologique"
-            }, ${trajet.prix} €, ${trajet.duree} heures, Note: ${trajet.note}
-            </p>
-            <a href="detail.html?id=${trajet.id}">Voir les détails</a>
-            </li>`;
-          }
-        });
-
-        // Afficher les résultats
-        results += `</ul>`;
-        if (resultsDiv) {
-          resultsDiv.innerHTML = results;
-        }
-      }
-    });
-  }
-});
-
-/*
-Fonction pour gérer le menu mobile
-*/
-document.addEventListener("DOMContentLoaded", function () {
+  // Gestion du menu hamburger - affichage du menu mobile
   const menuToggle = document.getElementById("menu-toggle");
   const mainNav = document.getElementById("main-nav");
 
@@ -133,8 +39,88 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   }
+
+  // Gestion du formulaire de recherche
+  const searchForm = document.getElementById("search-form");
+  if (searchForm) {
+    searchForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const departInput = document.getElementById("depart");
+      const arriveeInput = document.getElementById("arrivee");
+      const dateInput = document.getElementById("date");
+      const ecologiqueInput = document.getElementById("ecologique");
+      const prixInput = document.getElementById("prix");
+      const dureeInput = document.getElementById("duree");
+      const noteInput = document.getElementById("note");
+      const resultsDiv = document.getElementById("results");
+
+      if (
+        departInput &&
+        arriveeInput &&
+        dateInput &&
+        ecologiqueInput &&
+        prixInput &&
+        dureeInput &&
+        noteInput &&
+        resultsDiv
+      ) {
+        // Récupérer les valeurs
+        const depart = departInput.value || "Non spécifié";
+        const arrivee = arriveeInput.value || "Non spécifié";
+        const date = dateInput.value || "Non spécifiée";
+
+        // Formatage de la date en français
+        const dateFr = date
+          ? new Intl.DateTimeFormat("fr-FR", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            }).format(new Date(date))
+          : "Non spécifiée";
+
+        // Afficher les résultats
+        let results = `
+            <h3>Résultats pour le trajet de ${depart} à ${arrivee} le ${dateFr} :</h3>
+            <ul>`;
+
+        // Exemple de données simulées
+        const trajets = [
+          {
+            depart: "Paris",
+            arrivee: "Lyon",
+            date: "12-04-2025",
+            ecologique: "oui",
+            prix: 20,
+            duree: 4,
+            note: 4.5,
+          },
+        ];
+
+        // Filtrer les trajets
+        trajets.forEach((trajet) => {
+          results += `<li>
+                    <p>Trajet de ${trajet.depart} à ${trajet.arrivee}, ${trajet.date}</p>
+                    <a href="detail.html?id=${trajet.id}">Voir les détails</a>
+                </li>`;
+        });
+
+        results += `</ul>`;
+        resultsDiv.innerHTML = results;
+      }
+    });
+  }
 });
 
+// Gestion des erreurs fetch
+function handleFetchError(error) {
+  console.error("Erreur : ", error);
+  alert(
+    "Une erreur est survenue lors de la communication avec le serveur. Veuillez réessayer."
+  );
+}
+
+/*--------------------- A TRAITER ---------------------*/
 /*
 Fonction pour gérer la participation à un covoiturage
 Cette fonction vérifie si l'utilisateur est connecté et s'il a suffisamment de crédits
@@ -378,65 +364,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /*
-Fonction pour gérer l'annulation d'un covoiturage
-*/
-function annulVoyage(tripId) {
-  // Simuler l'annulation du covoiturage
-  const confirmation = confirm(
-    "Êtes-vous sûr de vouloir annuler ce covoiturage ?"
-  );
-  if (confirmation) {
-    alert("Le covoiturage a été annulé avec succès !");
-    // Supprimer l'élément de la liste (simulation)
-    document.getElementById("trip-" + tripId).remove();
-  }
-}
-
-/*
-Fonctions pour gérer le démarrage et l'arrêt d'un covoiturage
-*/
-/* function startVoyage() {
-  // Simuler le démarrage du covoiturage
-  alert("Le covoiturage a commencé !");
-  // Masquer le bouton de démarrage et afficher le bouton d'arrêt
-  document.getElementById("start-voyage-btn").style.display = "none";
-  document.getElementById("end-voyage-btn").style.display = "inline-block";
-}
-
-function endVoyage() {
-  // Simuler l'arrêt du covoiturage
-  alert("Le covoiturage est arrivé à destination !");
-  // Afficher le bouton de démarrage et masquer le bouton d'arrêt
-  document.getElementById("start-voyage-btn").style.display = "inline-block";
-  document.getElementById("end-voyage-btn").style.display = "none";
-} */
-
-/*
-Fonctions pour gérer l'approbation et le rejet des avis
-ainsi que la résolution des covoiturage problématiques
-*/
-function approveReview(reviewId) {
-  // Simuler l'approbation de l'avis
-  alert("L'avis a été approuvé avec succès !");
-  // Supprimer l'élément de la liste (simulation)
-  document.getElementById(`review-${reviewId}`).remove();
-}
-
-function rejectReview(reviewId) {
-  // Simuler le rejet de l'avis
-  alert("L'avis a été rejeté avec succès !");
-  // Supprimer l'élément de la liste (simulation)
-  document.getElementById(`review-${reviewId}`).remove();
-}
-
-function resolveIssue(issueId) {
-  // Simuler la résolution du problème
-  alert("Le problème a été résolu avec succès !");
-  // Supprimer l'élément de la liste (simulation)
-  document.getElementById(`issue-${issueId}`).remove();
-}
-
-/*
 Fonctions pour gérer la création de comptes employés
 et la suspension de comptes.
 */
@@ -500,211 +427,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
-/* ---------------------------------------------------------------
-Intégration du Backend avec le Frontend
-en utilisant AJAX pour effectuer des appels API
------------------------------------------------------------------- */
-
-/* ---- Les opérations CRUD (Create Read Update Delete) ---- */
-// Fonction pour créer un nouvel utilisateur (CREATE)
-// function createUser(nom, prenom, email, password) {
-//   fetch("../../backend/user.php", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/x-www-form-urlencoded",
-//     },
-//     body: `action=createUser&nom=${encodeURIComponent(
-//       nom
-//     )}&prenom=${encodeURIComponent(prenom)}&email=${encodeURIComponent(
-//       email
-//     )}&password=${encodeURIComponent(password)}`,
-//   })
-//     .then((response) => response.text())
-//     .then((message) => {
-//       console.log(message);
-//       // Mettre à jour l'interface utilisateur ou afficher un message de succès
-//     })
-//     .catch((error) => console.error("Error:", error));
-// }
-
-// // Exemple d'utilisation
-// createUser("Dupont", "Jean", "jean.dupont@example.com", "password123");
-
-// Fonction pour récupérer les utilisateurs (READ)
-function fetchUsers() {
-  // Utiliser fetch pour envoyer une requête GET à l'endpoint API
-  fetch("../../backend/user.php?action=getUsers")
-    .then((response) => {
-      // Vérifier si la réponse est OK
-      if (!response.ok) {
-        throw new Error("Network response was not ok " + response.statusText);
-      }
-      return response.json();
-    })
-    .then((data) => {
-      console.log(data); // Afficher les données dans la console
-      // Mettre à jour l'interface utilisateur avec les données
-      const userList = document.getElementById("userList");
-      userList.innerHTML = ""; // Vider la liste avant de la remplir
-      data.forEach((user) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `${user.nom} ${user.prenom} (${user.email})`;
-        userList.appendChild(listItem);
-      });
-    })
-    .catch((error) => console.error("Error:", error));
-}
-
-// Appeler la fonction pour tester
-fetchUsers();
-
-/* // Fonction pour mettre à jour un utilisateur (UPDATE)
-function updateUser(id, nom, prenom, role) {
-  fetch("../../backend/user.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `action=updateUser&id=${encodeURIComponent(
-      id
-    )}&nom=${encodeURIComponent(nom)}&prenom=${encodeURIComponent(
-      prenom
-    )}&role=${encodeURIComponent(role)}`,
-  })
-    .then((response) => response.text())
-    .then((message) => {
-      console.log(message);
-      // Mettre à jour l'interface utilisateur ou afficher un message de succès
-    })
-    .catch((error) => console.error("Error:", error));
-}
-
-// Exemple d'utilisation
-updateUser(1, "Dupont", "Jean-Luc", "chauffeur"); */
-
-// Fonction pour supprimer un utilisateur (DELETE)
-function deleteUser(id) {
-  fetch("../../backend/user.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `action=deleteUser&id=${encodeURIComponent(id)}`,
-  })
-    .then((response) => response.text())
-    .then((message) => {
-      console.log(message);
-      // Mettre à jour l'interface utilisateur ou afficher un message de succès
-    })
-    .catch((error) => console.error("Error:", error));
-}
-
-// Exemple d'utilisation
-deleteUser(1);
-
-/* // Fonction pour créer un nouveau voyage (CREATE)
-// Cette fonction envoie une requête POST au backend pour créer un voyage
-function createVoyage(depart, arrivee, date, heure, prix, nbPlaces) {
-  fetch("../../backend/voyage.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `action=createVoyage&lieu_depart=${encodeURIComponent(
-      depart
-    )}&lieu_arrivee=${encodeURIComponent(
-      arrivee
-    )}&date_depart=${encodeURIComponent(
-      date
-    )}&heure_depart=${encodeURIComponent(
-      heure
-    )}&prix_personne=${encodeURIComponent(prix)}&nbPlaces=${encodeURIComponent(
-      nbPlaces
-    )}`,
-  })
-    .then((response) => response.text())
-    .then((message) => {
-      console.log(message);
-      // Mettre à jour l'interface utilisateur ou afficher un message de succès
-      alert("Voyage créé avec succès !");
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      alert("Erreur lors de la création du voyage. Veuillez réessayer.");
-    });
-} */
-
-/* // Fonctions pour démarrer et arreter un voyage
-function startVoyage(tripId) {
-  fetch("../../backend/voyage.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `action=startVoyage&tripId=${encodeURIComponent(tripId)}`,
-  })
-    .then((response) => response.text())
-    .then((message) => {
-      console.log(message);
-      // Mettre à jour l'interface utilisateur ou afficher un message de succès
-      document.getElementById("start-voyage-btn").style.display = "none";
-      document.getElementById("end-voyage-btn").style.display = "inline-block";
-    })
-    .catch((error) => console.error("Erreur:", error));
-} */
-
-/* function stopVoyage(tripId) {
-  fetch("../../backend/voyage.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `action=stopVoyage&tripId=${encodeURIComponent(tripId)}`,
-  })
-    .then((response) => response.text())
-    .then((message) => {
-      console.log(message);
-      // Mettre à jour l'interface utilisateur ou afficher un message de succès
-      document.getElementById("start-voyage-btn").style.display =
-        "inline-block";
-      document.getElementById("end-voyage-btn").style.display = "none";
-    })
-    .catch((error) => console.error("Erreur:", error));
-} */
-
-/* ----------------------------------------------------------
-Amélioration de la gestion des erreurs
-Fonction pour gérer les erreurs de fetch
-Cette fonction peut être utilisée dans toutes les requêtes fetch
-------------------------------------------------------------- */
-function handleFetchError(error) {
-  console.error("Erreur:", error);
-  alert(
-    "Une erreur est survenue lors de la communication avec le serveur. Veuillez réessayer."
-  );
-}
-
-/* // Exemple d'utilisation dans createVoyage :
-function createVoyage(depart, arrivee, date, heure, prix, nbPlaces) {
-  // Validation des données avant envoi
-  if (!depart || !arrivee || !date || !heure || !prix || !nbPlaces) {
-    alert("Tous les champs sont obligatoires");
-    return;
-  }
-
-  fetch("../../backend/voyage.php", {
-    // ... configuration fetch ...
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Erreur HTTP: ${response.status}`);
-      }
-      return response.text();
-    })
-    .then((message) => {
-      console.log(message);
-      alert("Voyage créé avec succès!");
-    })
-    .catch(handleFetchError);
-} */
