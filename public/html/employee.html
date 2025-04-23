@@ -105,6 +105,15 @@
         <p>&copy; 2025 EcoRide - Tous droits réservés</p>
       </div>
     </footer>
-    <script src="../js/main.js"></script>
+    <script type="module">
+      import {
+        approveReview,
+        rejectReview,
+        resolveIssue,
+      } from "../js/employee.js";
+      window.approveReview = approveReview;
+      window.rejectReview = rejectReview;
+      window.resolveIssue = resolveIssue;
+    </script>
   </body>
 </html>

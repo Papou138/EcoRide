@@ -120,7 +120,14 @@
         <p>&copy; 2025 EcoRide - Tous droits réservés</p>
       </div>
     </footer>
-    <script src="../js/main.js"></script>
+    <script type="module">
+      import {
+        createEmployeeAccount,
+        suspendAccount,
+      } from "../js/module/employee.js";
+      window.createCompteEmploye = createEmployeeAccount;
+      window.suspendCompte = suspendAccount;
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
       // Exemple de graphique avec Chart.js
