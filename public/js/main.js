@@ -13,6 +13,7 @@ import {
 import { updateProfile, toggleChauffeurInfo } from "./modules/profile.js";
 import { approveReview, rejectReview, resolveIssue } from "./modules/review.js";
 import { createEmployeeAccount, suspendAccount } from "./modules/employee.js";
+import { participer } from "./modules/participer.js";
 
 // Attendre que le DOM soit chargé
 document.addEventListener("DOMContentLoaded", function () {
@@ -118,39 +119,6 @@ function handleFetchError(error) {
   alert(
     "Une erreur est survenue lors de la communication avec le serveur. Veuillez réessayer."
   );
-}
-
-/*--------------------- A TRAITER ---------------------*/
-/*
-Fonction pour gérer la participation à un covoiturage
-Cette fonction vérifie si l'utilisateur est connecté et s'il a suffisamment de crédits
-*/
-function participer() {
-  // Vérifier si l'utilisateur est connecté (simulation)
-  const estConnecte = true; // Remplace par une vérification réelle
-  const aSuffisammentDeCredits = true; // Remplace par une vérification réelle
-
-  if (estConnecte) {
-    if (aSuffisammentDeCredits) {
-      // Confirmation de participation
-      const confirme = confirm(
-        "Voulez-vous vraiment participer à ce covoiturage ?"
-      );
-      if (confirme) {
-        alert("Vous avez été inscrit au covoiturage !");
-        // Mettre à jour les crédits et les places disponibles (simulation)
-        // .....
-      }
-    } else {
-      alert(
-        "Vous n'avez pas assez de crédits pour participer à ce covoiturage."
-      );
-    }
-  } else {
-    alert("Vous devez être connecté pour participer à un covoiturage.");
-    // Rediriger vers la page de connexion (simulation)
-    // window.location.href = "login.html"; // Remplace par l'URL de la page de connexion
-  }
 }
 
 /*
