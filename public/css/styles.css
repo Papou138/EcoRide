@@ -152,17 +152,6 @@ nav ul li a {
 }
 
 /* ---- Style du formulaire de recherche ---- */
-.form-group {
-  margin-bottom: 1.5rem;
-  position: relative;
-}
-
-.error-message {
-  color: #dc3545;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-  display: none;
-}
 
 .error-message.visible {
   display: block;
@@ -953,28 +942,42 @@ button[type="submit"]:hover {
   }
 }
 
-/* ---- Section Recherche ---- */
+/* ---- Section Recherche d'itinéraire ---- */
 .search-section {
-  padding: 3rem 0;
-  background-color: #f8f9fa;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 4rem 2rem;
 }
 
 .search-container {
   max-width: 1000px;
   margin: 0 auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
 }
 
 .search-container h2 {
   text-align: center;
-  color: #333;
-  margin-bottom: 2rem;
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 2.5rem;
+  position: relative;
 }
 
-/* Champs principaux */
+.search-container h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background-color: #4caf50;
+  border-radius: 2px;
+}
+
+/* Grille principale de recherche */
 .search-main-fields {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -982,8 +985,10 @@ button[type="submit"]:hover {
   margin-bottom: 2rem;
 }
 
+/* Style des champs de formulaire */
 .form-group {
   position: relative;
+  margin-bottom: 1.5rem;
 }
 
 .form-group label {
@@ -991,116 +996,227 @@ button[type="submit"]:hover {
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
-  color: #555;
+  color: #495057;
+  font-weight: 500;
+  font-size: 0.95rem;
 }
 
 .form-group label i {
   color: #4caf50;
+  font-size: 1.1rem;
 }
 
 .form-group input,
 .form-group select {
   width: 100%;
-  padding: 0.8rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  padding: 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
   font-size: 1rem;
   transition: all 0.3s ease;
+  background-color: #f8f9fa;
 }
 
 .form-group input:focus,
 .form-group select:focus {
   border-color: #4caf50;
-  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
   outline: none;
 }
 
 /* Filtres avancés */
 .advanced-filters {
-  margin-bottom: 2rem;
+  margin-bottom: 2rem 0;
 }
 
 .toggle-filters {
   width: 100%;
   padding: 1rem;
-  background: none;
+  background: #f8f9fa;
   border: 2px dashed #4caf50;
-  border-radius: 8px;
+  border-radius: 12px;
   color: #4caf50;
   font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem;
 }
 
 .toggle-filters:hover {
-  background-color: rgba(76, 175, 80, 0.1);
+  background-color: #4caf50;
+  color: white;
+  border-style: solid;
 }
 
 .filters-content {
   display: none;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
 }
 
 .filters-content.active {
   display: block;
-  animation: slideDown 0.3s ease-out;
+  animation: slideDown 0.4s ease-out;
 }
 
 .filters-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-radius: 8px;
 }
 
-/* Bouton de recherche */
+/* Bouton "Rechercher" */
 .search-button {
   width: 100%;
-  padding: 1rem;
+  padding: 1.2rem;
   background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   font-size: 1.1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 0.75rem; /* Espace entre l'icône et le texte */
+  margin-top: 1.5rem;
 }
 
 .search-button:hover {
   background-color: #45a049;
-  transform: translateY(-2px);
+  transform: translateY(-2px); /* Légère élévation au survol */
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2); /* Ombre au survol */
+}
+
+.search-button:active {
+  transform: translateY(0); /* Rétablit la position d'origine lors du clic */
+}
+
+/* Conteneur de résultats */
+.results-container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  display: none; /* Masqué par défaut */
+}
+
+.results-container.active {
+  display: block;
+  animation: fadein 0.4s ease-out; /* Animation d'apparition */
 }
 
 /* Animations */
 @keyframes slideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px); /* Commence au-dessus */
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0); /* Position finale */
   }
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+@keyframes fadein {
+  from {
+    opacity: 0; /* Commence transparent */
+  }
+  to {
+    opacity: 1; /* Devient opaque */
+  }
+}
+
+/* Media Queries - Responsive Design */
+@media (max-width: 992px) {
+  .search-container {
+    padding: 2rem;
+  }
+
   .search-main-fields {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Deux colonnes pour les écrans moyens */
+  }
+}
+
+@media (max-width: 768px) {
+  .search-section {
+    padding: 2rem 1rem; /* Réduit le padding pour les petits écrans */
   }
 
   .search-container {
-    padding: 1rem;
-    margin: 0 1rem;
+    padding: 1.5rem; /* Réduit le padding pour les petits écrans */
+  }
+
+  .search-main-fields {
+    grid-template-columns: 1fr; /* Une seule colonne pour les petits écrans */
+    gap: 1rem; /* Réduit l'écart entre les champs */
+  }
+
+  .form-group {
+    margin-bottom: 1rem; /* Réduit l'écart entre les champs */
+  }
+
+  .search-container h2 {
+    font-size: 1.5rem; /* Réduit la taille du titre */
+  }
+
+  .search-button {
+    padding: 1rem; /* Réduit le padding du bouton */
+  }
+}
+
+@media (max-width: 480px) {
+  .search-container {
+    padding: 1rem; /* Réduit le padding pour les très petits écrans */
+  }
+
+  .filters-grid {
+    grid-template-columns: 1fr; /* Une seule colonne pour les très petits écrans */
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 0.8rem; /* Réduit le padding des champs de saisie */
+  }
+}
+
+/* Support du mode sombre */
+@media (prefers-color-scheme: dark) {
+  .search-section {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%);
+  }
+
+  .search-container {
+    background: #2c2c2c;
+  }
+
+  .search-container h2 {
+    color: #fff;
+  }
+
+  .form-group label {
+    color: #e0e0e0;
+  }
+
+  .form-group input,
+  .form-group select {
+    background-color: #3c3c3c;
+    border-color: #4c4c4c;
+    color: #fff;
+  }
+
+  .filters-content {
+    background: #3c3c3c;
   }
 }
