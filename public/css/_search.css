@@ -12,8 +12,8 @@
 .search-container {
   max-width: 1000px; /* Largeur maximale */
   margin: 0 auto; /* Centrer le conteneur */
-  padding: var(--spacing-lg); /* Espacement interne */
-  background-color: var(--bg-white); /* Couleur de fond */
+  padding: var(--space-lg); /* Espacement interne */
+  background-color: var(--color-bg-primary); /* Couleur de fond */
   border-radius: var(--radius-lg); /* Coins arrondis */
   box-shadow: var(--shadow-md); /* Ombre */
 }
@@ -22,13 +22,13 @@
 .search-main-fields {
   display: grid; /* Utilise le modèle de grille CSS */
   grid-template-columns: repeat(3, 1fr); /* Trois colonnes de largeur égale */
-  gap: var(--spacing-md); /* Espacement entre les colonnes */
-  margin-bottom: var(--spacing-lg); /* Espacement inférieur */
+  gap: var(--space-md); /* Espacement entre les colonnes */
+  margin-bottom: var(--space-lg); /* Espacement inférieur */
 }
 
 /* Filtre avancés */
 .advanced-filters {
-  margin-bottom: var(--spacing-lg); /* Espacement inférieur */
+  margin-bottom: var(--space-lg); /* Espacement inférieur */
 }
 
 .filters-grid {
@@ -37,8 +37,8 @@
     auto-fit,
     minmax(200px, 1fr)
   ); /* Colonnes de largeur égale */
-  gap: var(--spacing-md); /* Espacement entre les colonnes */
-  padding: var(--spacing-md); /* Espacement interne */
+  gap: var(--space-md); /* Espacement entre les colonnes */
+  padding: var(--space-md); /* Espacement interne */
   background-color: var(--bg-light); /* Couleur de fond */
   border-radius: var(--radius-sm); /* Coins arrondis */
 }
@@ -46,9 +46,9 @@
 /* Bouton de recherche */
 .search-button {
   width: 100%; /* Largeur à 100% */
-  padding: var(--spacing-md); /* Espacement interne */
-  background-color: var(--primary); /* Couleur de fond */
-  color: var(--bg-white); /* Couleur du texte */
+  padding: var(--space-md); /* Espacement interne */
+  background-color: var(--color-primary); /* Couleur de fond */
+  color: var(--color-bg-primary); /* Couleur du texte */
   border: none; /* Pas de bordure */
   border-radius: var(--radius-sm); /* Coins arrondis */
   font-size: 1.1rem; /* Taille de la police */
@@ -61,6 +61,6 @@
 }
 
 .search-button:hover {
-  background-color: var(--primary-dark); /* Couleur de fond au survol */
+  background-color: var(--color-primary-dark); /* Couleur de fond au survol */
   transform: translateY(-2px); /* Légère translation vers le haut */
 }

@@ -11,9 +11,9 @@
 
   .search-container {
     padding: var(
-      --spacing-md
+      --space-md
     ); /* Réduit l'espace autour du conteneur de recherche */
-    margin: 0 var(--spacing-md); /* Réduit l'espace sur les côtés */
+    margin: 0 var(--space-md); /* Réduit l'espace sur les côtés */
   }
 
   .presentation-content {
@@ -43,6 +43,6 @@
   }
 
   .image-container {
-    margin-top: var(--spacing-md); /* Ajoute un espace au-dessus de l'image */
+    margin-top: var(--space-md); /* Ajoute un espace au-dessus de l'image */
   }
 }

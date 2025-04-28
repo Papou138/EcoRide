@@ -7,15 +7,16 @@
 
 .feature-card {
   text-align: center; /* Centre le texte */
-  padding: var(--spacing-lg); /* Espacement interne */
+  padding: var(--space-lg); /* Espacement interne */
   border-radius: var(--radius-md);
-  background-color: var(--bg-white);
+  background-color: var(--color-bg-primary);
   box-shadow: var(--shadow-sm); /* Ombre légère */
   transition: var(--transition-base); /* Transition douce pour les effets */
 }
 
 .feature-card:hover {
   transform: translateY(-10px); /* Légère translation vers le haut au survol */
+  box-shadow: var(--shadow-md); /* Ombre plus prononcée au survol */
 }
 
 /* Boutons */
@@ -24,29 +25,29 @@ button[type="submit"] {
   display: flex; /* Affiche en flex */
   align-items: center; /* Centre le contenu verticalement */
   justify-content: center; /* Centre le contenu horizontalement */
-  gap: var(--spacing-xs); /* Espace entre l'icône et le texte */
-  padding: var(--spacing-md); /* Espacement interne */
-  background-color: var(--primary); /* Couleur de fond */
-  color: var(--bg-white); /* Couleur du texte */
+  gap: var(--space-xs); /* Espace entre l'icône et le texte */
+  padding: var(--space-md); /* Espacement interne */
+  background-color: var(--color-primary); /* Couleur de fond */
+  color: var(--color-text-light); /* Couleur du texte */
   border: none; /* Pas de bordure */
   border-radius: var(--radius-md); /* Coins arrondis */
-  font-size: 1.1rem; /* Taille de la police */
+  font-size: var(--font-size-lg); /* Taille de la police */
   cursor: pointer; /* Curseur en main au survol */
   transition: var(--transition-base); /* Transition douce pour les effets */
 }
 
 .btn:hover,
 button[type="submit"]:hover {
-  background-color: var(--primary-dark); /* Couleur de fond au survol */
+  background-color: var(--color-primary-dark); /* Couleur de fond au survol */
   transform: translateY(-2px); /* Légère translation vers le haut au survol */
 }
 
 /* Conteneur */
 .detail-container {
-  padding: var(--spacing-lg); /* Espacement interne */
+  padding: var(--space-lg); /* Espacement interne */
   max-width: 600px; /* Largeur maximale du conteneur */
-  margin: var(--spacing-lg) auto; /* Centrage horizontal */
-  background-color: var(--bg-white); /* Couleur de fond blanche */
+  margin: var(--space-lg) auto; /* Centrage horizontal */
+  background-color: var(--color-bg-primary); /* Couleur de fond blanche */
   border-radius: var(--radius-md); /* Arrondi des coins */
   box-shadow: var(--shadow-sm); /* Ombre autour du conteneur */
 }

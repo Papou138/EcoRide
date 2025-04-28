@@ -4,15 +4,15 @@
  */
 /* Header principal */
 header {
-  background-color: var(--primary);
-  padding: var(--spacing-xs); /* Espace supérieur et inférieur */
+  background-color: var(--color-primary);
+  padding: var(--space-xs); /* Espace supérieur et inférieur */
 }
 
 .header-cnontent {
   display: flex; /* Utilise flexbox pour le contenu du header */
   justify-content: space-between; /* Espace entre les éléments */
   align-items: center; /* Centre verticalement les éléments */
-  padding: 0 var(--spacing-md); /* Espace sur les côtés */
+  padding: 0 var(--space-md); /* Espace sur les côtés */
   max-width: 1200px; /* Largeur maximale */
   margin: 0 auto; /* Centre le contenu */
 }
@@ -21,8 +21,8 @@ header {
 .logo-container {
   display: flex; /* Utilise flexbox pour le conteneur du logo */
   align-items: center; /* Centre verticalement le logo */
-  gap: var(--spacing-md); /* Espace entre le logo et le texte */
-  margin: var(--spacing-md) 0; /* Espace en haut et en bas */
+  gap: var(--space-md); /* Espace entre le logo et le texte */
+  margin: var(--space-md) 0; /* Espace en haut et en bas */
 }
 
 .logo {
@@ -50,9 +50,9 @@ nav ul li {
 }
 
 nav ul li a {
-  color: var(--bg-white); /* Couleur du texte des liens */
+  color: var(--color-bg-primary); /* Couleur du texte des liens */
   text-decoration: none; /* Supprime le soulignement */
-  padding: var(--spacing-md); /* Espace autour du texte */
+  padding: var(--space-md); /* Espace autour du texte */
   display: block; /* Affiche le lien comme un bloc */
   transition: var(--transition-base); /* Transition pour les effets */
 }
@@ -70,7 +70,7 @@ nav ul li a {
   display: block; /* Affiche les barres du menu hamburger comme des blocs */
   width: 25px; /* Largeur des barres */
   height: 3px; /* Hauteur des barres */
-  background-color: var(--bg-white); /* Couleur des barres */
+  background-color: var(--color-bg-primary); /* Couleur des barres */
   margin: 5px 0; /* Espace entre les barres */
   transition: var(--transition-base); /* Transition pour les effets */
 }
