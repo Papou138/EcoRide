@@ -1,0 +1,42 @@
+/* Animation pour les transitions */
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px); /* Départ de 20px vers le haut */
+    opacity: 0; /* Départ transparent */
+  }
+  to {
+    transform: translateY(0); /* Retour à la position d'origine */
+    opacity: 1; /* Devenir opaque */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Départ transparent */
+  }
+  to {
+    opacity: 1; /* Devenir opaque */
+  }
+}
+
+/* Classes d'animation */
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out; /* Animation de glissement */
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out; /* Animation de fondu */
+}
+
+/* Transitions */
+.transition-all {
+  transition: all 0.3s ease; /* Transition douce pour tous les changements */
+}
+
+.transition-transform {
+  transition: transform 0.3s ease; /* Transition douce pour les transformations */
+}
+
+.transition-opacity {
+  transition: opacity 0.3s ease; /* Transition douce pour l'opacité */
+}

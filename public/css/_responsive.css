@@ -2,3 +2,47 @@
  *  Media Queries
  * ---------------------------------------------------------------------------------------
  */
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .search-main-fields {
+    grid-template-columns: 1fr; /* Change la grille pour les champs de recherche */
+  }
+
+  .search-container {
+    padding: var(
+      --spacing-md
+    ); /* Réduit l'espace autour du conteneur de recherche */
+    margin: 0 var(--spacing-md); /* Réduit l'espace sur les côtés */
+  }
+
+  .presentation-content {
+    flex-direction: column; /* Change la direction du flex pour les petits écrans */
+  }
+
+  #menu-toggle {
+    display: block; /* Affiche le bouton de menu sur les petits écrans */
+  }
+
+  #main-nav {
+    display: none; /* Masque le menu principal sur les petits écrans */
+  }
+
+  #main-nav.active {
+    display: block; /* Affiche le menu principal lorsque le bouton de menu est actif */
+  }
+
+  nav ul {
+    flex-direction: column; /* Change la direction du flex pour les éléments de menu */
+  }
+}
+
+@media (max-width: 767px) {
+  .presentation-content {
+    text-align: center; /* Centre le texte dans la présentation */
+  }
+
+  .image-container {
+    margin-top: var(--spacing-md); /* Ajoute un espace au-dessus de l'image */
+  }
+}

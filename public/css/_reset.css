@@ -2,3 +2,29 @@
  *  Reset et styles de base
  * ---------------------------------------------------------------------------------------
  */
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styles de base */
+body {
+  font-family: Arial, Helvetica, sans-serif; /* Police de caractères par défaut */
+  background-color: var(--bg-light); /* Couleur de fond par défaut */
+  color: var(--text-dark); /* Couleur du texte par défaut */
+  min-height: 100vh; /* Assure que le corps prend au moins la hauteur de la fenêtre */
+  display: flex; /* Utilise le modèle de boîte flexible */
+  flex-direction: column; /* Aligne les éléments enfants en colonne */
+}
+
+a {
+  text-decoration: none; /* Supprime le soulignement des liens */
+  color: inherit; /* Utilise la couleur du texte par défaut */
+}
+
+img {
+  max-width: 100%; /* Limite la largeur des images à 100% de leur conteneur */
+  height: auto; /* Ajuste la hauteur automatiquement */
+}

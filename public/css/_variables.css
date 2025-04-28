@@ -2,3 +2,37 @@
  *  Fichier CSS contenant les variables CSS
  * ---------------------------------------------------------------------------------------
  */
+/* Variables globales */
+:root {
+  /* Palette de couleurs */
+  --primary: #4caf50;
+  --primary-dark: #45a049;
+  --secondary: #2196f3;
+  --text-dark: #333;
+  --text-light: #666;
+  --bg-light: #f0f8ff;
+  --bg-white: #ffffff;
+  --error: #dc3545;
+  --success: #28a745;
+  --bg-secondary: #f8f9fa;
+
+  /* Espacements */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-md: 1rem; /* 16px */
+  --spacing-lg: 2rem; /* 32px */
+  --spacing-xl: 4rem; /* 64px */
+
+  /* Ombres */
+  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.1); /* Ombre moyenne */
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.2); /* Ombre forte */
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 15px;
+
+  /* Transitions */
+  --transition-base: all 0.3s ease; /* Transition de base */
+}

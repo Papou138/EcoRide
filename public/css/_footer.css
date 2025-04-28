@@ -2,3 +2,71 @@
  *  Styles du footer
  * ---------------------------------------------------------------------------------------
  */
+footer {
+  background-color: var(--primary);
+  color: var(--bg-white);
+  padding: var(--spacing-md) 0; /* Espacement supérieur et inférieur */
+  margin-top: var(--spacing-xl); /* Espacement supérieur */
+}
+
+.footer-content {
+  max-width: 1200px; /* Largeur maximale du footer */
+  margin: 0 auto; /* Centre le footer */
+  display: flex; /* Utilise le modèle de boîte flexible */
+  justify-content: space-around; /* Espace entre les sections */
+  flex-wrap: wrap; /* Permet aux sections de se réorganiser sur plusieurs lignes si nécessaire */
+  gap: var(--spacing-md); /* Espace entre les sections */
+  padding: 0 var(--spacing-md); /* Espacement latéral */
+}
+
+.footer-section {
+  flex: 1; /* Chaque section prend un espace égal */
+  min-width: 250px; /* Largeur minimale pour chaque section */
+}
+
+.footer-section h3 {
+  color: var(--bg-white); /* Couleur du texte */
+  margin-bottom: var(--spacing-sm); /* Espacement inférieur */
+  font-size: 1.1rem; /* Taille de la police */
+  border-bottom: 2px solid var(--bg-white); /* Ligne de séparation */
+  padding-bottom: var(--spacing-xs); /* Espacement inférieur */
+}
+
+.footer-section p {
+  color: var(--bg-white); /* Couleur du texte */
+  margin: var(--spacing-md) 0; /* Espacement supérieur et inférieur */
+}
+
+.footer-section ul {
+  list-style: none; /* Supprime les puces de la liste */
+  padding: 0; /* Supprime le remplissage par défaut */
+}
+
+.footer-section ul li {
+  margin-bottom: var(
+    --spacing-sm
+  ); /* Espacement inférieur entre les éléments de la liste */
+}
+
+.footer-section a {
+  color: #243272; /* Couleur des liens */
+  text-decoration: none; /* Supprime le soulignement des liens */
+  transition: var(--transition-base); /* Transition pour les effets au survol */
+  position: relative; /* Position relative pour les effets au survol */
+}
+
+.footer-section a:hover {
+  color: df3f0f; /* Couleur au survol */
+}
+
+.footer-section a:hover::after {
+  content: "→"; /* Flèche après le lien au survol */
+  margin-left: var(--spacing-xs); /* Espacement à gauche */
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: var(--spacing-md); /* Espacement supérieur */
+  padding-top: var(--spacing-md); /* Espacement supérieur */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation */
+}

@@ -2,3 +2,97 @@
  *  Styles du header
  * ---------------------------------------------------------------------------------------
  */
+/* Header principal */
+header {
+  background-color: var(--primary);
+  padding: var(--spacing-xs); /* Espace supérieur et inférieur */
+}
+
+.header-cnontent {
+  display: flex; /* Utilise flexbox pour le contenu du header */
+  justify-content: space-between; /* Espace entre les éléments */
+  align-items: center; /* Centre verticalement les éléments */
+  padding: 0 var(--spacing-md); /* Espace sur les côtés */
+  max-width: 1200px; /* Largeur maximale */
+  margin: 0 auto; /* Centre le contenu */
+}
+
+/* Logo */
+.logo-container {
+  display: flex; /* Utilise flexbox pour le conteneur du logo */
+  align-items: center; /* Centre verticalement le logo */
+  gap: var(--spacing-md); /* Espace entre le logo et le texte */
+  margin: var(--spacing-md) 0; /* Espace en haut et en bas */
+}
+
+.logo {
+  height: 100px; /* Hauteur du logo */
+  width: auto; /* Largeur automatique */
+  border-radius: 25% 10% 5% 10%; /* Arrondi des coins */
+  transition: var(--transition-base); /* Transition pour les effets */
+}
+
+.logo:hover {
+  transform: scale(1.05); /* Agrandissement au survol */
+}
+
+/* Navigation */
+nav ul {
+  list-style: none; /* Supprime les puces de la liste */
+  padding: 0; /* Supprime le remplissage */
+  margin: 0; /* Supprime la marge */
+  display: flex; /* Utilise flexbox pour la navigation */
+  justify-content: center; /* Centre les éléments */
+}
+
+nav ul li {
+  position: relative; /* Position relative pour les éléments de la liste */
+}
+
+nav ul li a {
+  color: var(--bg-white); /* Couleur du texte des liens */
+  text-decoration: none; /* Supprime le soulignement */
+  padding: var(--spacing-md); /* Espace autour du texte */
+  display: block; /* Affiche le lien comme un bloc */
+  transition: var(--transition-base); /* Transition pour les effets */
+}
+
+/* Menu hamburger */
+#menu-toggle {
+  display: none; /* Masque le bouton par défaut */
+  background: none; /* Supprime le fond */
+  border: none; /* Supprime la bordure */
+  cursor: pointer; /* Curseur en main pour le bouton */
+  padding: var(--spacing-sm); /* Espace autour du bouton */
+}
+
+#menu-toggle span {
+  display: block; /* Affiche les barres du menu hamburger comme des blocs */
+  width: 25px; /* Largeur des barres */
+  height: 3px; /* Hauteur des barres */
+  background-color: var(--bg-white); /* Couleur des barres */
+  margin: 5px 0; /* Espace entre les barres */
+  transition: var(--transition-base); /* Transition pour les effets */
+}
+
+/* Dropdown - Menu déroulant */
+.dropdown {
+  display: none; /* Masque le menu déroulant par défaut */
+  position: absolute; /* Position absolue pour le menu déroulant */
+  background-color: #444; /* Couleur de fond du menu déroulant */
+  min-width: 200px; /* Largeur minimale du menu déroulant */
+  box-shadow: var(--shadow-lg); /* Ombre du menu déroulant */
+  border-radius: var(--radius-sm); /* Arrondi des coins */
+}
+
+.dropdown:hover {
+  display: block; /* Affiche le menu déroulant au survol */
+}
+
+/* Etats actifs */
+.active {
+  background-color: #e0e0e0; /* Couleur de fond pour l'état actif */
+  color: var(--text-dark); /* Couleur du texte pour l'état actif */
+  font-weight: bold; /* Gras pour le texte actif */
+  border-radius: var(--radius-sm); /* Arrondi des coins pour l'état actif */
+}

@@ -2,3 +2,65 @@
  *  Styles de la recherche
  * ---------------------------------------------------------------------------------------
  */
+
+/* Section de recherche */
+.search-section {
+  padding: var(--spacing-xl) 0; /* Espacement supérieur et inférieur */
+  background-color: var(--bg-light); /* Couleur de fond */
+}
+
+.search-container {
+  max-width: 1000px; /* Largeur maximale */
+  margin: 0 auto; /* Centrer le conteneur */
+  padding: var(--spacing-lg); /* Espacement interne */
+  background-color: var(--bg-white); /* Couleur de fond */
+  border-radius: var(--radius-lg); /* Coins arrondis */
+  box-shadow: var(--shadow-md); /* Ombre */
+}
+
+/* champs principaux de recherche */
+.search-main-fields {
+  display: grid; /* Utilise le modèle de grille CSS */
+  grid-template-columns: repeat(3, 1fr); /* Trois colonnes de largeur égale */
+  gap: var(--spacing-md); /* Espacement entre les colonnes */
+  margin-bottom: var(--spacing-lg); /* Espacement inférieur */
+}
+
+/* Filtre avancés */
+.advanced-filters {
+  margin-bottom: var(--spacing-lg); /* Espacement inférieur */
+}
+
+.filters-grid {
+  display: grid; /* Utilise le modèle de grille CSS */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(200px, 1fr)
+  ); /* Colonnes de largeur égale */
+  gap: var(--spacing-md); /* Espacement entre les colonnes */
+  padding: var(--spacing-md); /* Espacement interne */
+  background-color: var(--bg-light); /* Couleur de fond */
+  border-radius: var(--radius-sm); /* Coins arrondis */
+}
+
+/* Bouton de recherche */
+.search-button {
+  width: 100%; /* Largeur à 100% */
+  padding: var(--spacing-md); /* Espacement interne */
+  background-color: var(--primary); /* Couleur de fond */
+  color: var(--bg-white); /* Couleur du texte */
+  border: none; /* Pas de bordure */
+  border-radius: var(--radius-sm); /* Coins arrondis */
+  font-size: 1.1rem; /* Taille de la police */
+  cursor: pointer; /* Curseur en main */
+  transition: all 0.3s ease; /* Transition pour les effets */
+  display: flex; /* Utilise le modèle de boîte flexible */
+  align-items: center; /* Aligne les éléments au centre */
+  justify-content: center; /* Centre le contenu */
+  gap: var(--spacing-sm); /* Espacement entre les éléments */
+}
+
+.search-button:hover {
+  background-color: var(--primary-dark); /* Couleur de fond au survol */
+  transform: translateY(-2px); /* Légère translation vers le haut */
+}
