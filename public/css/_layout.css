@@ -7,8 +7,8 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif; /* Police de caractères par défaut */
-  background-color: var(--bg-light); /* Couleur de fond claire */
-  color: var(--text-dark); /* Couleur du texte sombre */
+  background-color: var(--color-background-light); /* Couleur de fond claire */
+  color: var(--color-text); /* Couleur du texte sombre */
   min-height: 100vh; /* Hauteur minimale de la page */
   display: flex; /* Utilise le modèle de boîte flexible */
   flex-direction: column; /* Aligne les éléments enfants en colonne */
@@ -33,7 +33,7 @@ main {
   margin-bottom: var(--spacing-lg); /* Marge inférieure */
 }
 
-#presentation-content {
+.presentation-content {
   display: flex; /* Utilise le modèle de boîte flexible */
   flex-direction: column; /* Aligne les éléments enfants en colonne */
   align-items: center; /* Centre verticalement les éléments */
@@ -42,10 +42,15 @@ main {
   margin: 0 auto; /* Centre le conteneur */
 }
 
+.text-content {
+  flex: 1; /* Permet au texte de prendre tout l'espace restant */
+  text-align: center; /* Centre le texte */
+  margin-bottom: var(--spaceing-md); /* Marge inférieure */
+}
+
 .image-container {
-  width: 100%; /* Prend toute la largeur du conteneur */
-  max-width: 1200px; /* Largeur maximale */
-  margin: 0 auto; /* Centre le conteneur */
+  flex: 1; /* Permet à l'image de prendre tout l'espace restant */
+  max-width: 100%; /* Largeur maximale de l'image */
 }
 
 .responsive-image {

@@ -8,7 +8,7 @@
   max-width: 600px; /* Largeur maximale du conteneur */
   margin: var(--spacing-lg) auto; /* Centrage horizontal */
   padding: var(--spacing-lg); /* Espacement interne */
-  background-color: var(--bg-white); /* Couleur de fond blanche */
+  background-color: var(--color-background); /* Couleur de fond blanche */
   border-radius: var(--radius-md); /* Arrondi des coins */
   box-shadow: var(--shadow-md); /* Ombre autour du conteneur */
 }
@@ -23,7 +23,7 @@
   display: flex; /* Affichage flexible pour aligner le texte et l'icône */
   align-items: center; /* Alignement vertical centré */
   gap: var(--spacing-xs); /* Espace entre le texte et l'icône */
-  color: var(--tex-light); /* Couleur du texte */
+  color: var(--color-text-light); /* Couleur du texte */
 }
 
 .form-group input,
@@ -40,7 +40,7 @@
 
 /* Message d'erreur */
 .error-message {
-  color: var(--error); /* Couleur rouge pour l'erreur */
+  color: var(--color-error); /* Couleur rouge pour l'erreur */
   font-size: 0.875rem; /* Taille de la police */
   margin-top: var(--spacing-xs); /* Espace au-dessus du message d'erreur */
   display: none; /* Masqué par défaut */
@@ -56,7 +56,7 @@
   max-width: 1000px; /* Largeur maximale du conteneur */
   margin: 0 auto; /* Centrage horizontal */
   padding: var(--spacing-lg); /* Espacement interne */
-  background-color: var(--bg-white); /* Couleur de fond blanche */
+  background-color: var(--color-background); /* Couleur de fond blanche */
   border-radius: var(--radius-lg); /* Arrondi des coins */
   box-shadow: var(--shadow-md); /* Ombre autour du conteneur */
 }

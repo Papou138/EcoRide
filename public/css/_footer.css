@@ -3,8 +3,8 @@
  * ---------------------------------------------------------------------------------------
  */
 footer {
-  background-color: var(--primary);
-  color: var(--bg-white);
+  background-color: var(--color-primary);
+  color: var(--color-background);
   padding: var(--spacing-md) 0; /* Espacement supérieur et inférieur */
   margin-top: var(--spacing-xl); /* Espacement supérieur */
 }
@@ -25,15 +25,15 @@ footer {
 }
 
 .footer-section h3 {
-  color: var(--bg-white); /* Couleur du texte */
+  color: var(--color-background); /* Couleur du texte */
   margin-bottom: var(--spacing-sm); /* Espacement inférieur */
   font-size: 1.1rem; /* Taille de la police */
-  border-bottom: 2px solid var(--bg-white); /* Ligne de séparation */
+  border-bottom: 2px solid var(--color-background); /* Ligne de séparation */
   padding-bottom: var(--spacing-xs); /* Espacement inférieur */
 }
 
 .footer-section p {
-  color: var(--bg-white); /* Couleur du texte */
+  color: var(--color-background); /* Couleur du texte */
   margin: var(--spacing-md) 0; /* Espacement supérieur et inférieur */
 }
 
@@ -49,7 +49,7 @@ footer {
 }
 
 .footer-section a {
-  color: #243272; /* Couleur des liens */
+  color: var(--color-background); /* Couleur du texte des liens */
   text-decoration: none; /* Supprime le soulignement des liens */
   transition: var(--transition-base); /* Transition pour les effets au survol */
   position: relative; /* Position relative pour les effets au survol */

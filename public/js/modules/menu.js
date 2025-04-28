@@ -40,3 +40,17 @@ function toggleMenuIcon(button) {
     spans[2].style.transform = "none";
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const dropdowns = document.querySelectorAll(".dropdown-toggle");
+
+  dropdowns.forEach((dropdown) => {
+    dropdown.addEventListener("click", (e) => {
+      if (window.innerWidth <= 768) {
+        e.preventDefault();
+        const parent = dropdown.parentElement;
+        parent.classList.toggle("active");
+      }
+    });
+  });
+});

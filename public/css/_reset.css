@@ -12,8 +12,10 @@
 /* Styles de base */
 body {
   font-family: Arial, Helvetica, sans-serif; /* Police de caractères par défaut */
-  background-color: var(--bg-light); /* Couleur de fond par défaut */
-  color: var(--text-dark); /* Couleur du texte par défaut */
+  background-color: var(
+    --color-background-light
+  ); /* Couleur de fond par défaut */
+  color: var(--color-text); /* Couleur du texte par défaut */
   min-height: 100vh; /* Assure que le corps prend au moins la hauteur de la fenêtre */
   display: flex; /* Utilise le modèle de boîte flexible */
   flex-direction: column; /* Aligne les éléments enfants en colonne */

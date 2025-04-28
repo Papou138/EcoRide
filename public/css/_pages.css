@@ -5,7 +5,7 @@
   padding: var(--spacing-lg);
   max-width: 600px;
   margin: var(--spacing-lg) auto;
-  background-color: var(--bg-white);
+  background-color: var(--color-background);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
@@ -15,7 +15,7 @@
   padding: var(--spacing-lg);
   max-width: 600px;
   margin: var(--spacing-lg) auto;
-  background-color: var(--bg-white);
+  background-color: var(--color-background);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
@@ -25,7 +25,7 @@
   padding: var(--spacing-lg);
   max-width: 600px;
   margin: var(--spacing-lg) auto;
-  background-color: var(--bg-white);
+  background-color: var(--color-background);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
@@ -35,7 +35,7 @@
   padding: var(--spacing-lg);
   max-width: 600px;
   margin: var(--spacing-lg) auto;
-  background-color: var(--bg-white);
+  background-color: var(--color-background);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
@@ -45,7 +45,7 @@
   padding: var(--spacing-lg);
   max-width: 800px;
   margin: var(--spacing-lg) auto;
-  background-color: var(--bg-white);
+  background-color: var(--color-background);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
@@ -55,7 +55,7 @@
   padding: var(--spacing-lg);
   max-width: 1000px;
   margin: var(--spacing-lg) auto;
-  background-color: var(--bg-white);
+  background-color: var(--color-background);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }

@@ -9,7 +9,7 @@
   text-align: center; /* Centre le texte */
   padding: var(--spacing-lg); /* Espacement interne */
   border-radius: var(--radius-md);
-  background-color: var(--bg-white);
+  background-color: var(--color-background);
   box-shadow: var(--shadow-sm); /* Ombre légère */
   transition: var(--transition-base); /* Transition douce pour les effets */
 }
@@ -26,8 +26,8 @@ button[type="submit"] {
   justify-content: center; /* Centre le contenu horizontalement */
   gap: var(--spacing-xs); /* Espace entre l'icône et le texte */
   padding: var(--spacing-md); /* Espacement interne */
-  background-color: var(--primary); /* Couleur de fond */
-  color: var(--bg-white); /* Couleur du texte */
+  background-color: var(--color-primary); /* Couleur de fond */
+  color: var(--color-background); /* Couleur du texte */
   border: none; /* Pas de bordure */
   border-radius: var(--radius-md); /* Coins arrondis */
   font-size: 1.1rem; /* Taille de la police */
@@ -37,7 +37,7 @@ button[type="submit"] {
 
 .btn:hover,
 button[type="submit"]:hover {
-  background-color: var(--primary-dark); /* Couleur de fond au survol */
+  background-color: var(--color-primary-dark); /* Couleur de fond au survol */
   transform: translateY(-2px); /* Légère translation vers le haut au survol */
 }
 
@@ -46,7 +46,7 @@ button[type="submit"]:hover {
   padding: var(--spacing-lg); /* Espacement interne */
   max-width: 600px; /* Largeur maximale du conteneur */
   margin: var(--spacing-lg) auto; /* Centrage horizontal */
-  background-color: var(--bg-white); /* Couleur de fond blanche */
+  background-color: var(--color-background); /* Couleur de fond blanche */
   border-radius: var(--radius-md); /* Arrondi des coins */
   box-shadow: var(--shadow-sm); /* Ombre autour du conteneur */
 }

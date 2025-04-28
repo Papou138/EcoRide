@@ -35,6 +35,25 @@
   nav ul {
     flex-direction: column; /* Change la direction du flex pour les éléments de menu */
   }
+
+  .dropdown-menu {
+    position: static; /* Positionne le menu déroulant de manière statique */
+    display: none; /* Masque le menu déroulant par défaut */
+    width: 100%; /* Largeur à 100% */
+    box-shadow: none; /* Supprime l'ombre */
+    background-color: var(
+      --color-background-light
+    ); /* Couleur de fond claire */
+  }
+
+  .dropdown.active .dropdown-menu {
+    display: block; /* Affiche le menu déroulant lorsque le parent est actif */
+  }
+
+  .dropdown-toggle::after {
+    display: right; /* Affiche le bouton de menu déroulant */
+    margin-top: 0.5rem; /* Ajoute un espace au-dessus */
+  }
 }
 
 @media (max-width: 767px) {

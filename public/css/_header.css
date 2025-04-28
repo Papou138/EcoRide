@@ -4,7 +4,7 @@
  */
 /* Header principal */
 header {
-  background-color: var(--primary);
+  background-color: var(--color-primary);
   padding: var(--spacing-xs); /* Espace supérieur et inférieur */
 }
 
@@ -50,7 +50,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: var(--bg-white); /* Couleur du texte des liens */
+  color: var(--color-background); /* Couleur du texte des liens */
   text-decoration: none; /* Supprime le soulignement */
   padding: var(--spacing-md); /* Espace autour du texte */
   display: block; /* Affiche le lien comme un bloc */
@@ -70,29 +70,57 @@ nav ul li a {
   display: block; /* Affiche les barres du menu hamburger comme des blocs */
   width: 25px; /* Largeur des barres */
   height: 3px; /* Hauteur des barres */
-  background-color: var(--bg-white); /* Couleur des barres */
+  background-color: var(--color-background); /* Couleur des barres */
   margin: 5px 0; /* Espace entre les barres */
   transition: var(--transition-base); /* Transition pour les effets */
 }
 
 /* Dropdown - Menu déroulant */
 .dropdown {
-  display: none; /* Masque le menu déroulant par défaut */
-  position: absolute; /* Position absolue pour le menu déroulant */
-  background-color: #444; /* Couleur de fond du menu déroulant */
-  min-width: 200px; /* Largeur minimale du menu déroulant */
-  box-shadow: var(--shadow-lg); /* Ombre du menu déroulant */
-  border-radius: var(--radius-sm); /* Arrondi des coins */
+  position: relative; /* Position relative pour le conteneur du menu déroulant */
 }
 
-.dropdown:hover {
+.dropdown-menu {
+  display: none; /* Masque le menu déroulant par défaut */
+  position: absolute; /* Position absolue pour le menu déroulant */
+  top: 100%; /* Positionne le menu en dessous de l'élément parent */
+  left: 0; /* Aligne à gauche */
+  background-color: var(
+    --color-background
+  ); /* Couleur de fond du menu déroulant */
+  min-width: 200px; /* Largeur minimale */
+  box-shadow: var(--shadow-md); /* Ombre pour le menu déroulant */
+  border-radius: var(--radius-sm); /* Arrondi des coins */
+  z-index: 1000; /* Assure que le menu est au-dessus des autres éléments */
+}
+
+.dropdown:hover .dropdown-menu {
   display: block; /* Affiche le menu déroulant au survol */
+}
+
+.dropdown-menu li {
+  padding: 0; /* Supprime le remplissage */
+}
+
+.dropdown-menu a {
+  padding: 0.75rem 1rem; /* Espace autour du texte */
+  display: block; /* Affiche le lien comme un bloc */
+  color: var(--color-text); /* Couleur du texte */
+  text-decoration: none; /* Supprime le soulignement */
+  transition: background-color 0.3s ease; /* Transition pour la couleur de fond */
+}
+
+.dropdown-toggle {
+  content: "▼"; /* Flèche pour indiquer le menu déroulant */
+  margin-left: 0.5rem; /* Espace à gauche */
+  font-size: 0.8em; /* Taille de la flèche */
+  display: inline-block; /* Affiche la flèche en ligne */
 }
 
 /* Etats actifs */
 .active {
   background-color: #e0e0e0; /* Couleur de fond pour l'état actif */
-  color: var(--text-dark); /* Couleur du texte pour l'état actif */
+  color: var(--color-text); /* Couleur du texte pour l'état actif */
   font-weight: bold; /* Gras pour le texte actif */
   border-radius: var(--radius-sm); /* Arrondi des coins pour l'état actif */
 }

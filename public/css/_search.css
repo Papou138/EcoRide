@@ -6,14 +6,14 @@
 /* Section de recherche */
 .search-section {
   padding: var(--spacing-xl) 0; /* Espacement supérieur et inférieur */
-  background-color: var(--bg-light); /* Couleur de fond */
+  background-color: var(--color-background); /* Couleur de fond */
 }
 
 .search-container {
   max-width: 1000px; /* Largeur maximale */
   margin: 0 auto; /* Centrer le conteneur */
   padding: var(--spacing-lg); /* Espacement interne */
-  background-color: var(--bg-white); /* Couleur de fond */
+  background-color: var(--color-background); /* Couleur de fond */
   border-radius: var(--radius-lg); /* Coins arrondis */
   box-shadow: var(--shadow-md); /* Ombre */
 }
@@ -39,7 +39,7 @@
   ); /* Colonnes de largeur égale */
   gap: var(--spacing-md); /* Espacement entre les colonnes */
   padding: var(--spacing-md); /* Espacement interne */
-  background-color: var(--bg-light); /* Couleur de fond */
+  background-color: var(--color-background-light); /* Couleur de fond */
   border-radius: var(--radius-sm); /* Coins arrondis */
 }
 
@@ -47,8 +47,8 @@
 .search-button {
   width: 100%; /* Largeur à 100% */
   padding: var(--spacing-md); /* Espacement interne */
-  background-color: var(--primary); /* Couleur de fond */
-  color: var(--bg-white); /* Couleur du texte */
+  background-color: var(--color-primary); /* Couleur de fond */
+  color: var(--color-background); /* Couleur du texte */
   border: none; /* Pas de bordure */
   border-radius: var(--radius-sm); /* Coins arrondis */
   font-size: 1.1rem; /* Taille de la police */
@@ -61,6 +61,6 @@
 }
 
 .search-button:hover {
-  background-color: var(--primary-dark); /* Couleur de fond au survol */
+  background-color: var(--color-primary-dark); /* Couleur de fond au survol */
   transform: translateY(-2px); /* Légère translation vers le haut */
 }
