@@ -50,7 +50,7 @@ nav ul li {
 }
 
 nav ul li a {
-  color: var(--color-bg-primary); /* Couleur du texte des liens */
+  color: var(--color-text-light); /* Couleur du texte des liens */
   text-decoration: none; /* Supprime le soulignement */
   padding: var(--space-md); /* Espace autour du texte */
   display: block; /* Affiche le lien comme un bloc */
@@ -70,8 +70,8 @@ nav ul li a {
   display: block; /* Affiche les barres du menu hamburger comme des blocs */
   width: 25px; /* Largeur des barres */
   height: 3px; /* Hauteur des barres */
-  background-color: var(--color-bg-primary); /* Couleur des barres */
-  margin: 5px 0; /* Espace entre les barres */
+  background-color: var(--color-text-light); /* Couleur des barres */
+  margin: var(--space-xs) 0; /* Espace entre les barres */
   transition: var(--transition-base); /* Transition pour les effets */
 }
 
@@ -79,7 +79,9 @@ nav ul li a {
 .dropdown {
   display: none; /* Masque le menu déroulant par défaut */
   position: absolute; /* Position absolue pour le menu déroulant */
-  background-color: #444; /* Couleur de fond du menu déroulant */
+  background-color: var(
+    --color-bg-secondary
+  ); /* Couleur de fond du menu déroulant */
   min-width: 200px; /* Largeur minimale du menu déroulant */
   box-shadow: var(--shadow-lg); /* Ombre du menu déroulant */
   border-radius: var(--radius-sm); /* Arrondi des coins */
@@ -91,8 +93,9 @@ nav ul li a {
 
 /* Etats actifs */
 .active {
-  background-color: #e0e0e0; /* Couleur de fond pour l'état actif */
-  color: var(--text-dark); /* Couleur du texte pour l'état actif */
-  font-weight: bold; /* Gras pour le texte actif */
+  background-color: var(
+    --color-bg-tertiary
+  ); /* Couleur de fond pour l'état actif */
+  color: var(--color-text-primary); /* Couleur du texte pour l'état actif */
   border-radius: var(--radius-sm); /* Arrondi des coins pour l'état actif */
 }
