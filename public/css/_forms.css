@@ -15,24 +15,23 @@
 
 /* Groupe de formulaire */
 .form-group {
-  margin-bottom: 1.5rem; /* Espace entre les groupes de champs */
-  position: relative; /* Position relative pour les éléments enfants */
+  margin-bottom: var(--space-lg); /* Espace entre les groupes de champs */
 }
 
 .form-group label {
   display: flex; /* Affichage flexible pour aligner le texte et l'icône */
   align-items: center; /* Alignement vertical centré */
   gap: var(--space-xs); /* Espace entre le texte et l'icône */
-  color: var(--tex-light); /* Couleur du texte */
+  color: var(--color-text-secondary); /* Couleur du texte */
 }
 
 .form-group input,
 .form-group select {
   width: 100%; /* Largeur à 100% du conteneur parent */
   padding: var(--space-md); /* Espacement interne */
-  border: 1px solid #ddd; /* Bordure grise */
+  border: 1px solid var(--color-text-secondary); /* Bordure grise */
   border-radius: var(--radius-md); /* Arrondi des coins */
-  font-size: 1rem; /* Taille de la police */
+  font-size: var(--font-size-base); /* Taille de la police */
   transition: var(
     --transition-base
   ); /* Transition pour les changements de style */
@@ -40,8 +39,8 @@
 
 /* Message d'erreur */
 .error-message {
-  color: var(--error); /* Couleur rouge pour l'erreur */
-  font-size: 0.875rem; /* Taille de la police */
+  color: var(--color-error); /* Couleur rouge pour l'erreur */
+  font-size: var(--font-size-sm); /* Taille de la police */
   margin-top: var(--space-xs); /* Espace au-dessus du message d'erreur */
   display: none; /* Masqué par défaut */
 }
