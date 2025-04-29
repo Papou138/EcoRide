@@ -30,27 +30,29 @@ main {
 #presentation {
   padding: var(--space-lg); /* Espacement autour de la section */
   text-align: center; /* Centre le texte */
-  margin-bottom: var(--space-lg); /* Marge inférieure */
+  margin-bottom: 0; /* Supprime la marge en bas */
 }
 
 #presentation-content {
   display: flex; /* Utilise le modèle de boîte flexible */
   flex-direction: column; /* Aligne les éléments enfants en colonne */
   align-items: center; /* Centre verticalement les éléments */
-  gap: var(--space-lg); /* Espace entre les éléments */
+  gap: var(--space-xl); /* Espace entre les éléments */
   max-width: 1200px; /* Largeur maximale */
-  margin: 0 auto; /* Centre le conteneur */
+  margin-bottom: var(--space-xl);
 }
 
 .image-container {
   width: 100%; /* Prend toute la largeur du conteneur */
-  max-width: 1200px; /* Largeur maximale */
-  margin: 0 auto; /* Centre le conteneur */
+  max-width: 800px; /* Limite la largeur maximale */
+  margin: 2rem auto; /*Centre l'image et ajoute de l'espace autour */
+  padding: 0 var(--space-md); /* Espacement autour de l'image */
 }
 
 .responsive-image {
   width: 100%; /* Prend toute la largeur du conteneur */
   height: auto; /* Ajuste la hauteur automatiquement */
+  object-fit: cover; /* Recouvre le conteneur sans déformer l'image */
   border-radius: var(--radius-md); /* Arrondit les coins */
   box-shadow: var(--shadow-sm); /* Ombre légère */
   transition: var(--transition-base); /* Transition pour les effets au survol */
