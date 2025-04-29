@@ -37,12 +37,12 @@
   transform: rotate(180deg); /* Rotation de l'icône au survol */
 }
 
-.filter-content {
+.filters-content {
   display: none; /* Masque le contenu par défaut */
   margin: var(--space-md); /* Espacement interne */
 }
 
-.filter-content.active {
+.filters-content.active {
   display: block; /* Affiche le contenu lorsque actif */
   animation: slideDown 0.3s ease-out; /* Animation de glissement vers le bas */
 }
