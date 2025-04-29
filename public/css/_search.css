@@ -6,7 +6,7 @@
 /* Section de recherche */
 .search-section {
   padding: var(--spacing-xl) 0; /* Espacement supérieur et inférieur */
-  background-color: var(--bg-light); /* Couleur de fond */
+  background-color: var(--color-bg-secondary); /* Couleur de fond */
 }
 
 .search-container {
@@ -48,16 +48,16 @@
   width: 100%; /* Largeur à 100% */
   padding: var(--space-md); /* Espacement interne */
   background-color: var(--color-primary); /* Couleur de fond */
-  color: var(--color-bg-primary); /* Couleur du texte */
+  color: var(--color-text-light); /* Couleur du texte */
   border: none; /* Pas de bordure */
   border-radius: var(--radius-sm); /* Coins arrondis */
-  font-size: 1.1rem; /* Taille de la police */
+  font-size: var(--font-size-lg); /* Taille de la police */
   cursor: pointer; /* Curseur en main */
-  transition: all 0.3s ease; /* Transition pour les effets */
+  transition: var(--transition-base); /* Transition pour les effets */
   display: flex; /* Utilise le modèle de boîte flexible */
   align-items: center; /* Aligne les éléments au centre */
   justify-content: center; /* Centre le contenu */
-  gap: var(--spacing-sm); /* Espacement entre les éléments */
+  gap: var(--space-xs); /* Espacement entre les éléments */
 }
 
 .search-button:hover {
