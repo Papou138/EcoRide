@@ -77,18 +77,76 @@ nav ul li a {
 
 /* Dropdown - Menu déroulant */
 .dropdown {
-  display: none; /* Masque le menu déroulant par défaut */
-  position: absolute; /* Position absolue pour le menu déroulant */
-  background-color: var(
-    --color-bg-secondary
-  ); /* Couleur de fond du menu déroulant */
-  min-width: 200px; /* Largeur minimale du menu déroulant */
-  box-shadow: var(--shadow-lg); /* Ombre du menu déroulant */
-  border-radius: var(--radius-sm); /* Arrondi des coins */
+  position: relative; /* Position relative pour le conteneur */
 }
 
-.dropdown:hover {
-  display: block; /* Affiche le menu déroulant au survol */
+.dropdown-menu {
+  display: none; /* Masque le menu déroulant par défaut */
+  position: absolute; /* Position absolue pour le menu */
+  top: 100%; /* Positionne le menu en dessous de l'élément parent */
+  left: 0; /* Aligne à gauche */
+  min-width: 200px; /* Largeur minimale du menu */
+  background-color: var(--color-bg-primary); /* Couleur de fond du menu */
+  box-shadow: var(--shadow-md); /* Ombre pour le menu */
+  border-radius: var(--radius-sm); /* Arrondi des coins */
+  z-index: 1000; /* Assure que le menu est au-dessus des autres éléments */
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown-menu.active {
+  display: block; /* Affiche le menu déroulant au survol ou s'il est actif */
+  animation: fadeIn 0.3s ease; /* Animation d'apparition */
+}
+
+.dropdown-menu li {
+  width: 100%; /* Largeur du menu déroulant */
+}
+
+.dropdown-menu a {
+  padding: var(--space-sm) var(--space-md); /* Espace autour du texte */
+  color: var(--color-text-primary); /* Couleur du texte */
+  display: block; /* Affiche le lien comme un bloc */
+  width: 100%; /* Largeur du lien */
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--color-bg-secondary); /* Couleur de fond au survol */
+  border-radius: var(--radius-sm); /* Arrondi des coins au survol */
+}
+
+/* Affichage au survol sur desktop */
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    display: block; /* Affiche le menu déroulant au survol */
+    animation: fadeIn 0.3s ease; /* Animation d'apparition */
+  }
+}
+
+/* Affichage sur mobile */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static; /* Position statique pour le menu sur mobile */
+    box-shadow: none; /* Supprime l'ombre */
+    background-color: var(
+      --color-bg-secondary
+    ); /* Couleur de fond sur mobile */
+  }
+
+  .dropdown-menu.active {
+    display: block; /* Affiche le menu déroulant actif */
+  }
+}
+
+.dropdown-toggle::after {
+  content: "▼"; /* Flèche pour indiquer le menu déroulant */
+  display: inline-block; /* Affiche la flèche en ligne */
+  margin-left: var(--space-xs); /* Espace à gauche de la flèche */
+  font-size: 0.8em; /* Taille de la flèche */
+  transition: transform 0.3s ease; /* Transition pour la flèche */
+}
+
+.dropdown:hover .dropdown-toggle::after {
+  transform: rotate(180deg); /* Rotation de la flèche au survol */
 }
 
 /* Etats actifs */
