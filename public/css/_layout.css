@@ -59,3 +59,46 @@ main {
 .responsive-image:hover {
   transform: scale(1.02); /* Agrandit légèrement l'image au survol */
 }
+
+/* Section des fonctionnalités */
+.features-section {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-bg-secondary);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns-desktop);
+  gap: var(--grid-gap);
+  padding: var(--space-lg) 0;
+}
+
+.feature-card {
+  padding: var(--space-lg);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: var(--transition-base);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-card i {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.feature-card h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
+}
+
+.feature-card p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}

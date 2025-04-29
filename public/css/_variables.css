@@ -59,4 +59,9 @@
   --font-size-lg: 1.125rem; /* 18px */
   --font-size-xl: 1.25rem; /* 20px */
   --font-size-xxl: 1.5rem; /* 24px */
+
+  /* Grilles */
+  --grid-gap: 2rem;
+  --grid-columns-mobile: 1fr;
+  --grid-columns-desktop: repeat(4, 1fr);
 }
