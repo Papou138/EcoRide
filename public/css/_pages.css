@@ -2,60 +2,60 @@
 
 /* Page Profile Utilisateur */
 #user-profile {
-  padding: var(--spacing-lg);
+  padding: var(--space-lg);
   max-width: 600px;
-  margin: var(--spacing-lg) auto;
-  background-color: var(--color-background);
+  margin: var(--space-lg) auto;
+  background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
 
 /* Page Ajout de Trajet */
 #add-trip {
-  padding: var(--spacing-lg);
+  padding: var(--space-lg);
   max-width: 600px;
-  margin: var(--spacing-lg) auto;
-  background-color: var(--color-background);
+  margin: var(--space-lg) auto;
+  background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
 
 /* Page Historique */
 #history {
-  padding: var(--spacing-lg);
+  padding: var(--space-lg);
   max-width: 600px;
-  margin: var(--spacing-lg) auto;
-  background-color: var(--color-background);
+  margin: var(--space-lg) auto;
+  background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
 
 /* Page Gestion des Voyages */
 #manage-voyage {
-  padding: var(--spacing-lg);
+  padding: var(--space-lg);
   max-width: 600px;
-  margin: var(--spacing-lg) auto;
-  background-color: var(--color-background);
+  margin: var(--space-lg) auto;
+  background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
 
 /* Page Dashboard Employé */
 #employee-dashboard {
-  padding: var(--spacing-lg);
+  padding: var(--space-lg);
   max-width: 800px;
-  margin: var(--spacing-lg) auto;
-  background-color: var(--color-background);
+  margin: var(--space-lg) auto;
+  background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }
 
 /* Page Dashboard Admin */
 #admin-dashboard {
-  padding: var(--spacing-lg);
+  padding: var(--space-lg);
   max-width: 1000px;
-  margin: var(--spacing-lg) auto;
-  background-color: var(--color-background);
+  margin: var(--space-lg) auto;
+  background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
 }

@@ -5,14 +5,14 @@
 /* Header principal */
 header {
   background-color: var(--color-primary);
-  padding: var(--spacing-xs); /* Espace supérieur et inférieur */
+  padding: var(--space-xs); /* Espace supérieur et inférieur */
 }
 
 .header-cnontent {
   display: flex; /* Utilise flexbox pour le contenu du header */
   justify-content: space-between; /* Espace entre les éléments */
   align-items: center; /* Centre verticalement les éléments */
-  padding: 0 var(--spacing-md); /* Espace sur les côtés */
+  padding: 0 var(--space-md); /* Espace sur les côtés */
   max-width: 1200px; /* Largeur maximale */
   margin: 0 auto; /* Centre le contenu */
 }
@@ -21,8 +21,8 @@ header {
 .logo-container {
   display: flex; /* Utilise flexbox pour le conteneur du logo */
   align-items: center; /* Centre verticalement le logo */
-  gap: var(--spacing-md); /* Espace entre le logo et le texte */
-  margin: var(--spacing-md) 0; /* Espace en haut et en bas */
+  gap: var(--space-md); /* Espace entre le logo et le texte */
+  margin: var(--space-md) 0; /* Espace en haut et en bas */
 }
 
 .logo {
@@ -50,11 +50,23 @@ nav ul li {
 }
 
 nav ul li a {
-  color: var(--color-background); /* Couleur du texte des liens */
+  color: #fff; /* Couleur Blanc pour un meilleur contraste */
   text-decoration: none; /* Supprime le soulignement */
-  padding: var(--spacing-md); /* Espace autour du texte */
+  padding: var(--space-md); /* Espace autour du texte */
   display: block; /* Affiche le lien comme un bloc */
-  transition: var(--transition-base); /* Transition pour les effets */
+  font-weight: 500; /* Ajoute du poids de la police */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* Ombre légère pour le texte */
+}
+
+nav ul li a:hover {
+  color: #f0f0f0; /* Légerement plus foncé au survol */
+  background-color: rgb(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Fond légèrement transparent au survol */
+  border-radius: var(--radius-sm); /* Arrondi des coins au survol */
 }
 
 /* Menu hamburger */
@@ -70,32 +82,85 @@ nav ul li a {
   display: block; /* Affiche les barres du menu hamburger comme des blocs */
   width: 25px; /* Largeur des barres */
   height: 3px; /* Hauteur des barres */
-  background-color: var(--color-background); /* Couleur des barres */
-  margin: 5px 0; /* Espace entre les barres */
+  background-color: var(--color-text-light); /* Couleur des barres */
+  margin: var(--space-xs) 0; /* Espace entre les barres */
   transition: var(--transition-base); /* Transition pour les effets */
 }
 
 /* Dropdown - Menu déroulant */
 .dropdown {
-  position: relative; /* Position relative pour le conteneur du menu déroulant */
+  position: relative; /* Position relative pour le conteneur */
 }
 
 .dropdown-menu {
   display: none; /* Masque le menu déroulant par défaut */
-  position: absolute; /* Position absolue pour le menu déroulant */
+  position: absolute; /* Position absolue pour le menu */
   top: 100%; /* Positionne le menu en dessous de l'élément parent */
   left: 0; /* Aligne à gauche */
-  background-color: var(
-    --color-background
-  ); /* Couleur de fond du menu déroulant */
-  min-width: 200px; /* Largeur minimale */
-  box-shadow: var(--shadow-md); /* Ombre pour le menu déroulant */
+  min-width: 200px; /* Largeur minimale du menu */
+  background-color: var(--color-bg-primary); /* Couleur de fond du menu */
+  box-shadow: var(--shadow-md); /* Ombre pour le menu */
   border-radius: var(--radius-sm); /* Arrondi des coins */
   z-index: 1000; /* Assure que le menu est au-dessus des autres éléments */
 }
 
-.dropdown:hover .dropdown-menu {
-  display: block; /* Affiche le menu déroulant au survol */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu.active {
+  display: block; /* Affiche le menu déroulant au survol ou s'il est actif */
+  animation: fadeIn 0.3s ease; /* Animation d'apparition */
+}
+
+.dropdown-menu li {
+  width: 100%; /* Largeur du menu déroulant */
+}
+
+.dropdown-menu a {
+  padding: var(--space-sm) var(--space-md); /* Espace autour du texte */
+  color: var(--color-text-secondary); /* Gris plus foncé */
+  display: block; /* Affiche le lien comme un bloc */
+  width: 100%; /* Largeur du lien */
+  border-left: 3px solid transparent; /* Bordure gauche transparente */
+}
+
+.dropdown-menu a:hover {
+  color: var(--color-primary); /* Couleur au survol */
+  background-color: var(--color-bg-secondary); /* Couleur de fond au survol */
+  border-left: 3px solid var(--color-primary); /* Bordure gauche colorée au survol */
+}
+
+/* Affichage au survol sur desktop */
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    display: block; /* Affiche le menu déroulant au survol */
+    animation: fadeIn 0.3s ease; /* Animation d'apparition */
+  }
+}
+
+/* Affichage sur mobile */
+@media (max-width: 768px) {
+  .dropdown-menu {
+    position: static; /* Position statique pour le menu sur mobile */
+    box-shadow: none; /* Supprime l'ombre */
+    background-color: var(
+      --color-bg-secondary
+    ); /* Couleur de fond sur mobile */
+  }
+
+  .dropdown-menu.active {
+    display: block; /* Affiche le menu déroulant actif */
+  }
+}
+
+.dropdown-toggle::after {
+  content: "▼"; /* Flèche pour indiquer le menu déroulant */
+  display: inline-block; /* Affiche la flèche en ligne */
+  margin-left: var(--space-xs); /* Espace à gauche de la flèche */
+  font-size: 0.8em; /* Taille de la flèche */
+  transition: transform 0.3s ease; /* Transition pour la flèche */
+}
+
+.dropdown:hover .dropdown-toggle::after {
+  transform: rotate(180deg); /* Rotation de la flèche au survol */
 }
 
 .dropdown-menu li {
@@ -119,8 +184,9 @@ nav ul li a {
 
 /* Etats actifs */
 .active {
-  background-color: #e0e0e0; /* Couleur de fond pour l'état actif */
-  color: var(--color-text); /* Couleur du texte pour l'état actif */
-  font-weight: bold; /* Gras pour le texte actif */
+  background-color: var(
+    --color-bg-tertiary
+  ); /* Couleur de fond pour l'état actif */
+  color: var(--color-text-primary); /* Couleur du texte pour l'état actif */
   border-radius: var(--radius-sm); /* Arrondi des coins pour l'état actif */
 }

@@ -3,21 +3,43 @@
  * ---------------------------------------------------------------------------------------
  */
 
-/* Media Queries */
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    padding: var(--space-md);
+  }
+}
+
 @media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-md);
+  }
+
+  .features-grid {
+    grid-template-columns: var(
+      --grid-columns-mobile
+    ); /* Change la grille pour les petits écrans */
+  }
+
   .search-main-fields {
     grid-template-columns: 1fr; /* Change la grille pour les champs de recherche */
   }
 
   .search-container {
     padding: var(
-      --spacing-md
+      --space-md
     ); /* Réduit l'espace autour du conteneur de recherche */
-    margin: 0 var(--spacing-md); /* Réduit l'espace sur les côtés */
+    margin: 0 var(--space-md); /* Réduit l'espace sur les côtés */
   }
 
   .presentation-content {
     flex-direction: column; /* Change la direction du flex pour les petits écrans */
+    padding: var(--space-md); /* Réduit l'espace autour de la présentation */
+  }
+
+  .responsive-image {
+    margin: var(--space-md); /* Ajoute un espace autour de l'image */
   }
 
   #menu-toggle {
@@ -62,6 +84,6 @@
   }
 
   .image-container {
-    margin-top: var(--spacing-md); /* Ajoute un espace au-dessus de l'image */
+    margin-top: var(--space-md); /* Ajoute un espace au-dessus de l'image */
   }
 }

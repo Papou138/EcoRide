@@ -18,3 +18,6 @@
 @import "_pages.css"; /* Importation des styles des pages spécifiques */
 @import "_animations.css"; /* Importation des styles d'animations */
 @import "_responsive.css"; /* Importation des styles responsives */
+@import "_cards.css"; /* Importation des styles des cartes */
+@import "_buttons.css"; /* Importation des styles des boutons */
+@import "_alerts.css"; /* Importation des styles des alertes */

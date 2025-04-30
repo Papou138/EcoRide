@@ -4,8 +4,8 @@
  */
 footer {
   background-color: var(--color-primary);
-  color: var(--color-background);
-  padding: var(--spacing-md) 0; /* Espacement supérieur et inférieur */
+  color: var(--color-bg-primary);
+  padding: var(--space-md) 0; /* Espacement supérieur et inférieur */
   margin-top: var(--spacing-xl); /* Espacement supérieur */
 }
 
@@ -15,8 +15,8 @@ footer {
   display: flex; /* Utilise le modèle de boîte flexible */
   justify-content: space-around; /* Espace entre les sections */
   flex-wrap: wrap; /* Permet aux sections de se réorganiser sur plusieurs lignes si nécessaire */
-  gap: var(--spacing-md); /* Espace entre les sections */
-  padding: 0 var(--spacing-md); /* Espacement latéral */
+  gap: var(--space-md); /* Espace entre les sections */
+  padding: 0 var(--space-md); /* Espacement latéral */
 }
 
 .footer-section {
@@ -25,16 +25,16 @@ footer {
 }
 
 .footer-section h3 {
-  color: var(--color-background); /* Couleur du texte */
+  color: var(--color-bg-primary); /* Couleur du texte */
   margin-bottom: var(--spacing-sm); /* Espacement inférieur */
   font-size: 1.1rem; /* Taille de la police */
-  border-bottom: 2px solid var(--color-background); /* Ligne de séparation */
-  padding-bottom: var(--spacing-xs); /* Espacement inférieur */
+  border-bottom: 2px solid var(--color-bg-primary); /* Ligne de séparation */
+  padding-bottom: var(--space-xs); /* Espacement inférieur */
 }
 
 .footer-section p {
-  color: var(--color-background); /* Couleur du texte */
-  margin: var(--spacing-md) 0; /* Espacement supérieur et inférieur */
+  color: var(--color-bg-primary); /* Couleur du texte */
+  margin: var(--space-md) 0; /* Espacement supérieur et inférieur */
 }
 
 .footer-section ul {
@@ -43,9 +43,29 @@ footer {
 }
 
 .footer-section ul li {
-  margin-bottom: var(
-    --spacing-sm
+  margin-bottom: var(--spacing-md);
+  padding: var(
+    --space-xs
   ); /* Espacement inférieur entre les éléments de la liste */
+}
+
+/* Optimisation de la section Contact */
+.footer-section.contact-section {
+  display: flex; /* Utilise le modèle de boîte flexible */
+  flex-direction: column; /* Aligne les éléments en colonne */
+  gap: var(--space-md); /* Espacement uniforme entre les éléments */
+}
+
+.footer-section.contact-section p {
+  display: flex; /* Utilise le modèle de boîte flexible */
+  align-items: center; /* Centre verticalement les éléments */
+  gap: var(--space-sm); /* Espacement entre l'icone et le texte */
+  margin: 0; /* Supprime la marge */
+}
+
+.footer-section.contact-section i {
+  width: 20px; /* Largeur de l'icône */
+  text-align: center; /* Centre le texte de l'icône */
 }
 
 .footer-section a {
@@ -61,12 +81,12 @@ footer {
 
 .footer-section a:hover::after {
   content: "→"; /* Flèche après le lien au survol */
-  margin-left: var(--spacing-xs); /* Espacement à gauche */
+  margin-left: var(--space-xs); /* Espacement à gauche */
 }
 
 .footer-bottom {
   text-align: center;
-  margin-top: var(--spacing-md); /* Espacement supérieur */
-  padding-top: var(--spacing-md); /* Espacement supérieur */
+  margin-top: var(--space-md); /* Espacement supérieur */
+  padding-top: var(--space-md); /* Espacement supérieur */
   border-top: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation */
 }

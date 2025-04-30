@@ -5,23 +5,49 @@
 export function initialiserMenu() {
   const menuButton = document.getElementById("menu-toggle");
   const mainNav = document.getElementById("main-nav");
+  const dropdowns = document.querySelectorAll(".dropdown");
 
   if (menuButton && mainNav) {
     menuButton.addEventListener("click", () => {
       mainNav.classList.toggle("active");
       toggleMenuIcon(menuButton);
     });
-
-    // Gestion des sous-menus
-    const dropdowns = document.querySelectorAll(".dropdown-toggle");
-    dropdowns.forEach((dropdown) => {
-      dropdown.addEventListener("click", (e) => {
-        e.preventDefault();
-        const dropdownMenu = dropdown.nextElementSibling;
-        dropdownMenu.classList.toggle("active");
-      });
-    });
   }
+
+  // Gestion des dropdowns sur mobile
+  dropdowns.forEach((dropdown) => {
+    const toggle = dropdown.querySelector(".dropdown-toggle");
+    const menu = dropdown.querySelector(".dropdown-menu");
+
+    if (toggle && menu) {
+      toggle.addEventListener("click", (e) => {
+        // Empeche la navigation sur mobile
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          menu.classList.toggle("active");
+
+          // Fermer les autres menus
+          dropdowns.forEach((otherDropdown) => {
+            if (otherDropdown !== dropdown) {
+              const otherMenu = otherDropdown.querySelector(".dropdown-menu");
+              if (otherMenu) {
+                otherMenu.classList.remove("active");
+              }
+            }
+          });
+        }
+      });
+    }
+  });
+
+  // Fermer les menus si on clique en dehors
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".dropdown")) {
+      document.querySelectorAll(".dropdown-menu").forEach((menu) => {
+        menu.classList.remove("active");
+      });
+    }
+  });
 }
 
 // Fonction pour changer l'icône du menu hamburger

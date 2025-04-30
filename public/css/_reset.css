@@ -2,31 +2,91 @@
  *  Reset et styles de base
  * ---------------------------------------------------------------------------------------
  */
-/* Reset CSS */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+
+/* Reset CSS moderne */
+*,
+*::before,
+*::after {
+  margin: 0; /* Réinitialisation des marges */
+  padding: 0; /* Réinitialisation des marges et des paddings */
+  box-sizing: border-box; /* Pour inclure la bordure et le padding dans la largeur totale */
 }
 
 /* Styles de base */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
 body {
-  font-family: Arial, Helvetica, sans-serif; /* Police de caractères par défaut */
-  background-color: var(
-    --color-background-light
-  ); /* Couleur de fond par défaut */
-  color: var(--color-text); /* Couleur du texte par défaut */
-  min-height: 100vh; /* Assure que le corps prend au moins la hauteur de la fenêtre */
-  display: flex; /* Utilise le modèle de boîte flexible */
-  flex-direction: column; /* Aligne les éléments enfants en colonne */
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased; /* Pour les navigateurs WebKit */
+  -moz-osx-font-smoothing: grayscale; /* Pour Firefox */
 }
 
+/* Liens */
 a {
-  text-decoration: none; /* Supprime le soulignement des liens */
-  color: inherit; /* Utilise la couleur du texte par défaut */
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: var(--transition-fast);
 }
 
-img {
-  max-width: 100%; /* Limite la largeur des images à 100% de leur conteneur */
-  height: auto; /* Ajuste la hauteur automatiquement */
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* Images */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Formulaires */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* Titres */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+/* Listes */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Suppression des animations pour les utilisateurs qui les ont désactivées */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

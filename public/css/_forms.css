@@ -6,33 +6,32 @@
 /* Conteneur de formulaire */
 .form-container {
   max-width: 600px; /* Largeur maximale du conteneur */
-  margin: var(--spacing-lg) auto; /* Centrage horizontal */
-  padding: var(--spacing-lg); /* Espacement interne */
-  background-color: var(--color-background); /* Couleur de fond blanche */
+  margin: var(--space-lg) auto; /* Centrage horizontal */
+  padding: var(--space-lg); /* Espacement interne */
+  background-color: var(--color-bg-primary); /* Couleur de fond blanche */
   border-radius: var(--radius-md); /* Arrondi des coins */
   box-shadow: var(--shadow-md); /* Ombre autour du conteneur */
 }
 
 /* Groupe de formulaire */
 .form-group {
-  margin-bottom: 1.5rem; /* Espace entre les groupes de champs */
-  position: relative; /* Position relative pour les éléments enfants */
+  margin-bottom: var(--space-lg); /* Espace entre les groupes de champs */
 }
 
 .form-group label {
   display: flex; /* Affichage flexible pour aligner le texte et l'icône */
   align-items: center; /* Alignement vertical centré */
-  gap: var(--spacing-xs); /* Espace entre le texte et l'icône */
-  color: var(--color-text-light); /* Couleur du texte */
+  gap: var(--space-xs); /* Espace entre le texte et l'icône */
+  color: var(--color-text-secondary); /* Couleur du texte */
 }
 
 .form-group input,
 .form-group select {
   width: 100%; /* Largeur à 100% du conteneur parent */
-  padding: var(--spacing-md); /* Espacement interne */
-  border: 1px solid #ddd; /* Bordure grise */
+  padding: var(--space-md); /* Espacement interne */
+  border: 1px solid var(--color-text-secondary); /* Bordure grise */
   border-radius: var(--radius-md); /* Arrondi des coins */
-  font-size: 1rem; /* Taille de la police */
+  font-size: var(--font-size-base); /* Taille de la police */
   transition: var(
     --transition-base
   ); /* Transition pour les changements de style */
@@ -41,8 +40,8 @@
 /* Message d'erreur */
 .error-message {
   color: var(--color-error); /* Couleur rouge pour l'erreur */
-  font-size: 0.875rem; /* Taille de la police */
-  margin-top: var(--spacing-xs); /* Espace au-dessus du message d'erreur */
+  font-size: var(--font-size-sm); /* Taille de la police */
+  margin-top: var(--space-xs); /* Espace au-dessus du message d'erreur */
   display: none; /* Masqué par défaut */
 }
 
@@ -55,8 +54,8 @@
 .search-container {
   max-width: 1000px; /* Largeur maximale du conteneur */
   margin: 0 auto; /* Centrage horizontal */
-  padding: var(--spacing-lg); /* Espacement interne */
-  background-color: var(--color-background); /* Couleur de fond blanche */
+  padding: var(--space-lg); /* Espacement interne */
+  background-color: var(--color-bg-primary); /* Couleur de fond blanche */
   border-radius: var(--radius-lg); /* Arrondi des coins */
   box-shadow: var(--shadow-md); /* Ombre autour du conteneur */
 }
