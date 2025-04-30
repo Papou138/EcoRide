@@ -40,6 +40,7 @@ footer {
 .footer-section ul {
   list-style: none; /* Supprime les puces de la liste */
   padding: 0; /* Supprime le remplissage par défaut */
+  margin-top: var(--space-md);
 }
 
 .footer-section ul li {
@@ -88,5 +89,7 @@ footer {
   text-align: center;
   margin-top: var(--space-md); /* Espacement supérieur */
   padding-top: var(--space-md); /* Espacement supérieur */
+  background-color: #45a049; /* Version legerement plus foncée de la couleur principale */
   border-top: 1px solid rgba(255, 255, 255, 0.1); /* Ligne de séparation */
+  padding: var(--space-md) 0; /*Ajout d'un peu d'espace vertical */
 }
