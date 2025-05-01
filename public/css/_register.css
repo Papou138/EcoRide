@@ -1,0 +1,121 @@
+/* ---------------------------------------------------------------------------------------
+ *  Styles spécifiques pour le formulaire d'inscription
+ * ---------------------------------------------------------------------------------------
+ */
+.register-container {
+  max-width: 600px; /* Largeur maximale du conteneur */
+  margin: var(--space-xl) auto; /* Centre le conteneur */
+  padding: var(--space-xl); /* Espacement interne */
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md); /* Arrondi des coins */
+  box-shadow: var(--shadow-md); /* Ombre */
+}
+
+.form-intro {
+  color: var(--color-text-secondary); /* Couleur du texte secondaire */
+  text-align: center; /* Centre le texte */
+  margin-bottom: var(--space-lg); /* Espacement en bas */
+  font-size: var(--font-size-lg); /* Taille de police */
+}
+
+.form-field {
+  margin-bottom: var(--space-lg); /* Espacement entre les champs */
+  position: relative; /* Position relative pour les éléments enfants */
+}
+
+.form-field label {
+  display: flex; /* Utilise le modèle de boîte flexible */
+  align-items: center; /* Centre verticalement */
+  gap: var(--space-xs); /* Espacement entre l'icône et le texte */
+  color: var(--color-text-primary); /* Couleur du texte principal */
+  margin-bottom: var(--space-xs); /* Espacement en bas */
+  font-weight: 500; /* Poids de la police */
+}
+
+.form-field label i {
+  color: var(--color-primary); /* Couleur de l'icône */
+  width: 20px; /* Largeur de l'icône */
+  text-align: center; /* Centre l'icône */
+}
+
+.form-field input {
+  width: 100%; /* Prend toute la largeur */
+  padding: var(--space-md); /* Espacement interne */
+  border: 2px solid var(--color-bg-secondary); /* Bordure */
+  border-radius: var(--radius-md); /* Arrondi des coins */
+  transition: var(--transition-base); /* Transition pour les interactions */
+  font-size: var(--font-size-base); /* Taille de police */
+}
+
+.form-field input:focus {
+  border-color: var(
+    --color-primary
+  ); /* Change la couleur de la bordure au focus */
+  box-shadow: var(--shadow-focus); /* Ombre de focus */
+  outline: none; /* Supprime le contour par défaut */
+}
+
+.password-container {
+  position: relative; /* Position relative pour les éléments enfants */
+  display: flex; /* Utilise le modèle de boîte flexible */
+  align-items: center; /* Centre verticalement */
+}
+
+.password-container .btn-icon {
+  position: absolute; /* Position absolue pour l'icône */
+  right: var(--space-sm); /* Espacement à droite */
+  background: none; /* Pas de fond */
+  border: none; /* Pas de bordure */
+  color: var(--color-text-secondary); /* Couleur du texte secondaire */
+  cursor: pointer; /* Curseur pointeur */
+  padding: var(--space-sm); /* Espacement interne */
+}
+
+.password-container .btn-icon:hover {
+  color: var(--color-primary); /* Change la couleur au survol */
+}
+
+.checkbox-field {
+  display: flex; /* Utilise le modèle de boîte flexible */
+  align-items: center; /* Centre verticalement */
+  gap: var(--space-sm); /* Espacement entre l'icône et le texte */
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 20px; /* Largeur de la case à cocher */
+  height: 20px; /* Hauteur de la case à cocher */
+  accent-color: var(--color-primary); /* Couleur de la case à cocher */
+}
+
+.checkbox-field label {
+  font-size: var(--font-size-sm); /* Taille de police */
+  color: var(--color-text-secondary); /* Couleur du texte secondaire */
+}
+
+.checkbox-field a {
+  color: var(--color-primary); /* Couleur du lien */
+  text-decoration: underline; /* Souligné */
+}
+
+.form-footer {
+  text-align: center; /* Centre le texte */
+  margin-top: var(--space-xl); /* Espacement en haut */
+  padding-top: var(--space-md); /* Espacement interne */
+  border-top: 1px solid var(--color-bg-secondary); /* Bordure supérieure */
+}
+
+.error-message {
+  position: absolute; /* Position absolue */
+  bottom: -20px; /* Position en bas */
+  left: 0; /* Position à gauche */
+  font-size: var(--font-size-sm); /* Taille de police */
+  color: var(--color-error); /* Couleur d'erreur */
+  opacity: 0; /* Invisible par défaut */
+  transform: translateY(-10px); /* Décalage vers le haut */
+  transition: var(--transition-base); /* Transition pour les interactions */
+}
+
+.error-message.visible {
+  opacity: 1; /* Rendre visible */
+  transform: translateY(0); /* Remettre à la position d'origine */
+}

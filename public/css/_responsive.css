@@ -6,20 +6,37 @@
 /* Responsive Design */
 @media (max-width: 1024px) {
   .features-grid {
-    grid-template-columns: repeat(2, 1fr);
-    padding: var(--space-md);
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Deux colonnes sur les écrans moyens */
+    padding: var(--space-md); /* Espacement interne */
   }
 }
 
 /* Affichage au survol sur desktop */
 @media (min-width: 769px) {
   .dropdown:hover .dropdown-menu {
-    display: block;
-    animation: fadeIn 0.3s ease;
+    display: block; /* Affiche le menu déroulant au survol */
+    animation: fadeIn 0.3s ease; /* Animation d'apparition */
   }
 }
 
 @media (max-width: 768px) {
+  /* Style du formulaire d'inscription sur mobile */
+  .register-container {
+    margin: var(--space-md); /* Marge autour du conteneur */
+    padding: var(--space-md); /* Espacement interne */
+  }
+
+  .form-field input {
+    padding: var(--space-sm); /* Espacement interne */
+  }
+
+  .form-intro {
+    font-size: var(--font-size-base); /* Taille de police */
+  }
+
   /* Conteneur et grilles */
   .container {
     padding: 0 var(--space-md);

@@ -21,3 +21,4 @@
 @import "_cards.css"; /* Importation des styles des cartes */
 @import "_buttons.css"; /* Importation des styles des boutons */
 @import "_alerts.css"; /* Importation des styles des alertes */
+@import "_register.css"; /* Importation des styles du formulaire d'inscription */

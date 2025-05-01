@@ -10,12 +10,35 @@
   }
 }
 
-@keyframes fadeIn {
+@keyframes slideDown {
   from {
-    opacity: 0; /* Départ transparent */
+    opacity: 0; /* Invisible au début */
+    transform: translateY(-10px); /* Décalage vers le haut */
   }
   to {
-    opacity: 1; /* Devenir opaque */
+    opacity: 1; /* Visible à la fin */
+    transform: translateY(0); /* Position normale */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; /* Invisible au début */
+  }
+  to {
+    opacity: 1; /* Visible à la fin */
+  }
+}
+
+@keyframes buttonLoading {
+  0% {
+    opacity: 1; /* Visible au début */
+  }
+  50% {
+    opacity: 0.7; /* Légèrement transparent */
+  }
+  100% {
+    opacity: 1; /* Visible à la fin */
   }
 }
 
