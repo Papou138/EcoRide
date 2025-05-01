@@ -11,79 +11,105 @@
   }
 }
 
+/* Affichage au survol sur desktop */
+@media (min-width: 769px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+}
+
 @media (max-width: 768px) {
+  /* Conteneur et grilles */
   .container {
     padding: 0 var(--space-md);
   }
 
   .features-grid {
-    grid-template-columns: var(
-      --grid-columns-mobile
-    ); /* Change la grille pour les petits écrans */
+    grid-template-columns: var(--grid-columns-mobile);
   }
 
+  /* Champs de recherche */
   .search-main-fields {
-    grid-template-columns: 1fr; /* Change la grille pour les champs de recherche */
+    grid-template-columns: 1fr;
   }
 
   .search-container {
-    padding: var(
-      --space-md
-    ); /* Réduit l'espace autour du conteneur de recherche */
-    margin: 0 var(--space-md); /* Réduit l'espace sur les côtés */
+    padding: var(--space-md);
+    margin: 0 var(--space-md);
   }
 
+  /* Présentation */
   .presentation-content {
-    flex-direction: column; /* Change la direction du flex pour les petits écrans */
-    padding: var(--space-md); /* Réduit l'espace autour de la présentation */
+    flex-direction: column;
+    padding: var(--space-md);
   }
 
   .responsive-image {
-    margin: var(--space-md); /* Ajoute un espace autour de l'image */
+    margin: var(--space-md);
   }
 
+  /* Menu Navigation */
   #menu-toggle {
-    display: block; /* Affiche le bouton de menu sur les petits écrans */
+    display: block;
   }
 
   #main-nav {
-    display: none; /* Masque le menu principal sur les petits écrans */
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-primary);
+    padding: var(--space-md);
+    z-index: 1000;
   }
 
   #main-nav.active {
-    display: block; /* Affiche le menu principal lorsque le bouton de menu est actif */
+    display: block;
   }
 
+  /* Navigation Lists */
   nav ul {
-    flex-direction: column; /* Change la direction du flex pour les éléments de menu */
+    flex-direction: column;
+    width: 100%;
   }
 
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul li a {
+    display: block;
+    padding: var(--space-md);
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Dropdown Menus */
   .dropdown-menu {
-    position: static; /* Positionne le menu déroulant de manière statique */
-    display: none; /* Masque le menu déroulant par défaut */
-    width: 100%; /* Largeur à 100% */
-    box-shadow: none; /* Supprime l'ombre */
-    background-color: var(
-      --color-background-light
-    ); /* Couleur de fond claire */
+    position: static;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: var(--space-md);
   }
 
-  .dropdown.active .dropdown-menu {
-    display: block; /* Affiche le menu déroulant lorsque le parent est actif */
+  .dropdown-menu.active {
+    display: block;
   }
 
   .dropdown-toggle::after {
-    display: right; /* Affiche le bouton de menu déroulant */
-    margin-top: 0.5rem; /* Ajoute un espace au-dessus */
+    float: right;
+    margin-top: 0.5rem;
   }
 }
 
 @media (max-width: 767px) {
   .presentation-content {
-    text-align: center; /* Centre le texte dans la présentation */
+    text-align: center;
   }
 
   .image-container {
-    margin-top: var(--space-md); /* Ajoute un espace au-dessus de l'image */
+    margin-top: var(--space-md);
   }
 }

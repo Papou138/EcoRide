@@ -7,44 +7,55 @@ export function initialiserMenu() {
   const mainNav = document.getElementById("main-nav");
   const dropdowns = document.querySelectorAll(".dropdown");
 
+  // Gestion du menu hamburger
   if (menuButton && mainNav) {
     menuButton.addEventListener("click", () => {
       mainNav.classList.toggle("active");
-      toggleMenuIcon(menuButton);
+      // Changement de l'icône du menu
+      toggleMenuIcon(menuButton); // Appel de la fonction pour changer l'icône du menu
     });
   }
 
   // Gestion des dropdowns sur mobile
   dropdowns.forEach((dropdown) => {
     const toggle = dropdown.querySelector(".dropdown-toggle");
-    const menu = dropdown.querySelector(".dropdown-menu");
 
-    if (toggle && menu) {
+    if (toggle) {
       toggle.addEventListener("click", (e) => {
         // Empeche la navigation sur mobile
         if (window.innerWidth <= 768) {
           e.preventDefault();
-          menu.classList.toggle("active");
+          e.stopPropagation(); // Empêche la propagation de l'événement
 
-          // Fermer les autres menus
-          dropdowns.forEach((otherDropdown) => {
-            if (otherDropdown !== dropdown) {
-              const otherMenu = otherDropdown.querySelector(".dropdown-menu");
-              if (otherMenu) {
-                otherMenu.classList.remove("active");
-              }
+          // Fermer les autres dropdowns
+          dropdowns.forEach((other) => {
+            if (other !== dropdown) {
+              other.classList.remove("active");
             }
           });
+
+          // Ouvrir/fermer le dropdown actuel
+          dropdown.classList.toggle("active");
         }
       });
     }
   });
 
-  // Fermer les menus si on clique en dehors
+  // Fermer le menu si on clique en dehors
   document.addEventListener("click", (e) => {
-    if (!e.target.closest(".dropdown")) {
-      document.querySelectorAll(".dropdown-menu").forEach((menu) => {
-        menu.classList.remove("active");
+    if (!e.target.closest("#main-nav") && !e.target.closest("#menu-toggle")) {
+      mainNav?.classList.remove("active");
+
+      if (menuButton) {
+        menuButton.classList.remove("active");
+        // Réinitialiser l'icone du menu
+        const spans = menuButton.getElementsByTagName("span");
+        spans[0].style.transform = "none";
+        spans[1].style.opacity = "1";
+        spans[2].style.transform = "none";
+      }
+      dropdowns.forEach((dropdown) => {
+        dropdown.classList.remove("active");
       });
     }
   });
