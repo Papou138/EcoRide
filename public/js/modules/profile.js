@@ -6,6 +6,20 @@ export function updateProfile(userId, newName, newSurname, role) {
     return;
   }
 
+  // Récupérer les informations du véhicules si le role est chauffeur ou les_deux
+  let vehiculeInfo = {};
+  if (role === "chauffeur" || role === "les_deux") {
+    vehiculeInfo = {
+      plaque: document.getElementById("plaque").value,
+      dateImmat: document.getElementById("dateImmat").value,
+      modele: document.getElementById("vehicule").value,
+      places: document.getElementById("places").value,
+      preferences: Array.from(
+        document.querySelectorAll('input[name="preferences"]:checked')
+      ).map((checkbox) => checkbox.value),
+    };
+  }
+
   fetch("../../backend/user.php", {
     method: "POST",
     headers: {
@@ -28,11 +42,49 @@ export function toggleChauffeurInfo() {
   const roleSelect = document.getElementById("role");
   const chauffeurInfo = document.getElementById("chauffeur-info");
 
-  if (roleSelect && chauffeurInfo) {
+  if (chauffeurInfo) {
     if (roleSelect.value === "chauffeur" || roleSelect.value === "les_deux") {
       chauffeurInfo.style.display = "block";
     } else {
       chauffeurInfo.style.display = "none";
     }
   }
+}
+
+// Fonction pour charger les données du profil
+// Cette fonction est appelée lors du chargement de la page de profil
+export function loadProfileData(userId) {
+  fetch("../../backend/user.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    body: `action=getUser&id=${userId}`,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("newName").value = data.user.nom;
+      document.getElementById("newSurname").value = data.user.prenom;
+      document.getElementById("role").value = data.user.role;
+
+      // Mise à jour des champs du véhicule si nécessaire
+      if (data.vehicule) {
+        document.getElementById("plaque").value = data.vehicule.plaque;
+        document.getElementById("date-immat").value = data.vehicule.dateImmat;
+        document.getElementById("vehicule").value = data.vehicule.modele;
+        document.getElementById("places").value = data.vehicule.places;
+
+        // Mise à jour des préférences
+        data.vehicule.preferences.forEach((preference) => {
+          document.querySelector(
+            `input[name="preferences"][value="${preference}"]`
+          ).checked = true;
+        });
+      }
+
+      toggleChauffeurInfo();
+    })
+    .catch((error) => {
+      console.error("Erreur lors du chargement du profil : ", error);
+    });
 }

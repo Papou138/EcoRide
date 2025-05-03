@@ -18,8 +18,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && $_GET['action'] === 'getUsers') {
 
 // Update (Mettre à jour un utilisateur)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $_POST['action'] === 'updateUser') {
+    $vehicule = json_decode($_POST['vehicule'], true);
+
+    // Mise à jour des informations de base
     $stmt = $pdo->prepare("UPDATE Utilisateur SET nom = ?, prenom = ?, role = ? WHERE id = ?");
     $stmt->execute([$_POST['nom'], $_POST['prenom'], $_POST['role'], $_POST['id']]);
+
+    // Mise à jour des informations du véhicule si présentes
+    if (!empty($vehicule)) {
+        $stmt = $pdo->prepare("INSERT INTO Vehicule (user_id, plaque, date_immat, modele, places, preferences) 
+                              VALUES (?, ?, ?, ?, ?, ?) 
+                              ON DUPLICATE KEY UPDATE 
+                              plaque = VALUES(plaque),
+                              date_immat = VALUES(date_immat),
+                              modele = VALUES(modele),
+                              places = VALUES(places),
+                              preferences = VALUES(preferences)");
+
+        $stmt->execute([
+            $_POST['id'],
+            $vehicule['plaque'],
+            $vehicule['dateImmat'],
+            $vehicule['modele'],
+            $vehicule['places'],
+            json_encode($vehicule['preferences'])
+        ]);
+    }
+
     echo "Mise à jour utilisateur réussie";
     echo "\n"; // Ajout d'un saut de ligne
 }
