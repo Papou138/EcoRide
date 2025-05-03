@@ -3,8 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Espace Utilisateur - EcoRide</title>
+    <meta
+      name="description"
+      content="Gérez votre profil EcoRide - Modifiez vos informations personnelles et vos préférences de covoiturage"
+    />
+    <title>Mon Profil - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
   </head>
   <body>
     <header>
@@ -14,8 +22,10 @@
             src="../images/EcoRide_logo.png"
             alt="Logo EcoRide"
             class="logo"
+            weight="50"
+            height="50"
           />
-          <h1>EcoRide - Espace Utilisateur</h1>
+          <h1>Mon profil EcoRide</h1>
         </div>
         <button id="menu-toggle" aria-label="Menu Principal">
           <span></span>
@@ -46,67 +56,176 @@
         </ul>
       </nav>
     </header>
+
     <main>
-      <section id="user-profile">
-        <h2>Votre Profil</h2>
-        <form id="update-profile-form">
-          <label for="newName">Nouveau nom :</label>
-          <input type="text" id="newName" name="newName" required />
+      <section id="user-profile" class="form-container">
+        <h2><i class="fas fa-user-circle"></i> Votre Profil</h2>
+        <p class="form-intro">
+          Personnalisez votre profil et gérer vos préférences de covoiturage
+        </p>
 
-          <label for="newSurname">Nouveau prénom :</label>
-          <input type="text" id="newSurname" name="newSurname" required />
+        <form id="update-profile-form" class="form-group">
+          <!-- Informations personnelles -->
+          <div class="form-section">
+            <h3><i class="fas fa-id-card"></i> Informations Personnelles</h3>
 
-          <label for="role">Rôle :</label>
-          <select id="role" name="role">
-            <option value="passager">Passager</option>
-            <option value="chauffeur">Chauffeur</option>
-            <option value="les_deux">Les deux</option>
-          </select>
+            <div class="form-field">
+              <label for="newName"><i class="fas fa-user"></i> Nom :</label>
+              <input
+                type="text"
+                id="newName"
+                name="newName"
+                required
+                pattern="[A-Za-z\s]{2,50}"
+                title="Le nom doit contenir entre 2 et 50 caractères, uniquement des lettres"
+              />
+              <div id="newName-error" class="error-message"></div>
+            </div>
 
-          <input type="hidden" id="userId" name="userId" value="1" />
-          <!-- Exemple d'ID l'utilisateur -->
+            <div class="form-field">
+              <label for="newSurname"
+                ><i class="fas fa-user"></i> Prénom :</label
+              >
+              <input
+                type="text"
+                id="newSurname"
+                name="newSurname"
+                required
+                pattern="[A-Za-z\s]{2,50}"
+                title="Le prénom doit contenir entre 2 et 50 caractères, uniquement des lettres"
+              />
+              <div id="newSurname-error" class="error-message"></div>
+            </div>
 
-          <button
-            type="button"
-            class="update-btn"
-            onclick="updateUser(userId.value, newName.value, newSurname.value, role.value)"
-          >
-            Mettre à Jour le Profil
-          </button>
+            <div class="form-field">
+              <label for="newEmail"
+                ><i class="fas fa-envelope"></i> Email :</label
+              >
+              <input
+                type="email"
+                id="newEmail"
+                name="newEmail"
+                required
+                readonly
+                value="utilisateur@exemple.com"
+              />
+              <div id="newEmail-error" class="error-message"></div>
+            </div>
 
-          <div id="chauffeur-info" style="display: none">
-            <h3>Informations Chauffeur</h3>
-            <label for="plaque">Plaque d'immatriculation :</label>
-            <input type="text" id="plaque" name="plaque" />
-
-            <label for="date-immat">Date de première immatriculation :</label>
-            <input type="date" id="date-immat" name="date-immat" />
-
-            <label for="vehicule">Modèle et Marque du Véhicule :</label>
-            <input type="text" id="vehicule" name="vehicule" />
-
-            <label for="places">Nombre de places disponibles :</label>
-            <input type="number" id="places" name="places" />
-
-            <label for="preferences">Préférences :</label>
-            <textarea id="preferences" name="preferences"></textarea>
+            <div class="form-field">
+              <label for="role"><i class="fas fa-user-tag"></i> Rôle :</label>
+              <select id="role" name="role" onchange="toggleChauffeurInfo()">
+                <option value="passager">Passager</option>
+                <option value="chauffeur">Chauffeur</option>
+                <option value="les_deux">Les deux</option>
+              </select>
+            </div>
           </div>
 
-          <button type="submit">Enregistrer</button>
+          <!-- Informations chauffeur -->
+          <div id="chauffeur-info" class="form-section" style="display: none">
+            <h3><i class="fas fa-car"></i> Informations Véhicule</h3>
+
+            <div class="form-field">
+              <label for="plaque">
+                <i class="fas fa-passport"></i> Plaque d'immatriculation
+                :</label
+              >
+              <input
+                type="text"
+                id="plaque"
+                name="plaque"
+                pattern="[A-Z0-9]{2,10}"
+                title="Format : AA-123-AA"
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="date-immat"
+                ><i class="fas fa-calendar-alt"></i> Date de première
+                immatriculation :</label
+              >
+              <input type="date" id="date-immat" name="date-immat" />
+            </div>
+
+            <div class="form-field">
+              <label for="vehicule"
+                ><i class="fas fa-car-side"></i> Modèle et Marque du Véhicule :
+              </label>
+              <select name="vehicule" id="vehicule">
+                <option value="">Sélectionnez votre véhicule</option>
+                <option value="ioniq5">Hyundai Ioniq 5</option>
+                <option value="ev6">Kia EV6</option>
+                <option value="e208">Peugeot e-208</option>
+                <option value="zoe">Renault Zoe</option>
+                <option value="megane">Renault Megane E-Tech</option>
+                <option value="enyaq">Skoda Enyaq iV</option>
+                <option value="model3">Tesla Model 3</option>
+                <option value="id3">Volkswagen ID.3</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="places"
+                ><i class="fas fa-users"></i> Nombre de places :</label
+              >
+              <input type="number" id="places" name="places" min="1" max="8" />
+            </div>
+
+            <div class="form-field">
+              <label for="preferences"
+                ><i class="fas fa-sliders-h"></i> Préférences :</label
+              >
+              <div class="checkbox-group">
+                <label class="checkbox-field">
+                  <input
+                    type="checkbox"
+                    name="preferences"
+                    value="non_fumeur"
+                  />
+                  Non-fumeur
+                </label>
+                <label class="checkbox-field">
+                  <input type="checkbox" name="preferences" value="animaux" />
+                  Animaux acceptés
+                </label>
+                <label class="checkbox-field">
+                  <input type="checkbox" name="preferences" value="musique" />
+                  Musique à bord
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <input type="hidden" id="userId" name="userId" value="1" />
+
+          <div class="form-actions">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="updateProfile(userId.value, newName.value, newSurname.value, role.value)"
+            >
+              <i class="fas fa-save"></i> Enregistrer les modifications
+            </button>
+            <button type="reset" class="btn btn-outline">
+              <i class="fas fa-undo"></i> Réinitialiser
+            </button>
+          </div>
         </form>
       </section>
     </main>
+
     <footer>
       <div class="footer-content">
         <div class="footer-section">
-          <h3>Contact</h3>
+          <h3><i class="fas fa-envelope"></i> Contact</h3>
           <p>
-            Email: <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+            Email : <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
           </p>
-          <p>Tél: +33 (0)1 23 45 67 89</p>
+          <p><i class="fas fa-phone"></i> Tél : +33 (0)1 23 45 67 89</p>
         </div>
         <div class="footer-section">
-          <h3>Liens utiles</h3>
+          <h3><i class="fas fa-link"></i> Liens utiles</h3>
           <ul>
             <li><a href="#">Mentions légales</a></li>
             <li><a href="#">Politique de confidentialité</a></li>
@@ -114,7 +233,7 @@
           </ul>
         </div>
         <div class="footer-section">
-          <h3>À propos</h3>
+          <h3><i class="fas fa-info-circle"></i> À propos</h3>
           <p>
             EcoRide s'engage pour une mobilité plus verte et plus économique.
           </p>
@@ -124,9 +243,21 @@
         <p>&copy; 2025 EcoRide - Tous droits réservés</p>
       </div>
     </footer>
+
     <script type="module">
-      import { updateProfile } from "../js/modules/profile.js";
+      import {
+        updateProfile,
+        toggleChauffeurInfo,
+      } from "../js/modules/profile.js";
+      import { initialiserFormValidation } from "../js/modules/form-validation.js";
+
       window.updateProfile = updateProfile;
+      window.toggleChauffeurInfo = toggleChauffeurInfo;
+
+      // Initialisation du formulaire
+      document.addEventListener("DOMContentLoaded", () => {
+        initialiserFormValidation("update-profile-form");
+      });
     </script>
   </body>
 </html>
