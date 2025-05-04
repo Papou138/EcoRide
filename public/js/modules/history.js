@@ -1,4 +1,6 @@
-class TripHistory {
+import { showNotification } from "./notifications.js";
+
+export class TripHistory {
   constructor() {
     this.container = document.getElementById("trips-history");
     this.init();
@@ -11,16 +13,24 @@ class TripHistory {
   async loadTripHistory() {
     try {
       const response = await fetch(
-        "../php/controllers/history/get_trip_history.php"
+        "../../backend/history/get_trip_history.php"
       );
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const data = await response.json();
       this.displayTrips(data);
     } catch (error) {
-      this.showError("Erreur lors du chargement de l'historique");
+      showNotification(`Erreur: ${error.message}`, "error");
     }
   }
 
   displayTrips(trips) {
+    if (!trips.length) {
+      this.container.innerHTML =
+        '<p class="no-trips">Aucun voyage dans votre historique</p>';
+      return;
+    }
     this.container.innerHTML = trips
       .map((trip) => this.createTripHTML(trip))
       .join("");
@@ -28,41 +38,50 @@ class TripHistory {
 
   createTripHTML(trip) {
     return `
-          <div class="trip" data-trip-id="${trip.id}">
-              <h3>Trajet du ${this.formatDate(trip.date)}</h3>
-              <p><strong>De :</strong> ${trip.departure}</p>
-              <p><strong>À :</strong> ${trip.destination}</p>
-              <p><strong>Chauffeur :</strong> ${trip.driver}</p>
-              <p><strong>Prix :</strong> ${trip.price} €</p>
-              <button onclick="tripHistory.cancelTrip(${
-                trip.id
-              })">Annuler</button>
-          </div>
-      `;
+            <div class="trip" id="trip-${trip.id}">
+                <h3>Trajet du ${this.formatDate(trip.date)}</h3>
+                <p><i class="fas fa-map-marker-alt"></i> <strong>De:</strong> ${
+                  trip.departure
+                }</p>
+                <p><i class="fas fa-map-marker"></i> <strong>À:</strong> ${
+                  trip.destination
+                }</p>
+                <p><i class="fas fa-user"></i> <strong>Chauffeur:</strong> ${
+                  trip.driver
+                }</p>
+                <p><i class="fas fa-euro-sign"></i> <strong>Prix:</strong> ${
+                  trip.price
+                } €</p>
+                <button class="cancel-trip" onclick="tripHistory.cancelTrip(${
+                  trip.id
+                })">
+                    <i class="fas fa-times"></i> Annuler
+                </button>
+            </div>
+        `;
   }
 
   async cancelTrip(tripId) {
-    if (!confirm("Êtes-vous sûr de vouloir annuler ce voyage ?")) return;
-
     try {
-      const response = await fetch(
-        "../php/controllers/history/cancel_trip.php",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ tripId }),
-        }
-      );
-      const result = await response.json();
+      const response = await fetch("../../backend/history/cancel_trip.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]')
+            .content,
+        },
+        body: JSON.stringify({ tripId }),
+      });
 
-      if (result.success) {
-        await this.loadTripHistory();
-        this.showSuccess("Voyage annulé avec succès");
+      const data = await response.json();
+      if (data.success) {
+        document.getElementById(`trip-${tripId}`).remove();
+        showNotification("Voyage annulé avec succès", "success");
       } else {
-        throw new Error(result.message);
+        throw new Error(data.message || "Erreur lors de l'annulation");
       }
     } catch (error) {
-      this.showError("Erreur lors de l'annulation du voyage");
+      showNotification(error.message, "error");
     }
   }
 
@@ -73,22 +92,8 @@ class TripHistory {
       year: "numeric",
     });
   }
-
-  showError(message) {
-    // Utilise le système de notification global
-    if (window.showNotification) {
-      window.showNotification(message, "error");
-    } else {
-      alert(message);
-    }
-  }
-
-  showSuccess(message) {
-    if (window.showNotification) {
-      window.showNotification(message, "success");
-    }
-  }
 }
 
 // Initialisation
 const tripHistory = new TripHistory();
+window.tripHistory = tripHistory; // Pour l'accès global

@@ -5,7 +5,8 @@ require_once '../../backend/voyage.php';
 header('Content-Type: application/json');
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+// Vérification de la session et du token CSRF
+if (!isset($_SESSION['user_id']) || !isset($_SERVER['HTTP_X_CSRF_TOKEN']) || $_SERVER['HTTP_X_CSRF_TOKEN'] !== $_SESSION['csrf_token']) {
     http_response_code(401);
     echo json_encode(['error' => 'Non autorisé']);
     exit;

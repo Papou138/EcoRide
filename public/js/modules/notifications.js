@@ -1,83 +1,52 @@
-class TripHistory {
+export class NotificationManager {
   constructor() {
-    this.container = document.getElementById("trips-history");
-    this.init();
+    this.container = this.createNotificationContainer();
   }
 
-  async init() {
-    await this.loadTripHistory();
+  createNotificationContainer() {
+    const container = document.createElement("div");
+    container.id = "notification-container";
+    container.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1000;
+      `;
+    document.body.appendChild(container);
+    return container;
   }
 
-  async loadTripHistory() {
-    try {
-      const response = await fetch(
-        "../php/controllers/history/get_trip_history.php"
-      );
-      const data = await response.json();
-      this.displayTrips(data);
-    } catch (error) {
-      this.showError("Erreur lors du chargement de l'historique");
-    }
-  }
-
-  displayTrips(trips) {
-    this.container.innerHTML = trips
-      .map((trip) => this.createTripHTML(trip))
-      .join("");
-  }
-
-  createTripHTML(trip) {
-    return `
-          <div class="trip" data-trip-id="${trip.id}">
-              <h3>Trajet du ${this.formatDate(trip.date)}</h3>
-              <p><strong>De :</strong> ${trip.departure}</p>
-              <p><strong>À :</strong> ${trip.destination}</p>
-              <p><strong>Chauffeur :</strong> ${trip.driver}</p>
-              <p><strong>Prix :</strong> ${trip.price} €</p>
-              <button onclick="tripHistory.cancelTrip(${
-                trip.id
-              })">Annuler</button>
+  show(message, type = "info") {
+    const notification = document.createElement("div");
+    notification.className = `notification ${type}`;
+    notification.innerHTML = `
+          <div class="notification-content">
+              ${message}
+              <button class="notification-close">&times;</button>
           </div>
       `;
+
+    // Ajoute la notification au conteneur
+    this.container.appendChild(notification);
+
+    // Suppression automatique après 5 secondes
+    setTimeout(() => this.remove(notification), 5000);
+
+    // Gestion du bouton de fermeture
+    const closeButton = notification.querySelector(".notification-close");
+    closeButton.addEventListener("click", () => this.remove(notification));
   }
 
-  async cancelTrip(tripId) {
-    if (!confirm("Êtes-vous sûr de vouloir annuler ce voyage ?")) return;
-
-    try {
-      const response = await fetch(
-        "../php/controllers/history/cancel_trip.php",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ tripId }),
-        }
-      );
-      const result = await response.json();
-
-      if (result.success) {
-        await this.loadTripHistory();
-        showNotification("Voyage annulé avec succès", "success");
-      } else {
-        throw new Error(result.message);
-      }
-    } catch (error) {
-      this.showError("Erreur lors de l'annulation du voyage");
-    }
-  }
-
-  formatDate(dateString) {
-    return new Date(dateString).toLocaleDateString("fr-FR", {
-      day: "numeric",
-      month: "long",
-      year: "numeric",
-    });
-  }
-
-  showError(message) {
-    showNotification(message, "error");
+  remove(notification) {
+    notification.classList.add("fade-out");
+    setTimeout(() => notification.remove(), 300);
   }
 }
 
-// Initialisation
-const tripHistory = new TripHistory();
+// Création de l'instance globale
+const notificationManager = new NotificationManager();
+
+// Export des méthodes pour utilisation globale
+export function showNotification(message, type) {
+  notificationManager.show(message, type);
+}

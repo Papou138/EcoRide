@@ -5,30 +5,30 @@ require_once '../../backend/voyage.php';
 header('Content-Type: application/json');
 session_start();
 
-if (!isset($_SESSION['user_id'])) {
+// Vérification de la session et du token CSRF
+if (!isset($_SESSION['user_id']) || !isset($_SERVER['HTTP_X_CSRF_TOKEN']) || $_SERVER['HTTP_X_CSRF_TOKEN'] !== $_SESSION['csrf_token']) {
     http_response_code(401);
     echo json_encode(['success' => false, 'message' => 'Non autorisé']);
     exit;
 }
 
-$data = json_decode(file_get_contents('php://input'), true);
-$tripId = $data['tripId'] ?? null;
-
-if (!$tripId) {
-    http_response_code(400);
-    echo json_encode(['success' => false, 'message' => 'ID du voyage manquant']);
-    exit;
-}
-
 try {
+    $data = json_decode(file_get_contents('php://input'), true);
+    $tripId = filter_var($data['tripId'] ?? null, FILTER_VALIDATE_INT);
+
+    if (!$tripId) {
+        throw new Exception('ID de voyage invalide');
+    }
+
     $trip = new Trip($db);
-    $result = $trip->cancelTrip($tripId, $_SESSION['user_id']);
-    
-    echo json_encode([
-        'success' => $result,
-        'message' => $result ? 'Voyage annulé avec succès' : 'Échec de l\'annulation'
-    ]);
+    $success = $trip->cancelTrip($tripId, $_SESSION['user_id']);
+
+    if ($success) {
+        echo json_encode(['success' => true]);
+    } else {
+        throw new Exception('Impossible d\'annuler le voyage');
+    }
 } catch (Exception $e) {
     http_response_code(500);
-    echo json_encode(['success' => false, 'message' => 'Erreur serveur']);
+    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
 }
