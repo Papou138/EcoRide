@@ -8,29 +8,44 @@ export function createUser(nom, prenom, email, password) {
     return;
   }
 
+  // Construction des données du formulaire
+  const formData = new FormData();
+  formData.append("action", "createUser");
+  formData.append("nom", nom);
+  formData.append("prenom", prenom);
+  formData.append("email", email);
+  formData.append("password", password);
+
   // Appel API
   fetch("../../backend/user.php", {
     method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
-    body: `action=createUser&nom=${encodeURIComponent(
-      nom
-    )}&prenom=${encodeURIComponent(prenom)}&email=${encodeURIComponent(
-      email
-    )}&password=${encodeURIComponent(password)}`,
+    body: formData,
   })
-    .then((response) => {
-      if (!response.ok) throw new Error("Erreur réseau");
-      return response.text();
-    })
-    .then((message) => {
-      alert("Compte créé avec succès !");
-      window.location.href = "index.html";
+    .then(async (response) => {
+      // Vérifier d'abord si la réponse est OK
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP: ${response.status}`);
+      }
+
+      // Vérifier si la réponse contient du contenu
+      const text = await response.text();
+      if (!text) {
+        throw new Error("Réponse vide du serveur");
+      }
+
+      // Tenter de parser le JSON
+      try {
+        const data = JSON.parse(text);
+        alert("Compte créé avec succès !");
+        window.location.href = "index.html";
+      } catch (e) {
+        console.log("Réponse no-JSON", text);
+        throw new Error("Format de réponse invalide");
+      }
     })
     .catch((error) => {
-      console.error("Erreur : ", error);
-      alert("Erreur lors de la création du compte");
+      console.log("Erreur détaillée : ", error);
+      alert(`Erreur lors de la création du compte : ${error.message}`);
     });
 }
 

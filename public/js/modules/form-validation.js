@@ -20,6 +20,12 @@ export function togglePassword(passwordFieldId, toggleButtonId) {
 export function validateInput(input) {
   const errorDiv = document.getElementById(`${input.id}-error`);
 
+  // Vérifier si l'élément d'erreur existe
+  if (!errorDiv) {
+    console.warn(`Element d'erreur non trouvé pour l'input: ${input.id}`);
+    return;
+  }
+
   if (!input.checkValidity()) {
     errorDiv.textContent = input.title || "Ce champ est requis";
     errorDiv.classList.add("visible");
@@ -35,9 +41,29 @@ export function validateInput(input) {
 // Ajoute des écouteurs d'événements pour valider les champs de formulaire lors de la saisie
 export function initialiserFormValidation(formId) {
   const form = document.getElementById(formId);
+
+  // Vérifier si le formulaire existe
+  if (!form) {
+    console.error(`Formulaire avec l'ID "${formId}" non trouvé`);
+    return;
+  }
+
   const inputs = form.querySelectorAll("input[required]");
 
   inputs.forEach((input) => {
-    input.addEventListener("input", () => validateInput(input));
+    if (input.id) {
+      // Verifier si l'element d'erreur existe, sinon le créer
+      const errorDivId = `${input.id}-error`;
+      let errorDiv = document.getElementById(errorDivId);
+
+      if (!errorDiv) {
+        errorDiv = document.createElement("div");
+        errorDiv.id = errorDivId;
+        errorDiv.className = "error-message";
+        input.parentNode.insertBefore(errorDiv, input.nextSibling);
+      }
+
+      input.addEventListener("input", () => validateInput(input));
+    }
   });
 }
