@@ -80,7 +80,7 @@ function handleCreateUser() {
 }
 
 // READ - Récupération des informations utilisateur
-function hendleGetUser() {
+function handleGetUser() {
     global $pdo;
 
     if (!isset($_POST['id'])) {
