@@ -9,7 +9,7 @@ header {
   position: relative; /* Position relative pour le header */
 }
 
-.header-cnontent {
+.header-content {
   display: flex; /* Utilise flexbox pour le contenu du header */
   justify-content: space-between; /* Espace entre les éléments */
   align-items: center; /* Centre verticalement les éléments */

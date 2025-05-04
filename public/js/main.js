@@ -16,7 +16,10 @@ import {
 } from "./modules/voyage.js";
 import { updateProfile, toggleChauffeurInfo } from "./modules/profile.js";
 import { approveReview, rejectReview, resolveIssue } from "./modules/review.js";
-import { createEmployeeAccount, suspendAccount } from "./modules/employee.js";
+import {
+  createEmployeeAccount,
+  suspendAccount,
+} from "../js/modules/employee.js";
 import { participer } from "./modules/participer.js";
 import { initialiserMenu } from "./modules/menu.js";
 import { initialiserRecherche } from "./modules/recherche.js";
