@@ -22,3 +22,4 @@
 @import "_buttons.css"; /* Importation des styles des boutons */
 @import "_alerts.css"; /* Importation des styles des alertes */
 @import "_register.css"; /* Importation des styles du formulaire d'inscription */
+@import "_history.css";
