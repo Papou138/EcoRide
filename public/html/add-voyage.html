@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Proposez un nouveau trajet de covoiturage sur EcoRide et partagez vos déplacements de manière écologique"
+    />
     <title>Proposer un Voyage - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
@@ -57,46 +61,129 @@
     </header>
 
     <main>
-      <section id="add-trip">
-        <h2>Proposer un Nouveau Voyage</h2>
-        <form id="trip-form">
-          <label for="depart">Départ :</label>
-          <input type="text" id="depart" name="depart" required />
+      <section id="add-trip" class="form-container">
+        <h2><i class="fas fa-plus-circle"></i> Proposer un Nouveau Voyage</h2>
+        <p class="form-intro">
+          Remplissez ce formulaire pour proposer un nouveau trajet de
+          covoiturage
+        </p>
 
-          <label for="arrivee">Arrivée :</label>
-          <input type="text" id="arrivee" name="arrivee" required />
+        <form id="trip-form" class="form-group">
+          <div class="form-section">
+            <h3><i class="fas fa-route"></i> Informations du trajet</h3>
 
-          <label for="date">Date :</label>
-          <input type="date" id="date" name="date" required />
+            <div class="form-field">
+              <label for="depart">
+                <i class="fas fa-map-marker-alt"></i> Point de départ :</label
+              >
+              <input
+                type="text"
+                id="depart"
+                name="depart"
+                required
+                placeholder="Ex: Paris"
+              />
+              <div id="depart-error" class="error-message"></div>
+            </div>
 
-          <label for="heure">Heure de Départ :</label>
-          <input type="time" id="heure" name="heure-depart" required />
+            <div class="form-field">
+              <label for="arrivee">
+                <i class="fas fa-flag-checkered"></i> Destination :</label
+              >
+              <input
+                type="text"
+                id="arrivee"
+                name="arrivee"
+                required
+                placeholder="Ex: Lyon"
+              />
+            </div>
+            <div id="arrivee-error" class="error-message"></div>
 
-          <label for="prix">Prix (en €) :</label>
-          <input type="number" id="prix" name="prix" required min="1" />
+            <div class="form-field">
+              <label for="date"
+                ><i class="fas fa-calendar-alt"></i> Date du trajet :</label
+              >
+              <input type="date" id="date" name="date" required />
+            </div>
+            <div id="date-error" class="error-message"></div>
 
-          <label for="vehicule">Véhicule :</label>
-          <select id="vehicule" name="vehicule">
-            <option value="vehicule1">Hyundai Ioniq 5</option>
-            <option value="vehicule2">Kia EV6</option>
-            <option value="vehicule3">Peugeot e-208</option>
-            <option value="vehicule4">Renault Zoe</option>
-            <option value="vehicule5">Renault Megane E-Tech</option>
-            <option value="vehicule6">Skoda Enyaq iV</option>
-            <option value="vehicule7">Tesla Model 3</option>
-            <option value="vehicule8">Volkswagen ID.3</option>
-            <!-- Ajouter d'autres options selon les véhicules disponibles -->
-          </select>
+            <div class="form-field">
+              <label for="heure"
+                ><i class="fas fa-clock"></i> Heure de Départ :</label
+              >
+              <input type="time" id="heure" name="heure-depart" required />
+              <div id="heure-error" class="error-message"></div>
+            </div>
+          </div>
 
-          <label for="places">Places Disponibles :</label>
-          <input type="number" id="places" name="places" required min="1" />
+          <div class="form-section">
+            <h3><i class="fas fa-car"></i> Détails du Voyage</h3>
 
-          <button
-            type="button"
-            onclick="createVoyage(depart.value, arrivee.value, date.value, heure.value, prix.value, places.value)"
-          >
-            Proposer le Voyage
-          </button>
+            <div class="form-field">
+              <label for="prix"
+                ><i class="fas fa-euro-sign"></i>Prix par personne :</label
+              >
+              <input
+                type="number"
+                id="prix"
+                name="prix"
+                required
+                min="1"
+                step="0.01"
+                placeholder="Ex: 20.50"
+              />
+              <div id="prix-error" class="error-message"></div>
+            </div>
+
+            <div class="form-field">
+              <label for="vehicule">
+                <i class="fas fa-car-side"></i> Véhicule :</label
+              >
+              <select id="vehicule" name="vehicule" required>
+                <option value="">Sélectionner votre véhicule</option>
+                <option value="ioniq5">Hyundai Ioniq 5</option>
+                <option value="ev6">Kia EV6</option>
+                <option value="e208">Peugeot e-208</option>
+                <option value="zoe">Renault Zoe</option>
+                <option value="megane">Renault Megane E-Tech</option>
+                <option value="enyaq">Skoda Enyaq iV</option>
+                <option value="model3">Tesla Model 3</option>
+                <option value="id3">Volkswagen ID.3</option>
+                <!-- Ajouter d'autres options selon les véhicules disponibles -->
+              </select>
+              <div id="vehicule-error" class="error-message"></div>
+            </div>
+
+            <div class="form-field">
+              <label for="places">
+                <i class="fas fa-users"></i> Places Disponibles :</label
+              >
+              <input
+                type="number"
+                id="places"
+                name="places"
+                required
+                min="1"
+                max="8"
+                placeholder="Ex: 3"
+              />
+              <div id="places-error" class="error-message"></div>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button
+              type="submit"
+              class="btn btn-primary"
+              onclick="createVoyage(depart.value, arrivee.value, date.value, heure.value, prix.value, places.value)"
+            >
+              <i class="fas fa-plus"></i> Proposer le Voyage
+            </button>
+            <button type="reset" class="btn btn-outline">
+              <i class="fas fa-undo"></i> Réinitialiser
+            </button>
+          </div>
         </form>
       </section>
     </main>
