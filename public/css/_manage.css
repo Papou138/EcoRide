@@ -1,0 +1,227 @@
+/* ---------------------------------------------------------------------------------------
+ *  Mise en page CSS - manage-voyage.html
+ * ---------------------------------------------------------------------------------------
+ */
+
+.manage-section {
+  max-width: 1200px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-md);
+}
+
+.section-intro {
+  color: var(--colot-text-secondary);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-lg);
+}
+
+.voyages-list {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.voyage-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+}
+
+.voyage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.voyage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-bg-secondary);
+}
+
+.voyage-header h3 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  margin: 0;
+}
+
+.voyage-status {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.voyage-status.en-attente {
+  background-color: var(--color-warning);
+  color: var(--color-text-primary);
+}
+
+.voyage-status.en-cours {
+  background-color: var(--color-info);
+  color: var(--color-text-light);
+}
+
+.voyage-status.termine {
+  background-color: var(--color-success);
+  color: var(--color-text-light);
+}
+
+.voyage-status.annule {
+  background-color: var(--color-error);
+  color: var(--color-text-light);
+}
+
+.voyage-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.detail-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.detail-group p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.detail-group i {
+  color: var(--color-primary);
+  width: 20px;
+  text-align: center;
+}
+
+.detail-group strong {
+  color: var(--color-text-primary);
+  font-weight: 700;
+}
+
+/* Styles des boutons */
+.voyage-actions {
+  display: flex;
+  gap: var(--space-md);
+  justify-content: flex-end;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-bg-secondary);
+}
+
+/* Bouton Démarrer */
+.btn.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  transition: var(--transition-base);
+}
+
+.btn.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Bouton Arrivée */
+.btn.btn-success {
+  background-color: var(--color-success);
+  color: var(--color-text-light);
+  transition: var(--transition-base);
+}
+
+.btn.btn-success:hover {
+  background-color: #219a3b; /* Version plus foncée du vert */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Bouton Annuler */
+.btn.btn-danger {
+  background-color: var(--color-error);
+  color: var(--color-text-light);
+  transition: var(--transition-base);
+}
+
+.btn.btn-danger:hover {
+  background-color: #c82333; /* Version plus foncée du rouge */
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Style commun pour tous les boutons */
+.voyage-actions .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Style pour les icônes dans les boutons */
+.voyage-actions .btn i {
+  font-size: var(--font-size-base);
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .voyage-details {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .detail-group {
+    gap: var(--space-xs);
+    padding: var(--space-sm);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+  }
+
+  .detail-group p {
+    font-size: var(--font-size-sm);
+  }
+
+  .voyage-actions {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .voyage-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .voyage-details {
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+  }
+
+  .detail-group {
+    padding: var(--space-xs);
+  }
+
+  .detail-group p {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-xxs);
+  }
+
+  .detail-group i {
+    margin-bottom: var(--space-xxs);
+  }
+}
