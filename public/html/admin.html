@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Espace administrateur EcoRide - Gestion de la plateforme et supervision des activités"
+    />
     <title>Espace Administrateur - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
@@ -55,48 +59,91 @@
     </header>
 
     <main>
-      <section id="admin-dashboard">
-        <h2>Tableau de Bord Administrateur</h2>
-        <div id="employee-management">
-          <h3>Gestion des Comptes Employés</h3>
-          <form id="create-employee-form">
-            <label for="employee-email">Email de l'Employé :</label>
-            <input
-              type="email"
-              id="employee-email"
-              name="employee-email"
-              required
-            />
-            <button onclick="createCompteEmploye(email)">
-              Créer Compte Employé
-            </button>
-          </form>
-        </div>
-        <div id="performance">
-          <h3>Performance de la Plateforme</h3>
-          <div id="chart-covoiturages">
-            <h4>Nombre de Covoiturages par Jour</h4>
-            <!-- Graphique ici -->
-            <canvas id="covoituragesChart"></canvas>
+      <section id="admin-dashboard" class="dashboard-section">
+        <h2>
+          <i class="fas fa-user-shield"></i> Tableau de Bord Administrateur
+        </h2>
+        <p class="section-intro">
+          Gérez les comptes employés et supervisez les performances de la
+          plateforme
+        </p>
+
+        <div class="dashboard-grid">
+          <!-- Gestion des comptes employés -->
+          <div class="dashboard-card">
+            <h3>
+              <i class="fas fa-users-cog"></i> Gestion des Comptes Employés
+            </h3>
+            <form id="create-employee-form" class="form-group">
+              <div class="form-field">
+                <label for="employee-email">
+                  <i class="fas fa-envelope"></i> Email de l'Employé :</label
+                >
+                <input
+                  type="email"
+                  id="employee-email"
+                  name="employee-email"
+                  required
+                  placeholder="Ex: email@exemple.com"
+                />
+                <div id="employee-email-error" class="error-message"></div>
+              </div>
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  onclick="createCompteEmploye(employeeEmail.value)"
+                >
+                  <i class="fas fa-user-plus"></i> Créer Compte Employé
+                </button>
+              </div>
+            </form>
           </div>
-          <div id="chart-credits">
-            <h4>Crédits Gagnés par la Plateforme</h4>
-            <!-- Graphique ici -->
-            <canvas id="creditsChart"></canvas>
+
+          <!-- Suspension de compte -->
+          <div class="dashboard-card">
+            <h3><i class="fas fa-user-lock"></i> Suspension de Compte</h3>
+            <form id="suspend-form" class="form-group">
+              <div class="form-field">
+                <label for="account-email">
+                  <i class="fas fa-envelope"></i> Email du Compte :</label
+                >
+                <input
+                  type="email"
+                  id="account-email"
+                  name="account-email"
+                  required
+                  placeholder="Ex: email@exemple.com"
+                />
+                <div id="account-email-error" class="error-message"></div>
+              </div>
+              <div class="form-actions">
+                <button
+                  type="button"
+                  class="btn btn-danger"
+                  onclick="suspendCompte(accountEmail.value)"
+                >
+                  <i class="fas fa-ban"></i> Suspendre Compte
+                </button>
+              </div>
+            </form>
           </div>
-        </div>
-        <div id="suspend-account">
-          <h3>Suspendre un Compte</h3>
-          <form id="suspend-form">
-            <label for="account-email">Email du Compte :</label>
-            <input
-              type="email"
-              id="account-email"
-              name="account-email"
-              required
-            />
-            <button onclick="suspendCompte(userId)">Suspendre Compte</button>
-          </form>
+
+          <!-- Statistiques des covoiturages -->
+          <div class="dashboard-card">
+            <h3><i class="fas fa-chart-line"></i> Activité des Covoiturages</h3>
+            <div class="chart-container">
+              <canvas id="covoituragesChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Statistiques des crédits -->
+          <div class="dashboard-card">
+            <h3><i class="fas fa-coins"></i> Performance Financière</h3>
+            <div class="chart-container">
+              <canvas id="creditsChart"></canvas>
+            </div>
+          </div>
         </div>
       </section>
     </main>

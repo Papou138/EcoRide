@@ -1,0 +1,107 @@
+/* ---------------------------------------------------------------------------------------
+ *  Mise en page CSS - admin.html
+ * ---------------------------------------------------------------------------------------
+ */
+
+.dashboard-section {
+  max-width: 1200px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-md);
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  margin-top: var(--space-lg);
+}
+
+.dashboard-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.dashboard-card h3 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-bg-secondary);
+}
+
+.chart-container {
+  height: 300px;
+  margin-top: var(--space-md);
+  position: relative;
+  width: 100%;
+}
+
+.chart-container canvas {
+  max-height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Formulaires */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-field label {
+  color: var(--color-text-primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.form-field i {
+  color: var(--color-primary);
+  width: 20px;
+  text-align: center;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+/* Responsive design */
+@media screen and (max-width: 1024px) {
+  .chart-container {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-container {
+    height: 200px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .dashboard-card {
+    padding: var(--space-md);
+  }
+
+  .chart-container {
+    height: 180px;
+    margin-top: var(--space-sm);
+  }
+}
