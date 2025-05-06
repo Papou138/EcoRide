@@ -1,0 +1,17 @@
+/* ---------------------------------------------------------------------------------------
+ *  Styles de la page user-profile.html
+ * ---------------------------------------------------------------------------------------
+ */
+
+/* Styles spécifiques pour les labels du profil utilisateur */
+.form-field label {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.checkbox-field label {
+  font-weight: 400; /* Garde le texte normal pour les checkbox */
+}
