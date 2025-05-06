@@ -1,0 +1,181 @@
+/* ---------------------------------------------------------------------------------------
+ *  Mise en page CSS - employee.html
+ * ---------------------------------------------------------------------------------------
+ */
+
+.dashboard-section {
+  max-width: 1200px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-md);
+}
+
+.dashboard-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  margin-top: var(--space-lg);
+}
+
+.dashboard-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.dashboard-card h3 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-bg-secondary);
+}
+
+/* Styles des avis */
+.avis-card {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.avis-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.avis-header h4 {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-base);
+}
+
+.avis-date {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.rating {
+  color: var(--color-warning);
+  margin-bottom: var(--space-xs);
+}
+
+.avis-text {
+  color: var(--color-text-secondary);
+  margin: var(--space-sm) 0;
+}
+
+.avis-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  justify-content: flex-end;
+}
+
+.avis-actions .btn {
+  min-width: 120px;
+  padding: var(--space-sm) var(--space-md);
+  transition: all var(--transition-base);
+}
+
+.avis-actions .btn i {
+  margin-right: var(--space-xs);
+}
+
+/* Styles des problèmes */
+.probleme-card {
+  background-color: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.probleme-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+.probleme-id {
+  font-weight: 500;
+  color: var(--color-primary);
+}
+
+.probleme-status {
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  background-color: var(--color-warning);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.probleme-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.probleme-details p {
+  margin: 0;
+  color: var(--color-text-secondary);
+}
+
+.probleme-details i {
+  width: 20px;
+  color: var(--color-primary);
+  margin-right: var(--space-xs);
+}
+
+.probleme-description {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+.probleme-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+  .avis-actions {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+
+  .avis-actions .btn {
+    width: 100%;
+    justify-content: center;
+    padding: var(--space-sm);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .avis-actions {
+    margin-top: var(--space-sm);
+  }
+
+  .avis-actions .btn {
+    font-size: var(--font-size-sm);
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .avis-actions .btn i {
+    font-size: var(--font-size-sm);
+  }
+}
+
+/* Styles d'interaction */
+.avis-actions .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.avis-actions .btn:active {
+  transform: translateY(0);
+}
