@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Gérez vos covoiturages sur EcoRide - Suivez et contrôlez vos trajets en temps réel"
+    />
     <title>Gestion des Covoiturages - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
@@ -59,22 +63,75 @@
     </header>
 
     <main>
-      <section id="manage-voyage">
-        <h2>Gérer vos Covoiturages</h2>
-        <div id="voyage-controls">
-          <h3>Covoiturage du 15 avril 2025</h3>
-          <p><strong>De :</strong> Paris</p>
-          <p><strong>À :</strong> Lyon</p>
-          <button id="start-voyage-btn" onclick="startVoyage(tripId)">
-            Démarrer le Covoiturage
-          </button>
-          <button
-            id="end-voyage-btn"
-            onclick="endVoyage(tripId)"
-            style="display: none"
-          >
-            Arrivée à Destination
-          </button>
+      <section id="manage-voyage" class="manage-section">
+        <h2><i class="fas fa-tasks"></i> Gérer vos Covoiturages</h2>
+        <p class="section-intro">
+          Suivez et gérez vos covoiturages en cours et à venir
+        </p>
+
+        <div class="voyages-list">
+          <!-- Exemple de covoiturage-->
+          <div class="voyage-card">
+            <div class="voyage-header">
+              <h3>
+                <i class="fas fa-calendar"></i> Covoiturage du 15 Avril 2025
+              </h3>
+              <span class="voyage-status">En attente</span>
+            </div>
+
+            <div class="voyage-details">
+              <div class="detail-group">
+                <p>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <strong>Départ :</strong> Paris
+                </p>
+                <p>
+                  <i class="fas fa-flag-checkered"></i>
+                  <strong>Arrivée :</strong> Lyon
+                </p>
+                <p>
+                  <i class="fas fa-clock"></i>
+                  <strong>Heure de départ :</strong> 09:00
+                </p>
+              </div>
+
+              <div class="detail-group">
+                <p>
+                  <i class="fas fa-users"></i>
+                  <strong>Passagers :</strong> 2/4
+                </p>
+                <p>
+                  <i class="fas fa-euro-sign"></i>
+                  <strong>Prix :</strong> 20€/personne
+                </p>
+                <p>
+                  <i class="fas fa-car"></i>
+                  <strong>Véhicule :</strong> Tesla Model 3
+                </p>
+              </div>
+            </div>
+
+            <div class="voyage-actions">
+              <button
+                id="start-voyage-btn"
+                class="btn btn-primary"
+                onclick="startVoyage(tripId)"
+              >
+                <i class="fas fa-play"></i> Démarrer le covoiturage
+              </button>
+              <button
+                id="end-voyage-btn"
+                class="btn btn-success"
+                onclick="endVoyage(tripId)"
+                style="display: none"
+              >
+                <i class="fas fa-check"></i> Arrivée à Destination
+              </button>
+              <button class="btn btn-danger" onclick="annulVoyage(tripId)">
+                <i class="fas fa-times"></i> Annuler
+              </button>
+            </div>
+          </div>
         </div>
       </section>
     </main>
@@ -109,6 +166,16 @@
       </div>
     </footer>
 
-    <script src="../js/main.js"></script>
+    <script type="module">
+      import {
+        startVoyage,
+        endVoyage,
+        annulVoyage,
+      } from "../js/modules/voyage.js";
+
+      window.startVoyage = startVoyage;
+      window.endVoyage = endVoyage;
+      window.annulVoyage = annulVoyage;
+    </script>
   </body>
 </html>
