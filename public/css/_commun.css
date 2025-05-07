@@ -3,7 +3,7 @@
  * ---------------------------------------------------------------------------------------
  */
 
-/* Mise en page Commune */
+/* Mise en page Commun */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -14,7 +14,23 @@
   padding: var(--space-xl) 0;
 }
 
-/* Grilles Communes */
+/* Titres */
+.section-title {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  font-weight: 700;
+}
+
+.section-subtitle {
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-md);
+}
+
+/* Grilles */
 .grid {
   display: grid;
   gap: var(--space-md);
@@ -32,7 +48,7 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-/* Cartes Communes */
+/* Cartes */
 .card {
   background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
@@ -46,166 +62,168 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* Formulaires Communs */
+/* Boutons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-base);
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-bg-tertiary);
+}
+
+/* Formulaires */
 .form-container {
   max-width: 600px;
   margin: var(--space-lg) auto;
-  padding: var(--space-lg);
+  padding: var(--space-xl);
   background-color: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
 }
 
 .form-group {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 .form-field {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
-  margin-bottom: var(--space-md);
+  gap: var(--space-sm);
 }
 
 .form-label {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: var(--space-sm);
   color: var(--color-text-primary);
-  font-weight: 500;
+  font-weight: 700;
+  font-size: var(--font-size-md);
+  transition: var(--transition-base);
 }
 
 .form-label i {
   color: var(--color-primary);
-  width: 20px;
+  width: 24px;
   text-align: center;
+  font-size: 1.1em;
+}
+
+label {
+  font-weight: 600;
+  color: var(--color-text-primary);
 }
 
 .form-input {
-  padding: var(--space-md);
-  border: 1px solid var(--color-bg-secondary);
+  padding: var(--space-md) var(--space-lg);
+  border: 2px solid var(--color-bg-secondary);
   border-radius: var(--radius-md);
   font-size: var(--font-size-base);
-}
-
-.form-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: var(--space-sm);
-  margin-top: var(--space-lg);
-}
-
-/* Messages d'erreur */
-.error-message {
-  color: var(--color-danger);
-  font-size: var(--font-size-sm);
-  margin-top: var(--space-xs);
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-/* Badges d'état */
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-sm);
+  transition: var(--transition-base);
+  background-color: var(--color-bg-secondary);
   font-weight: 500;
 }
 
-.status-success {
-  background-color: var(--color-success-light);
-  color: var(--color-success);
+.form-input:hover {
+  border-color: var(--color-primary-light);
 }
 
-.status-warning {
-  background-color: var(--color-warning-light);
-  color: var(--color-warning);
+.form-input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 4px var(--color-primary-light);
 }
 
-.status-danger {
-  background-color: var(--color-danger-light);
+.form-input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+/* Style pour les champs requis */
+.form-input[required] + .form-label::after {
+  content: "*";
+  color: var(--color-primary);
+  margin-left: var(--space-xs);
+}
+
+/* Style pour les champs désactivés */
+.form-input:disabled {
+  background-color: var(--color-bg-tertiary);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Style pour les messages d'erreur */
+.error-message {
   color: var(--color-danger);
-}
-
-/* Utilitaires */
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-.flex {
-  display: flex;
-}
-
-.flex-center {
+  font-size: var(--font-size-sm);
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+  animation: fadeIn 0.3s ease-in-out;
 }
 
-.flex-between {
+.success-message {
+  color: var(--color-success);
+  font-size: var(--font-size-sm);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: var(--space-xs);
 }
 
-.gap-sm {
-  gap: var(--space-sm);
+/* Animation pour les messages */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.gap-md {
-  gap: var(--space-md);
-}
-
-.gap-lg {
-  gap: var(--space-lg);
-}
-
-/* Marges communes */
-.mb-sm {
-  margin-bottom: var(--space-sm);
-}
-
-.mb-md {
-  margin-bottom: var(--space-md);
-}
-
-.mb-lg {
-  margin-bottom: var(--space-lg);
-}
-
-/* Media Queries */
+/* Responsive Design */
 @media screen and (max-width: 768px) {
-  .form-actions {
-    flex-direction: column;
+  .form-container {
+    padding: var(--space-lg);
+    margin: var(--space-md);
   }
 
-  .form-actions .btn {
-    width: 100%;
-  }
-
-  .grid {
-    gap: var(--space-md);
+  .form-input {
+    padding: var(--space-sm) var(--space-md);
   }
 }
 
 @media screen and (max-width: 480px) {
-  .container {
-    padding: 0 var(--space-sm);
-  }
-
-  .card {
-    padding: var(--space-md);
-  }
-
   .form-container {
     padding: var(--space-md);
+    margin: var(--space-sm);
+    border-radius: var(--radius-md);
   }
 }

@@ -62,48 +62,51 @@
         </ul>
       </nav>
     </header>
+
     <main>
-      <section id="presentation">
-        <h2>Bienvenue sur EcoRide</h2>
-        <div class="presentation-content">
-          <div class="text-content">
-            <p>
-              EcoRide est votre solution de covoiturage écologique. Réduisez
-              votre empreinte carbone en partageant vos trajets avec d'autres
-              utilisateurs.
-            </p>
-          </div>
-          <div class="image-container">
-            <img
-              src="../images/EcoRide-Picture.png"
-              alt="Voiture écologique"
-              class="responsive-image"
-              loading="lazy"
-              width="800"
-              height="450"
-            />
+      <section id="presentation" class="presentation-section">
+        <div class="container">
+          <div class="presentation-content">
+            <div class="text-content">
+              <h2>Bienvenue sur EcoRide</h2>
+              <p>
+                EcoRide est votre solution de covoiturage écologique. Réduisez
+                votre empreinte carbone en partageant vos trajets avec d'autres
+                utilisateurs.
+              </p>
+            </div>
+            <div class="image-container">
+              <img
+                src="../images/EcoRide-Picture.png"
+                alt="Voiture écologique"
+                class="responsive-image"
+                loading="lazy"
+                width="800"
+                height="450"
+              />
+            </div>
           </div>
         </div>
       </section>
+
       <section id="recherche" class="search-section">
         <div class="search-container">
           <h2>Rechercher un itinéraire</h2>
 
-          <form
-            id="search-form"
-            role="search"
-            aria-label="Recherche de trajets"
-          >
+          <form aria-label="Recherche de trajets">
             <!-- Champs principaux -->
             <div class="search-main-fields">
               <div class="form-group">
-                <label for="depart">Départ</label>
+                <label for="depart"
+                  ><i class="fas fa-map-marker-alt"></i> Départ</label
+                >
                 <input
                   type="text"
                   id="depart"
                   name="depart"
+                  class="form-input"
                   required
-                  placeholder="Ex: Paris"
+                  placeholder="Ville de départ"
                   aria-labelledby="depart-label"
                   aria-describedby="depart-error"
                   aria-required="true"
@@ -113,13 +116,16 @@
               </div>
 
               <div class="form-group">
-                <label for="arrivee" id="arrivee-label">Arrivée</label>
+                <label for="arrivee"
+                  ><i class="fas fa-map-marker"></i> Arrivée</label
+                >
                 <input
                   type="text"
                   id="arrivee"
                   name="arrivee"
+                  class="form-input"
                   required
-                  placeholder="Ex: Lyon"
+                  placeholder="Ville d'arrivée"
                   aria-labelledby="arrivee-label"
                   aria-describedby="arrivee-error"
                   aria-invalid="false"
@@ -133,11 +139,14 @@
               </div>
 
               <div class="form-group">
-                <label for="date" id="date-label">Date du trajet</label>
+                <label for="date"
+                  ><i class="fas fa-calendar"></i> Date du trajet</label
+                >
                 <input
                   type="date"
                   id="date"
                   name="date"
+                  class="form-input"
                   required
                   min=""
                   aria-labelledby="date-label"
@@ -150,18 +159,19 @@
             <!-- Filtres avancés -->
             <div class="advanced-filters">
               <button type="button" class="toggle-filters" id="toggle-filters">
-                <i class="fas fa-filter"></i> Filtres avancés
+                <i class="fas fa-sliders-h"></i> Filtres avancés
               </button>
 
               <div class="filters-content" id="filters-content">
                 <div class="filters-grid">
                   <div class="form-group">
-                    <label for="ecologique" id="ecologique-label">
+                    <label for="ecologique">
                       <i class="fas fa-leaf"></i> Type de véhicule
                     </label>
                     <select
                       name="ecologique"
                       id="ecologique"
+                      class="form-input"
                       aria-labelledby="ecologique-label"
                     >
                       <option value="">Tous les véhicules</option>
@@ -171,13 +181,14 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="prix" id="prix-label">
-                      <i class="fas fa-euro-sign"></i>Prix Max
+                    <label for="prix">
+                      <i class="fas fa-euro-sign"></i> Prix Max
                     </label>
                     <input
                       type="number"
                       id="prix"
                       name="prix"
+                      class="form-input"
                       placeholder="Ex: 30"
                       min="0"
                       max="1000"
@@ -186,13 +197,14 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="duree" id="duree-label">
-                      <i class="fas fa-clock"></i>Durée Max (heures)
+                    <label for="duree">
+                      <i class="fas fa-clock"></i> Durée Max (heures)
                     </label>
                     <input
                       type="number"
                       id="duree"
                       name="duree"
+                      class="form-input"
                       placeholder="Ex: 5"
                       min="0"
                       max="24"
@@ -200,13 +212,14 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="note" id="note-label">
-                      <i class="fas fa-star"></i>Note Minimum
+                    <label for="note">
+                      <i class="fas fa-star"></i> Note minimale
                     </label>
                     <input
                       type="number"
                       id="note"
                       name="note"
+                      class="form-input"
                       placeholder="Ex: 4"
                       min="0"
                       max="5"
@@ -218,12 +231,13 @@
             </div>
 
             <button type="submit" class="search-button">
-              <i class="fas fa-search"></i>Rechercher
+              <i class="fas fa-search"></i> Rechercher
             </button>
           </form>
           <div id="results" class="results-container"></div>
         </div>
       </section>
+
       <section id="avantages" class="features-section">
         <div class="container">
           <h2>Pourquoi choisir EcoRide ?</h2>
