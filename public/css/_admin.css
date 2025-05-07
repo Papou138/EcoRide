@@ -1,14 +1,22 @@
 /* ---------------------------------------------------------------------------------------
- *  Mise en page CSS - admin.html
+ *  Styles spécifiques pour admin.html
  * ---------------------------------------------------------------------------------------
  */
 
+/* Mise en page */
 .dashboard-section {
   max-width: 1200px;
   margin: var(--space-xl) auto;
   padding: 0 var(--space-md);
 }
 
+.section-intro {
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+
+/* Grille et cartes */
 .dashboard-grid {
   display: grid;
   gap: var(--space-lg);
@@ -29,19 +37,13 @@
   margin-bottom: var(--space-md);
   padding-bottom: var(--space-sm);
   border-bottom: 1px solid var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
-.chart-container {
-  height: 300px;
-  margin-top: var(--space-md);
-  position: relative;
-  width: 100%;
-}
-
-.chart-container canvas {
-  max-height: 100%;
-  width: 100% !important;
-  height: 100% !important;
+.dashboard-card h3 i {
+  color: var(--color-primary);
 }
 
 /* Formulaires */
@@ -65,10 +67,17 @@
   gap: var(--space-xs);
 }
 
-.form-field i {
+.form-field label i {
   color: var(--color-primary);
   width: 20px;
   text-align: center;
+}
+
+.form-field input {
+  padding: var(--space-md);
+  border: 1px solid var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
 }
 
 .form-actions {
@@ -78,8 +87,25 @@
   margin-top: var(--space-md);
 }
 
-/* Responsive design */
+/* Graphiques */
+.chart-container {
+  height: 300px;
+  margin-top: var(--space-md);
+  position: relative;
+}
+
+.chart-container canvas {
+  max-height: 100%;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Responsive Design */
 @media screen and (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
   .chart-container {
     height: 250px;
   }
@@ -93,6 +119,14 @@
   .chart-container {
     height: 200px;
   }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -102,6 +136,9 @@
 
   .chart-container {
     height: 180px;
-    margin-top: var(--space-sm);
+  }
+
+  .section-intro {
+    font-size: var(--font-size-sm);
   }
 }

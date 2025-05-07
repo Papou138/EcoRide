@@ -3,27 +3,24 @@
  * ---------------------------------------------------------------------------------------
  */
 
-/* ---- Importation des fichiers CSS dans le bon ordre ----*/
-/* Le fichier principal importe d'autres fichiers CSS pour organiser le code et faciliter la maintenance. */
-/* Chaque fichier CSS contient des styles spécifiques pour différentes parties du site. */
-
+/* Import des fichiers de base */
 @import "_variables.css"; /* Importation des variables CSS */
 @import "_reset.css"; /* Importation du reset CSS */
 @import "_layout.css"; /* Importation des styles de mise en page */
-@import "_components.css"; /* Importation des styles des composants */
+@import "_commun.css"; /* Importation des styles de mise en page commune */
+
+/* Import des composant principaux */
 @import "_header.css"; /* Importation des styles du header */
 @import "_footer.css"; /* Importation des styles du footer */
-@import "_forms.css"; /* Importation des styles des formulaires */
-@import "_search.css"; /* Importation des styles de recherche */
-@import "_pages.css"; /* Importation des styles des pages spécifiques */
-@import "_animations.css"; /* Importation des styles d'animations */
-@import "_responsive.css"; /* Importation des styles responsives */
-@import "_cards.css"; /* Importation des styles des cartes */
-@import "_buttons.css"; /* Importation des styles des boutons */
-@import "_alerts.css"; /* Importation des styles des alertes */
-@import "_register.css"; /* Importation des styles du formulaire d'inscription */
-@import "_history.css";
-@import "_manage.css";
-@import "_profile.css";
-@import "_employee.css";
-@import "_admin.css";
+
+/* Import des pages spécifiques */
+@import "_index.css"; /* Importation des style de la page d'accueil */
+@import "_login.css"; /* Importation des styles de la page de connexion */
+@import "_register.css"; /* Importation des styles de la page d'inscription */
+@import "_user-profile.css"; /* Importation des styles de la page de profil utilisateur */
+@import "_add-voyage.css"; /* Importation des styles de la page d'ajout de voyage */
+@import "_manage-voyage.css"; /* Importation des styles de la page de gestion des voyages */
+@import "_history.css"; /* Importation des styles de la page d'historique */
+@import "_admin.css"; /* Importation des styles de la page d'administration */
+@import "_employee.css"; /* Importation des styles de la page d'employé */
+@import "_detail.css"; /* Importation des styles de la page de détail d'un voyage */

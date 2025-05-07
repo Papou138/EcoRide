@@ -1,98 +1,200 @@
-.history-container {
+/* ---------------------------------------------------------------------------------------
+ *  Styles spécifiques pour history.html
+ * ---------------------------------------------------------------------------------------
+ */
+
+/* Mise en page principal */
+.history-section {
   max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-md);
 }
 
-#trips-history {
+/* Filtres */
+.history-filters {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.filters-grid {
   display: grid;
-  gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  padding: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  align-items: end;
 }
 
-.trip {
-  background-color: var(--color-background-light);
-  border-radius: var(--radius-lg);
+/* Liste des Voyages */
+.history-list {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.history-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
   box-shadow: var(--shadow-md);
-  padding: 1.5rem;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-lg);
+  align-items: center;
 }
 
-.trip:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+/* Détails du Voyage */
+.journey-date {
+  text-align: center;
+  padding-right: var(--space-md);
+  border-right: 1px solid var(--color-bg-secondary);
 }
 
-.trip h3 {
+.date-day {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
   color: var(--color-primary);
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
 }
 
-.trip p {
-  margin: 0.5rem 0;
-  color: var(--color-text);
+.date-month {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
 }
 
-.trip i {
-  color: var(--color-primary);
-  width: 20px;
-  margin-right: 8px;
+.journey-details {
+  display: grid;
+  gap: var(--space-sm);
 }
 
-.cancel-trip {
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background-color: var(--color-danger);
-  color: white;
-  border: none;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  width: 100%;
+.journey-route {
   display: flex;
   align-items: center;
+  gap: var(--space-md);
+}
+
+.route-point {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.route-point i {
+  color: var(--color-primary);
+}
+
+.journey-info {
+  display: flex;
+  gap: var(--space-lg);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.journey-status {
+  text-align: right;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.status-completed {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.status-cancelled {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+/* Pagination */
+.history-pagination {
+  display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  gap: var(--space-sm);
+  margin-top: var(--space-xl);
 }
 
-.cancel-trip:hover {
-  background-color: var(--color-danger-dark);
+/* Statistiques */
+.history-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
 }
 
-.no-trips {
-  grid-column: 1 / -1;
+.stat-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
   text-align: center;
-  color: var(--color-text-muted);
-  font-size: 1.1rem;
-  padding: 2rem;
+  box-shadow: var(--shadow-sm);
 }
 
-.notification {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 15px;
-  border-radius: 4px;
-  color: white;
-  z-index: 1000;
-  animation: slideIn 0.5s ease;
+.stat-value {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--color-primary);
+  margin-bottom: var(--space-xs);
 }
 
-.notification.success {
-  background-color: #2ecc71;
+.stat-label {
+  color: var(--color-text-secondary);
 }
 
-.notification.error {
-  background-color: #e74c3c;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .history-card {
+    grid-template-columns: 1fr 2fr;
   }
-  to {
-    transform: translateX(0);
+
+  .journey-status {
+    grid-column: span 2;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-info {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .history-card {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    text-align: center;
+  }
+
+  .journey-date {
+    border-right: none;
+    border-bottom: 1px solid var(--color-bg-secondary);
+    padding: 0 0 var(--space-sm);
+  }
+
+  .journey-route {
+    flex-direction: column;
+  }
+
+  .route-point {
+    justify-content: center;
   }
 }

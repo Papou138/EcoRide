@@ -1,55 +1,52 @@
 /* ---------------------------------------------------------------------------------------
- *  Styles spécifiques pour register.html
+ *  Styles spécifiques pour add-voyage.html
  * ---------------------------------------------------------------------------------------
  */
 
 /* Mise en page principal */
-.register-section {
-  max-width: 600px;
+.add-voyage-section {
+  max-width: 800px;
   margin: var(--space-xl) auto;
   padding: 0 var(--space-md);
 }
 
-/* Carte d'Inscription */
-.register-card {
+/* Carte du Formulaire */
+.add-voyage-card {
   background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
 }
 
-/* En-tête */
-.register-header {
+/* En-tête du Formulaire */
+.form-header {
   text-align: center;
   margin-bottom: var(--space-xl);
 }
 
-.register-title {
+.form-title {
   color: var(--color-text-primary);
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-sm);
 }
 
-.register-subtitle {
+.form-subtitle {
   color: var(--color-text-secondary);
 }
 
-/* Formulaire */
-.register-form {
+/* Grille du Formulaire */
+.voyage-form-grid {
   display: grid;
   gap: var(--space-lg);
 }
 
 /* Groupes de Champs */
-.register-fieldset {
-  border: none;
-  padding: 0;
-  margin: 0;
+.form-group {
   display: grid;
   gap: var(--space-md);
 }
 
-.fieldset-title {
+.form-group-title {
   color: var(--color-primary);
   font-size: var(--font-size-lg);
   font-weight: 500;
@@ -59,7 +56,7 @@
 }
 
 /* Mise en page des Champs */
-.fields-row {
+.fields-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-md);
@@ -94,72 +91,73 @@
   margin-top: var(--space-xs);
 }
 
-/* Messages d'Erreur */
-.error-message {
-  color: var(--color-danger);
-  font-size: var(--font-size-sm);
-  margin-top: var(--space-xs);
+/* Préférences de Voyage */
+.preferences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+
+.preference-item {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-}
-
-/* Termes et Conditions */
-.terms-group {
-  margin-top: var(--space-lg);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-bg-secondary);
-}
-
-.terms-checkbox {
-  display: flex;
-  align-items: flex-start;
   gap: var(--space-sm);
+}
+
+/* Carte et Itinéraire */
+.map-container {
+  height: 300px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: var(--space-md) 0;
+}
+
+.route-preview {
+  background-color: var(--color-bg-secondary);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-md);
 }
 
 /* Actions du Formulaire */
 .form-actions {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   gap: var(--space-md);
   margin-top: var(--space-xl);
-}
-
-.login-link {
-  text-align: center;
-  color: var(--color-text-secondary);
-}
-
-.login-link a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.login-link a:hover {
-  text-decoration: underline;
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-bg-secondary);
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-  .register-card {
+  .add-voyage-card {
     padding: var(--space-lg);
   }
 
-  .fields-row {
+  .fields-grid {
     grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .register-card {
+  .add-voyage-card {
     padding: var(--space-md);
   }
 
-  .register-title {
-    font-size: var(--font-size-lg);
+  .preferences-grid {
+    grid-template-columns: 1fr;
   }
 
-  .register-subtitle {
-    font-size: var(--font-size-sm);
+  .map-container {
+    height: 250px;
   }
 }

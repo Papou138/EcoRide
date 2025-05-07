@@ -1,0 +1,206 @@
+/* ---------------------------------------------------------------------------------------
+ *  Styles spécifiques pour detail.html
+ * ---------------------------------------------------------------------------------------
+ */
+
+/* Mise en page principal */
+.detail-section {
+  max-width: 1200px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-md);
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--space-xl);
+}
+
+/* Carte Principale */
+.voyage-detail-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+}
+
+/* En-tête du Voyage */
+.voyage-header {
+  border-bottom: 1px solid var(--color-bg-secondary);
+  padding-bottom: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.voyage-title {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.voyage-meta {
+  display: flex;
+  gap: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Informations du Trajet */
+.trajet-info {
+  display: grid;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.trajet-points {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.point-marker {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.point-details h3 {
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.point-address {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Carte Interactive */
+.map-container {
+  height: 300px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin: var(--space-lg) 0;
+}
+
+/* Détails du Conducteur */
+.driver-section {
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-bg-secondary);
+}
+
+.driver-info {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.driver-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.driver-rating {
+  color: var(--color-warning);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Sidebar de Réservation */
+.booking-sidebar {
+  position: sticky;
+  top: var(--space-xl);
+}
+
+.booking-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.price-details {
+  margin-bottom: var(--space-lg);
+}
+
+.price-main {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  font-weight: bold;
+  margin-bottom: var(--space-xs);
+}
+
+.price-person {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.seats-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-md) 0;
+  border-top: 1px solid var(--color-bg-secondary);
+  border-bottom: 1px solid var(--color-bg-secondary);
+  margin: var(--space-md) 0;
+}
+
+/* Préférences du Voyage */
+.preferences-list {
+  display: grid;
+  gap: var(--space-sm);
+  margin: var(--space-lg) 0;
+}
+
+.preference-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-secondary);
+}
+
+.preference-item i {
+  color: var(--color-primary);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .detail-section {
+    grid-template-columns: 1fr;
+  }
+
+  .booking-sidebar {
+    position: static;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .voyage-meta {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .trajet-points {
+    flex-direction: column;
+  }
+
+  .map-container {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .voyage-detail-card,
+  .booking-card {
+    padding: var(--space-md);
+  }
+
+  .driver-info {
+    flex-direction: column;
+    text-align: center;
+  }
+}

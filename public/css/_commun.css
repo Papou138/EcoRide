@@ -1,0 +1,211 @@
+/* ---------------------------------------------------------------------------------------
+ *  Styles communs réutilisés dans tout le projet
+ * ---------------------------------------------------------------------------------------
+ */
+
+/* Mise en page Commune */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-xl) 0;
+}
+
+/* Grilles Communes */
+.grid {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.grid-2-columns {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.grid-3-columns {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.grid-4-columns {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* Cartes Communes */
+.card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Formulaires Communs */
+.form-container {
+  max-width: 600px;
+  margin: var(--space-lg) auto;
+  padding: var(--space-lg);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.form-label i {
+  color: var(--color-primary);
+  width: 20px;
+  text-align: center;
+}
+
+.form-input {
+  padding: var(--space-md);
+  border: 1px solid var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+/* Messages d'erreur */
+.error-message {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+/* Badges d'état */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.status-success {
+  background-color: var(--color-success-light);
+  color: var(--color-success);
+}
+
+.status-warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.status-danger {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+/* Utilitaires */
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.gap-sm {
+  gap: var(--space-sm);
+}
+
+.gap-md {
+  gap: var(--space-md);
+}
+
+.gap-lg {
+  gap: var(--space-lg);
+}
+
+/* Marges communes */
+.mb-sm {
+  margin-bottom: var(--space-sm);
+}
+
+.mb-md {
+  margin-bottom: var(--space-md);
+}
+
+.mb-lg {
+  margin-bottom: var(--space-lg);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+
+  .grid {
+    gap: var(--space-md);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .card {
+    padding: var(--space-md);
+  }
+
+  .form-container {
+    padding: var(--space-md);
+  }
+}

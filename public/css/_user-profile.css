@@ -1,0 +1,176 @@
+/* ---------------------------------------------------------------------------------------
+ *  Styles spécifiques pour user-profile.html
+ * ---------------------------------------------------------------------------------------
+ */
+
+/* Mise en page principal */
+.profile-section {
+  max-width: 1000px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-md);
+}
+
+/* Grille du Profil */
+.profile-grid {
+  display: grid;
+  gap: var(--space-lg);
+  grid-template-columns: 300px 1fr;
+  margin-top: var(--space-lg);
+}
+
+/* Barre latérale Profile */
+.profile-sidebar {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-md);
+  display: block;
+  object-fit: cover;
+  border: 3px solid var(--color-primary);
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-name {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.profile-status {
+  color: var(--color-success);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-bg-secondary);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Contenu Principal */
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Cartes d'Information */
+.info-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.info-card h3 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-md);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.info-card h3 i {
+  color: var(--color-primary);
+}
+
+/* Formulaires du Profil */
+.profile-form {
+  display: grid;
+  gap: var(--space-md);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.form-full-width {
+  grid-column: 1 / -1;
+}
+
+/* Préférences */
+.preferences-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-md);
+}
+
+.preference-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1024px) {
+  .profile-grid {
+    gap: var(--space-md);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-form {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-sidebar {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-photo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .info-card {
+    padding: var(--space-md);
+  }
+
+  .preferences-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-value {
+    font-size: var(--font-size-md);
+  }
+}
