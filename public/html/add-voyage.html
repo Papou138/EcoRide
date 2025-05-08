@@ -62,24 +62,30 @@
 
     <main>
       <section id="add-trip" class="form-container">
-        <h2><i class="fas fa-plus-circle"></i> Proposer un Nouveau Voyage</h2>
-        <p class="form-intro">
-          Remplissez ce formulaire pour proposer un nouveau trajet de
-          covoiturage
-        </p>
+        <!-- En tete du formulaire -->
+        <div class="form-header">
+          <h2><i class="fas fa-plus-circle"></i> Proposer un Nouveau Voyage</h2>
+          <p class="section-subtitle">
+            Remplissez ce formulaire pour proposer un nouveau trajet de
+            covoiturage
+          </p>
+        </div>
 
+        <!-- Formulaire -->
         <form id="trip-form" class="form-group">
+          <!-- Section Informations du trajet -->
           <div class="form-section">
             <h3><i class="fas fa-route"></i> Informations du trajet</h3>
 
             <div class="form-field">
-              <label for="depart">
-                <i class="fas fa-map-marker-alt"></i> Point de départ :</label
+              <label for="depart" class="form-label">
+                <i class="fas fa-map-marker-alt"></i>Point de départ :</label
               >
               <input
                 type="text"
                 id="depart"
                 name="depart"
+                class="form-input"
                 required
                 placeholder="Ex: Paris"
               />
@@ -87,13 +93,14 @@
             </div>
 
             <div class="form-field">
-              <label for="arrivee">
-                <i class="fas fa-flag-checkered"></i> Destination :</label
+              <label for="arrivee" class="form-label">
+                <i class="fas fa-flag-checkered"></i>Destination :</label
               >
               <input
                 type="text"
                 id="arrivee"
                 name="arrivee"
+                class="form-input"
                 required
                 placeholder="Ex: Lyon"
               />
@@ -101,33 +108,47 @@
             <div id="arrivee-error" class="error-message"></div>
 
             <div class="form-field">
-              <label for="date"
-                ><i class="fas fa-calendar-alt"></i> Date du trajet :</label
+              <label for="date" class="form-label">
+                <i class="fas fa-calendar-alt"></i>Date du trajet :</label
               >
-              <input type="date" id="date" name="date" required />
+              <input
+                type="date"
+                id="date"
+                name="date"
+                class="form-input"
+                required
+              />
             </div>
             <div id="date-error" class="error-message"></div>
 
             <div class="form-field">
-              <label for="heure"
-                ><i class="fas fa-clock"></i> Heure de Départ :</label
+              <label for="heure" class="form-label">
+                <i class="fas fa-clock"></i>Heure de Départ :</label
               >
-              <input type="time" id="heure" name="heure-depart" required />
+              <input
+                type="time"
+                id="heure"
+                name="heure-depart"
+                class="form-input"
+                required
+              />
               <div id="heure-error" class="error-message"></div>
             </div>
           </div>
 
+          <!-- Section Détail du Voyage -->
           <div class="form-section">
             <h3><i class="fas fa-car"></i> Détails du Voyage</h3>
 
             <div class="form-field">
-              <label for="prix"
-                ><i class="fas fa-euro-sign"></i>Prix par personne :</label
+              <label for="prix" class="form-label">
+                <i class="fas fa-euro-sign"></i>Prix par personne :</label
               >
               <input
                 type="number"
                 id="prix"
                 name="prix"
+                class="form-input"
                 required
                 min="1"
                 step="0.01"
@@ -137,10 +158,10 @@
             </div>
 
             <div class="form-field">
-              <label for="vehicule">
-                <i class="fas fa-car-side"></i> Véhicule :</label
+              <label for="vehicule" class="form-label">
+                <i class="fas fa-car-side"></i>Véhicule :</label
               >
-              <select id="vehicule" name="vehicule" required>
+              <select id="vehicule" name="vehicule" class="form-input" required>
                 <option value="">Sélectionner votre véhicule</option>
                 <option value="ioniq5">Hyundai Ioniq 5</option>
                 <option value="ev6">Kia EV6</option>
@@ -156,13 +177,14 @@
             </div>
 
             <div class="form-field">
-              <label for="places">
-                <i class="fas fa-users"></i> Places Disponibles :</label
+              <label for="places" class="form-label">
+                <i class="fas fa-users"></i>Places Disponibles :</label
               >
               <input
                 type="number"
                 id="places"
                 name="places"
+                class="form-input"
                 required
                 min="1"
                 max="8"
@@ -172,16 +194,17 @@
             </div>
           </div>
 
+          <!-- Les boutons d'action -->
           <div class="form-actions">
             <button
               type="submit"
               class="btn btn-primary"
               onclick="createVoyage(depart.value, arrivee.value, date.value, heure.value, prix.value, places.value)"
             >
-              <i class="fas fa-plus"></i> Proposer le Voyage
+              <i class="fas fa-plus"></i>Proposer le Voyage
             </button>
-            <button type="reset" class="btn btn-outline">
-              <i class="fas fa-undo"></i> Réinitialiser
+            <button type="reset" class="btn btn-secondary">
+              <i class="fas fa-undo"></i>Réinitialiser
             </button>
           </div>
         </form>
