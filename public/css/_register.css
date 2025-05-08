@@ -3,163 +3,107 @@
  * ---------------------------------------------------------------------------------------
  */
 
-/* Mise en page principal */
-.register-section {
-  max-width: 600px;
-  margin: var(--space-xl) auto;
-  padding: 0 var(--space-md);
-}
-
-/* Carte d'Inscription */
-.register-card {
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  padding: var(--space-xl);
-  box-shadow: var(--shadow-md);
-}
-
-/* En-tête */
-.register-header {
+/* En-tête du formulaire */
+.form-header {
   text-align: center;
   margin-bottom: var(--space-xl);
 }
 
-.register-title {
-  color: var(--color-text-primary);
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--space-sm);
+/* Container mot de passe */
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 
-.register-subtitle {
-  color: var(--color-text-secondary);
+.password-container .form-input {
+  width: 100%;
 }
 
-/* Formulaire */
-.register-form {
-  display: grid;
-  gap: var(--space-lg);
-}
-
-/* Groupes de Champs */
-.register-fieldset {
+.password-container .btn {
+  position: absolute;
+  right: var(--space-sm);
+  padding: var(--space-xs);
+  background: none;
   border: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: var(--space-md);
-}
-
-.fieldset-title {
-  color: var(--color-primary);
-  font-size: var(--font-size-lg);
-  font-weight: 500;
-  padding-bottom: var(--space-xs);
-  border-bottom: 2px solid var(--color-primary);
-  margin-bottom: var(--space-sm);
-}
-
-/* Mise en page des Champs */
-.fields-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
-}
-
-.field-full {
-  grid-column: 1 / -1;
-}
-
-/* Style des Champs */
-.input-group {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.input-label {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-  color: var(--color-text-primary);
-  font-weight: 500;
-}
-
-.input-label i {
-  color: var(--color-primary);
-}
-
-.input-hint {
-  font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
-  margin-top: var(--space-xs);
 }
 
-/* Messages d'Erreur */
-.error-message {
-  color: var(--color-danger);
-  font-size: var(--font-size-sm);
-  margin-top: var(--space-xs);
+.password-container .btn:hover {
+  color: var(--color-primary);
+}
+
+/* Style spécifique pour le champ checkbox */
+.checkbox-field {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-}
-
-/* Termes et Conditions */
-.terms-group {
+  gap: var(--space-sm);
   margin-top: var(--space-lg);
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-bg-secondary);
 }
 
-.terms-checkbox {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-sm);
+.checkbox-field input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
 }
 
-/* Actions du Formulaire */
-.form-actions {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-}
-
-.login-link {
-  text-align: center;
-  color: var(--color-text-secondary);
-}
-
-.login-link a {
+.checkbox-field a {
   color: var(--color-primary);
   text-decoration: none;
 }
 
-.login-link a:hover {
+.checkbox-field a:hover {
   text-decoration: underline;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .register-card {
-    padding: var(--space-lg);
-  }
-
-  .fields-row {
-    grid-template-columns: 1fr;
-  }
+/* Indicateur de force de mot de passe */
+.password-strength-indicator {
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-sm);
 }
 
-@media screen and (max-width: 480px) {
-  .register-card {
-    padding: var(--space-md);
-  }
+/* Footer du formulaire */
+.form-footer {
+  text-align: center;
+  margin-top: var(--space-lg);
+  color: var(--color-text-secondary);
+}
 
-  .register-title {
+.form-footer a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.form-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Animation des messages d'erreur */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease-in-out;
+}
+
+.error-message.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 480px) {
+  .section-title {
     font-size: var(--font-size-lg);
   }
 
-  .register-subtitle {
+  .section-subtitle {
     font-size: var(--font-size-sm);
   }
 }

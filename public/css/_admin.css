@@ -59,14 +59,6 @@
   gap: var(--space-xs);
 }
 
-.form-field label {
-  color: var(--color-text-primary);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
 .form-field label i {
   color: var(--color-primary);
   width: 20px;
