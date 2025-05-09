@@ -3,198 +3,180 @@
  * ---------------------------------------------------------------------------------------
  */
 
-/* Mise en page principal */
-.history-section {
-  max-width: 1200px;
-  margin: var(--space-xl) auto;
-  padding: 0 var(--space-md);
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.section-description {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  margin-top: var(--space-sm);
 }
 
 /* Filtres */
-.history-filters {
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
+.filters {
+  display: flex;
+  gap: var(--space-lg);
   margin-bottom: var(--space-xl);
-  box-shadow: var(--shadow-sm);
-}
-
-.filters-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-md);
-  align-items: end;
-}
-
-/* Liste des Voyages */
-.history-list {
-  display: grid;
-  gap: var(--space-lg);
-}
-
-.history-card {
-  background-color: var(--color-bg-primary);
+  padding: var(--space-md);
+  background-color: var(--color-bg-secondary);
   border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-md);
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: var(--space-lg);
+}
+
+.filter-group {
+  display: flex;
   align-items: center;
-}
-
-/* Détails du Voyage */
-.journey-date {
-  text-align: center;
-  padding-right: var(--space-md);
-  border-right: 1px solid var(--color-bg-secondary);
-}
-
-.date-day {
-  font-size: var(--font-size-xl);
-  font-weight: bold;
-  color: var(--color-primary);
-}
-
-.date-month {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
-}
-
-.journey-details {
-  display: grid;
   gap: var(--space-sm);
 }
 
-.journey-route {
-  display: flex;
-  align-items: center;
-  gap: var(--space-md);
-}
-
-.route-point {
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
-}
-
-.route-point i {
-  color: var(--color-primary);
-}
-
-.journey-info {
-  display: flex;
+/* Grille des trajets */
+.trips-grid {
+  display: grid;
   gap: var(--space-lg);
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-xl);
 }
 
-.info-item {
+/* Carte de trajet */
+.trip-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: var(--transition-base);
+}
+
+.trip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.trip-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: var(--space-xs);
+  padding: var(--space-md);
+  background-color: var(--color-bg-secondary);
 }
 
-.journey-status {
-  text-align: right;
+.trip-date {
+  font-weight: 600;
+  color: var(--color-text-primary);
 }
 
-.status-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-xs);
+.trip-status {
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-sm);
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: 600;
 }
 
-.status-completed {
+.trip-status.completed {
   background-color: var(--color-success-light);
   color: var(--color-success);
 }
 
-.status-cancelled {
+.trip-status.canceled {
   background-color: var(--color-danger-light);
   color: var(--color-danger);
 }
 
+.trip-body {
+  padding: var(--space-lg);
+}
+
+.trip-route {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.departure,
+.arrival {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.route-line {
+  width: 2px;
+  height: 30px;
+  background-color: var(--color-primary);
+  margin-left: 7px;
+}
+
+.trip-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.trip-actions {
+  display: flex;
+  gap: var(--space-md);
+}
+
 /* Pagination */
-.history-pagination {
+.pagination {
   display: flex;
   justify-content: center;
-  gap: var(--space-sm);
+  align-items: center;
+  gap: var(--space-md);
   margin-top: var(--space-xl);
 }
 
-/* Statistiques */
-.history-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-md);
-  margin-bottom: var(--space-xl);
+.page-numbers {
+  display: flex;
+  gap: var(--space-sm);
 }
 
-.stat-card {
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  text-align: center;
-  box-shadow: var(--shadow-sm);
+.page-numbers span {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: var(--transition-base);
 }
 
-.stat-value {
-  font-size: var(--font-size-xl);
-  font-weight: bold;
-  color: var(--color-primary);
-  margin-bottom: var(--space-xs);
+.page-numbers span.active {
+  background-color: var(--color-primary);
+  color: var(--color-white);
 }
 
-.stat-label {
-  color: var(--color-text-secondary);
+.page-numbers span:not(.active):hover {
+  background-color: var(--color-bg-secondary);
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1024px) {
-  .history-card {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .journey-status {
-    grid-column: span 2;
-    text-align: left;
-  }
-}
-
 @media screen and (max-width: 768px) {
-  .filters-grid {
-    grid-template-columns: 1fr;
+  .filters {
+    flex-direction: column;
+    gap: var(--space-md);
   }
 
-  .journey-info {
+  .trip-actions {
     flex-direction: column;
-    gap: var(--space-sm);
+  }
+
+  .trip-actions .btn {
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .history-card {
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
-    text-align: center;
-  }
-
-  .journey-date {
-    border-right: none;
-    border-bottom: 1px solid var(--color-bg-secondary);
-    padding: 0 0 var(--space-sm);
-  }
-
-  .journey-route {
+  .pagination {
     flex-direction: column;
+    gap: var(--space-md);
   }
 
-  .route-point {
-    justify-content: center;
+  .trip-header {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
   }
 }

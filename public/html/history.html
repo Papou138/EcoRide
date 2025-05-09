@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Consultez votre historique de covoiturages sur EcoRide. 
+      Retrouvez tous vos trajets passés et les détails de vos voyages."
+    />
     <title>Historique des Covoiturages - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
@@ -55,10 +60,79 @@
     </header>
 
     <main>
-      <section id="history">
-        <h2>Votre Historique de Covoiturages</h2>
-        <div id="trips-history">
-          <!-- Le contenu sera généré dynamiquement via Javascript -->
+      <section id="history" class="container">
+        <div class="section-header">
+          <h2>Votre Historique de Covoiturages</h2>
+          <p class="section-description">
+            Retrouvez tous vos trajets effectués avec EcoRide
+          </p>
+        </div>
+
+        <div class="filters">
+          <div class="filter-group">
+            <label for="date-filter">Filtrer par date :</label>
+            <input type="date" id="date-filter" name="date-filter" />
+          </div>
+          <div class="filter-group">
+            <label for="status-filter">Statut :</label>
+            <select id="status-filter" name="status-filter">
+              <option value="all">Tous</option>
+              <option value="completed">Terminés</option>
+              <option value="canceled">Annulés</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="trips-history" class="trips-grid">
+          <!-- Template pour un trajet -->
+          <div class="trip-card">
+            <div class="trip-header">
+              <span class="trip-date">15 avril 2025</span>
+              <span class="trip-status completed">Terminé</span>
+            </div>
+            <div class="trip-body">
+              <div class="trip-route">
+                <div class="departure">
+                  <i class="fas fa-circle"></i>
+                  <span>Paris</span>
+                </div>
+                <div class="route-line"></div>
+                <div class="arrival">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Lyon</span>
+                </div>
+              </div>
+              <div class="trip-details">
+                <p>
+                  <i class="fas fa-user"></i> Chauffeur :
+                  <span>Jean Dupont</span>
+                </p>
+                <p><i class="fas fa-euro-sign"></i> Prix : <span>20 €</span></p>
+              </div>
+              <div class="trip-actions">
+                <button class="btn btn-secondary">
+                  <i class="fas fa-info-circle"></i> Détails
+                </button>
+                <button class="btn btn-danger">
+                  <i class="fas fa-times"></i> Annuler
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pagination">
+          <button class="btn btn-outline" disabled>
+            <i class="fas fa-chevron-left"></i> Précédent
+          </button>
+          <div class="page-numbers">
+            <span class="active">1</span>
+            <span>2</span>
+            <span>3</span>
+          </div>
+          <button class="btn btn-outline">
+            Suivant <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
       </section>
     </main>
