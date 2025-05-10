@@ -18,40 +18,43 @@
   text-align: center;
   margin-bottom: var(--space-xl);
   position: relative;
-  padding: var(--space-xl) 0;
+  padding: var(--space-sm) 0;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xl);
   border-bottom: 2px solid var(--color-border);
   animation: fadeInDown 0.6s ease-out;
 }
 .section-header h2 {
   color: var(--color-text-primary);
   font-size: var(--font-size-xxl);
-  margin-bottom: var(--space-sm);
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-xxs);
+  margin: 0;
 }
 
 .section-header i {
   color: var(--color-primary);
   font-size: 1.2em;
-  margin-right: 0;
-  transform: translateY(-1px);
 }
 
 .section-header .section-description {
   color: var(--color-text-secondary);
   font-size: var(--font-size-md);
-  margin-top: var(--space-md);
-  line-height: 1.6;
+  line-height: 1.6; /* Hauteur de ligne pour le texte */
   font-weight: 400;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 100%;
+  margin: 0;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
 }
 
 /* Formulaire de profil */
@@ -267,50 +270,131 @@
 }
 
 /* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .profile-section {
+    margin: var(--space-xl) var(--space-lg);
+  }
+
+  .profile-form {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+  }
+}
+
 @media screen and (max-width: 968px) {
   .profile-section {
     margin: var(--space-lg);
     padding: var(--space-lg);
   }
 
+  .section-header {
+    padding: var(--space-lg) var(--space-md);
+    gap: var(--space-lg);
+  }
+
+  .section-header .section-description {
+    padding-top: var(--space-lg);
+    font-size: var(--font-size-base);
+  }
+
   .form-actions {
     flex-direction: column;
+    padding: var(--space-md);
   }
 
   .form-actions button {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .section-header {
-    max-width: 100%;
-    padding: var(--space-lg) var(--space-md);
-  }
-
-  .profile-form {
-    grid-template-columns: 1fr;
-  }
-
-  .checkbox-group {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .section-header {
-    padding: var(--space-md);
-  }
-
-  .section-header h2 {
-    font-size: var(--font-size-xl);
-  }
-
-  .section-header .section-description {
-    font-size: var(--font-size-sm);
+    max-width: 400px;
   }
 
   .card-body {
     padding: var(--space-md);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .profile-section {
+    margin: var(--space-md);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+  }
+
+  .section-header {
+    max-width: 100%;
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+  }
+
+  .section-header h2 {
+    font-size: var(--font-size-xl);
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .profile-form {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .form-card {
+    border-radius: var(--radius-md);
+  }
+
+  .checkbox-group {
+    grid-template-columns: 1fr;
+    padding: var(--space-sm);
+  }
+
+  .input-group {
+    gap: var(--space-xxs);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-section {
+    margin: var(--space-sm);
+    padding: var(--space-sm);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .section-header {
+    padding: var(--space-sm);
+  }
+
+  .section-header h2 {
+    font-size: var(--font-size-lg);
+  }
+
+  .section-header .section-description {
+    font-size: var(--font-size-sm);
+    padding-top: var(--space-md);
+  }
+
+  .card-body {
+    padding: var(--space-sm);
+  }
+
+  .card-header {
+    padding: var(--space-md);
+  }
+
+  .card-header h3 {
+    font-size: var(--font-size-md);
+  }
+
+  .form-actions {
+    padding: var(--space-sm);
+    gap: var(--space-md);
+  }
+
+  .form-actions button {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+  }
+
+  .checkbox-field {
+    padding: var(--space-sm);
+    font-size: var(--font-size-sm);
   }
 }
