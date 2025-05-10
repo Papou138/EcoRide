@@ -3,59 +3,23 @@
  * ---------------------------------------------------------------------------------------
  */
 
-/* Mise en page */
-.dashboard-section {
-  max-width: 1200px;
-  margin: var(--space-xl) auto;
-  padding: 0 var(--space-md);
-}
-
-.section-intro {
-  color: var(--color-text-secondary);
-  text-align: center;
-  margin-bottom: var(--space-lg);
-}
-
-/* Disposition en grille */
-.dashboard-grid {
-  display: grid;
-  gap: var(--space-lg);
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  margin-top: var(--space-lg);
-}
-
-/* Cartes */
-.avis-card,
-.probleme-card {
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  padding: var(--space-md);
+/* Cartes des avis */
+.avis-card {
   margin-bottom: var(--space-md);
-  box-shadow: var(--shadow-sm);
 }
 
-.avis-header,
-.probleme-header {
+.avis-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-sm);
 }
 
-.avis-date,
-.probleme-status {
+.avis-date {
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
 
-.probleme-status {
-  padding: var(--space-xs) var(--space-sm);
-  background-color: var(--color-warning-light);
-  border-radius: var(--radius-sm);
-  font-weight: 500;
-}
-
-/* Avis - Contenu */
 .avis-content {
   margin: var(--space-md) 0;
 }
@@ -65,12 +29,31 @@
   margin-bottom: var(--space-xs);
 }
 
-.avis-text {
-  color: var(--color-text-primary);
-  line-height: 1.5;
+/* Cartes des problèmes */
+.probleme-card {
+  margin-bottom: var(--space-md);
 }
 
-/* Problème - Détails */
+.probleme-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-sm);
+}
+
+.probleme-id {
+  font-family: var(--font-mono);
+  color: var(--color-text-secondary);
+}
+
+.probleme-status {
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--color-warning-light);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+}
+
 .probleme-details {
   margin: var(--space-md) 0;
 }
@@ -91,55 +74,25 @@
 .probleme-description {
   margin-top: var(--space-sm);
   padding-top: var(--space-sm);
-  border-top: 1px solid var(--color-bg-secondary);
-}
-
-/* Actions */
-.avis-actions,
-.probleme-actions {
-  display: flex;
-  gap: var(--space-sm);
-  justify-content: flex-end;
-  margin-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1024px) {
-  .dashboard-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-}
-
 @media screen and (max-width: 768px) {
-  .dashboard-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .avis-actions,
-  .probleme-actions {
+  .form-actions {
     flex-direction: column;
   }
 
-  .avis-actions .btn,
-  .probleme-actions .btn {
+  .form-actions .btn {
     width: 100%;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .avis-card,
-  .probleme-card {
-    padding: var(--space-sm);
-  }
-
   .avis-header,
   .probleme-header {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--space-xs);
-  }
-
-  .section-intro {
-    font-size: var(--font-size-sm);
   }
 }

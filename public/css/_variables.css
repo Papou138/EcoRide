@@ -4,6 +4,9 @@
  */
 /* Variables globales */
 :root {
+  /* Familles de polices */
+  --font-mono: "Consolas", "Monaco", monospace;
+
   /* Palette de couleurs */
   --color-primary: #4caf50; /* Vert - Couleur principale */
   --color-primary-dark: #45a049; /* Vert foncé */
@@ -26,6 +29,7 @@
   --color-success: #28a745; /* Succès */
   --color-error: #dc3545; /* Erreur */
   --color-warning: #ffc107; /* Avertissement */
+  --color-warning-light: #fff3cc; /* Avertissement léger */
   --color-info: #17a2b8; /* Information */
 
   /* Espacements */

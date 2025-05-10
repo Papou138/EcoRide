@@ -58,18 +58,21 @@
       </nav>
     </header>
 
-    <main>
-      <section id="employee-dashboard" class="dashboard-section">
-        <h2><i class="fas fa-user-tie"></i> Tableau de Bord Employé</h2>
-        <p class="section-intro">
-          Gérez les avis des utilisateurs et traitez les signalements
-        </p>
+    <main class="container">
+      <section class="profile-section">
+        <div class="section-header">
+          <h2><i class="fas fa-user-tie"></i> Tableau de Bord Employé</h2>
+          <p class="section-description">
+            Gérez les avis des utilisateurs et traitez les signalements
+          </p>
+        </div>
 
-        <div class="dashboard-grid">
-          <!-- Section des avis -->
-          <div id="les-avis" class="dashboard-card">
+        <!-- Section des avis -->
+        <div class="form-card">
+          <div class="card-header">
             <h3><i class="fas fa-star"></i> Avis à Valider</h3>
-
+          </div>
+          <div class="card-body">
             <div class="avis-list">
               <!-- Exemple d'avis -->
               <div class="avis-card">
@@ -89,7 +92,7 @@
                   <p class="avis-text">Excellent conducteur, très ponctuel.</p>
                 </div>
 
-                <div class="avis-actions">
+                <div class="form-actions">
                   <button
                     class="btn btn-success"
                     onclick="approveReview(reviewId)"
@@ -100,17 +103,20 @@
                     class="btn btn-danger"
                     onclick="rejectReview(reviewId)"
                   >
-                    <i class="fas fa-times"> Rejeter</i>
+                    <i class="fas fa-times"></i> Rejeter
                   </button>
                 </div>
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Section des problemes -->
-          <div id="les-problemes" class="dashboard-card">
+        <!-- Section des problemes -->
+        <div class="form-card">
+          <div class="card-header">
             <h3><i class="fas fa-exclamation-triangle"></i> Signalements</h3>
-
+          </div>
+          <div class="card-body">
             <div class="probleme-list">
               <!-- Exemple de probleme -->
               <div class="probleme-card">
@@ -135,7 +141,7 @@
                   </p>
                 </div>
 
-                <div class="probleme-actions">
+                <div class="form-actions">
                   <button class="btn btn-primary" onclick="resolveIssue(1)">
                     <i class="fas fa-check-circle"></i> Résoudre
                   </button>
