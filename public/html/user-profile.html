@@ -58,19 +58,22 @@
       </nav>
     </header>
 
-    <main>
-      <section id="user-profile" class="form-container">
-        <h2><i class="fas fa-user-circle"></i> Votre Profil</h2>
-        <p class="form-intro">
-          Personnalisez votre profil et gérer vos préférences de covoiturage
-        </p>
+    <main class="container">
+      <section class="profile-section">
+        <div class="section-header">
+          <h2><i class="fas fa-user-circle"></i> Votre Profil</h2>
+          <p class="section-description">
+            Personnalisez votre profil et gérez vos préférences de covoiturage
+          </p>
+        </div>
 
-        <form id="update-profile-form" class="form-group">
+        <form id="update-profile-form" class="profile-form">
           <!-- Informations personnelles -->
-          <div class="form-section">
-            <h3><i class="fas fa-id-card"></i> Informations Personnelles</h3>
-
-            <div class="form-field">
+          <div class="form-card">
+            <div class="card-header">
+              <h3><i class="fas fa-id-card"></i> Informations Personnelles</h3>
+            </div>
+            <div class="card-body">
               <label for="newName"><i class="fas fa-user"></i> Nom :</label>
               <input
                 type="text"
@@ -83,7 +86,7 @@
               <div id="newName-error" class="error-message"></div>
             </div>
 
-            <div class="form-field">
+            <div class="card-body">
               <label for="newSurname"
                 ><i class="fas fa-user"></i> Prénom :</label
               >
@@ -98,7 +101,7 @@
               <div id="newSurname-error" class="error-message"></div>
             </div>
 
-            <div class="form-field">
+            <div class="card-body">
               <label for="newEmail"
                 ><i class="fas fa-envelope"></i> Email :</label
               >
@@ -112,7 +115,7 @@
               <div id="newEmail-error" class="error-message"></div>
             </div>
 
-            <div class="form-field">
+            <div class="card-body">
               <label for="confirmEmail"
                 ><i class="fas fa-envelope"></i> Confirmer Email :</label
               >
@@ -125,7 +128,7 @@
               <div id="confirmEmail-error" class="error-message"></div>
             </div>
 
-            <div class="form-field">
+            <div class="card-body">
               <label for="role"><i class="fas fa-user-tag"></i> Rôle :</label>
               <select id="role" name="role" onchange="toggleChauffeurInfo()">
                 <option value="passager">Passager</option>
@@ -136,10 +139,11 @@
           </div>
 
           <!-- Informations chauffeur -->
-          <div id="chauffeur-info" class="form-section" style="display: none">
-            <h3><i class="fas fa-car"></i> Informations Véhicule</h3>
-
-            <div class="form-field">
+          <div id="chauffeur-info" class="form-card" style="display: none">
+            <div class="card-header">
+              <h3><i class="fas fa-car"></i> Informations Véhicule</h3>
+            </div>
+            <div class="card-body">
               <label for="plaque">
                 <i class="fas fa-passport"></i> Plaque d'immatriculation
                 :</label
@@ -153,7 +157,7 @@
               />
             </div>
 
-            <div class="form-field">
+            <div class="card-body">
               <label for="date-immat"
                 ><i class="fas fa-calendar-alt"></i> Date de première
                 immatriculation :</label
@@ -161,7 +165,7 @@
               <input type="date" id="date-immat" name="date-immat" />
             </div>
 
-            <div class="form-field">
+            <div class="card-body">
               <label for="vehicule"
                 ><i class="fas fa-car-side"></i> Modèle et Marque du Véhicule :
               </label>
@@ -178,14 +182,14 @@
               </select>
             </div>
 
-            <div class="form-field">
+            <div class="card-body">
               <label for="places"
                 ><i class="fas fa-users"></i> Nombre de places :</label
               >
               <input type="number" id="places" name="places" min="1" max="8" />
             </div>
 
-            <div class="form-field">
+            <div class="card-body">
               <label for="preferences"
                 ><i class="fas fa-sliders-h"></i> Préférences :</label
               >
@@ -210,14 +214,8 @@
             </div>
           </div>
 
-          <input type="hidden" id="userId" name="userId" value="1" />
-
           <div class="form-actions">
-            <button
-              type="button"
-              class="btn btn-primary"
-              onclick="updateProfile(userId.value, newName.value, newSurname.value, role.value)"
-            >
+            <button type="submit" class="btn btn-primary">
               <i class="fas fa-save"></i> Enregistrer les modifications
             </button>
             <button type="reset" class="btn btn-outline">

@@ -7,8 +7,10 @@
   /* Palette de couleurs */
   --color-primary: #4caf50; /* Vert - Couleur principale */
   --color-primary-dark: #45a049; /* Vert foncé */
+  --color-primary-light: #a5d6a7; /* Version claire de la couleur primaire */
   --color-secondary: #2196f3; /* Bleu */
   --color-tertiary: #ff9800; /* Orange pour les alertes/notifications */
+  --color-border: #e0e0e0; /* Couleur de bordure standard */
 
   /* Couleurs de texte */
   --color-text-primary: #333333; /* Texte principal */

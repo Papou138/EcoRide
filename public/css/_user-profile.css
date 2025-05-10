@@ -1,176 +1,316 @@
 /* ---------------------------------------------------------------------------------------
- *  Styles spécifiques pour user-profile.html
+ * Styles spécifiques pour la page profil utilisateur
  * ---------------------------------------------------------------------------------------
  */
 
-/* Mise en page principal */
+/* Section profil */
 .profile-section {
-  max-width: 1000px;
   margin: var(--space-xl) auto;
-  padding: 0 var(--space-md);
+  max-width: 1000px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-xl);
 }
 
-/* Grille du Profil */
-.profile-grid {
-  display: grid;
-  gap: var(--space-lg);
-  grid-template-columns: 300px 1fr;
-  margin-top: var(--space-lg);
-}
-
-/* Barre latérale Profile */
-.profile-sidebar {
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  box-shadow: var(--shadow-md);
-}
-
-.profile-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  margin: 0 auto var(--space-md);
-  display: block;
-  object-fit: cover;
-  border: 3px solid var(--color-primary);
-}
-
-.profile-info {
+/* En-tête de la section */
+.section-header {
   text-align: center;
+  margin-bottom: var(--space-xl);
+  position: relative;
+  padding: var(--space-xl) 0;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 2px solid var(--color-border);
+  animation: fadeInDown 0.6s ease-out;
 }
-
-.profile-name {
-  font-size: var(--font-size-xl);
+.section-header h2 {
   color: var(--color-text-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.profile-status {
-  color: var(--color-success);
-  font-size: var(--font-size-sm);
-  margin-bottom: var(--space-md);
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--space-sm);
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: var(--space-xxs);
+}
+
+.section-header i {
+  color: var(--color-primary);
+  font-size: 1.2em;
+  margin-right: 0;
+  transform: translateY(-1px);
+}
+
+.section-header .section-description {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  margin-top: var(--space-md);
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Formulaire de profil */
+.profile-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-xl);
+  background: transparent;
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Cartes du formulaire */
+.form-card {
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+  border: 1px solid var(--color-border);
+}
+
+.form-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.card-header {
+  background-color: var(--color-bg-secondary);
+  padding: var(--space-lg) var(--space-xl);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.card-header h3 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.card-header h3 i {
+  color: var(--color-primary);
+  font-size: 1.2em;
+}
+
+/* Corps de la carte */
+.card-body {
+  padding: var(--space-lg);
+  display: grid;
+  gap: var(--space-md);
+  background: var(--color-white);
+  transition: var(--transition-base);
+}
+
+/* Amélioration des inputs */
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  position: relative;
+}
+
+.card-body label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
   gap: var(--space-xs);
 }
 
-.profile-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
-  margin-top: var(--space-lg);
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-bg-secondary);
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-value {
-  font-size: var(--font-size-lg);
-  font-weight: bold;
-  color: var(--color-primary);
-}
-
-.stat-label {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-}
-
-/* Contenu Principal */
-.profile-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
-
-/* Cartes d'Information */
-.info-card {
-  background-color: var(--color-bg-primary);
+.card-body input,
+.card-body select {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  border: 2px solid var(--color-bg-secondary);
   border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  font-size: var(--font-size-base);
+  transition: var(--transition-base);
+  color: var(--color-text-primary);
+}
+
+.card-body input:hover,
+.card-body select:hover {
+  border-color: var(--color-primary-light);
+  background-color: rgba(33, 150, 243, 0.05);
+}
+
+.card-body input:focus,
+.card-body select:focus {
+  border-color: var(--color-secondary);
+  background-color: var(--color-white);
+  box-shadow: 0 0 0 4px rgba(33, 150, 243, 0.15);
+  outline: none; /* Enlève le contour par défaut */
+}
+
+/* Style des placeholders */
+.card-body input::placeholder {
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+}
+
+/* Style spécifique pour les select */
+.card-body select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%232196f3' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10l-5 5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-md) center;
+  padding-right: var(--space-xl);
+}
+
+/* Groupe de cases à cocher */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+}
+
+.checkbox-field {
+  background: var(--color-white);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  transition: var(--transition-base);
+}
+
+.checkbox-field:hover {
+  background-color: var(--color-bg-tertiary);
+  transform: translateX(-1px); /* Légère translation pour l'effet de survol */
+}
+
+/* Boutons d'action */
+.form-actions {
+  grid-column: 1 / -1; /* Prend toute la largeur */
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
   padding: var(--space-lg);
+  background: var(--color-bg-secondary);
+  border-radius: var(--space-lg);
+  border: 1px solid var(--color-border);
+}
+
+.form-actions button {
+  min-width: 200px;
+  padding: var(--space-md) var(--space-xl);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.form-actions button:hover {
+  transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
 
-.info-card h3 {
-  color: var(--color-text-primary);
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--color-bg-secondary);
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Animation pour l'affichage/masquage des informations chauffeur */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#chauffeur-info {
+  transition: all 0.3s ease-in-out;
+}
+
+#chauffeur-info.visible {
+  display: block;
+  animation: slideDown 0.4s ease-out forwards;
+}
+
+/* Message d'erreur */
+.error-message {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xxs);
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
-}
-
-.info-card h3 i {
-  color: var(--color-primary);
-}
-
-/* Formulaires du Profil */
-.profile-form {
-  display: grid;
-  gap: var(--space-md);
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.form-full-width {
-  grid-column: 1 / -1;
-}
-
-/* Préférences */
-.preferences-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-md);
-}
-
-.preference-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
+  gap: var(--space-xxs);
 }
 
 /* Responsive Design */
-@media screen and (max-width: 1024px) {
-  .profile-grid {
-    gap: var(--space-md);
+@media screen and (max-width: 968px) {
+  .profile-section {
+    margin: var(--space-lg);
+    padding: var(--space-lg);
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .profile-grid {
-    grid-template-columns: 1fr;
+  .section-header {
+    max-width: 100%;
+    padding: var(--space-lg) var(--space-md);
   }
 
   .profile-form {
     grid-template-columns: 1fr;
   }
 
-  .profile-sidebar {
-    max-width: 400px;
-    margin: 0 auto;
+  .checkbox-group {
+    grid-template-columns: 1fr;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .profile-photo {
-    width: 120px;
-    height: 120px;
-  }
-
-  .info-card {
+  .section-header {
     padding: var(--space-md);
   }
 
-  .preferences-grid {
-    grid-template-columns: 1fr;
+  .section-header h2 {
+    font-size: var(--font-size-xl);
   }
 
-  .stat-value {
-    font-size: var(--font-size-md);
+  .section-header .section-description {
+    font-size: var(--font-size-sm);
+  }
+
+  .card-body {
+    padding: var(--space-md);
   }
 }
