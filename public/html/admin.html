@@ -58,27 +58,31 @@
       </nav>
     </header>
 
-    <main>
-      <section id="admin-dashboard" class="dashboard-section">
-        <h2>
-          <i class="fas fa-user-shield"></i> Tableau de Bord Administrateur
-        </h2>
-        <p class="section-intro">
-          Gérez les comptes employés et supervisez les performances de la
-          plateforme
-        </p>
+    <main class="container">
+      <section class="profile-section">
+        <div class="section-header">
+          <h2>
+            <i class="fas fa-user-shield"></i> Tableau de Bord Administrateur
+          </h2>
+          <p class="section-intro">
+            Gérez les comptes employés et supervisez les performances de la
+            plateforme
+          </p>
+        </div>
 
-        <div class="dashboard-grid">
-          <!-- Gestion des comptes employés -->
-          <div class="dashboard-card">
+        <!-- Gestion des comptes utilisateurs-->
+        <div class="form-card">
+          <div class="card-header">
             <h3>
               <i class="fas fa-users-cog"></i> Gestion des Comptes Employés
             </h3>
+          </div>
+          <div class="card-body">
             <form id="create-employee-form" class="form-group">
               <div class="form-field">
                 <label for="employee-email">
-                  <i class="fas fa-envelope"></i> Email de l'Employé :</label
-                >
+                  <i class="fas fa-envelope"></i> Email de l'Employé :
+                </label>
                 <input
                   type="email"
                   id="employee-email"
@@ -99,10 +103,14 @@
               </div>
             </form>
           </div>
+        </div>
 
-          <!-- Suspension de compte -->
-          <div class="dashboard-card">
+        <!-- Suspension de compte -->
+        <div class="form-card">
+          <div class="card-header">
             <h3><i class="fas fa-user-lock"></i> Suspension de Compte</h3>
+          </div>
+          <div class="card-body">
             <form id="suspend-form" class="form-group">
               <div class="form-field">
                 <label for="account-email">
@@ -128,20 +136,25 @@
               </div>
             </form>
           </div>
+        </div>
 
-          <!-- Statistiques des covoiturages -->
-          <div class="dashboard-card">
-            <h3><i class="fas fa-chart-line"></i> Activité des Covoiturages</h3>
-            <div class="chart-container">
-              <canvas id="covoituragesChart"></canvas>
-            </div>
+        <!-- Statistiques -->
+        <div class="form-card">
+          <div class="card-header">
+            <h3>
+              <i class="fas fa-chart-line"></i> Statistiques de la Plateforme
+            </h3>
           </div>
-
-          <!-- Statistiques des crédits -->
-          <div class="dashboard-card">
-            <h3><i class="fas fa-coins"></i> Performance Financière</h3>
-            <div class="chart-container">
-              <canvas id="creditsChart"></canvas>
+          <div class="card-body">
+            <div class="dashboard-grid">
+              <div class="chart-container">
+                <h4><i class="fas fa-car"></i> Activité des Covoiturages</h4>
+                <canvas id="covoituragesChart"></canvas>
+              </div>
+              <div class="chart-container">
+                <h4><i class="fas fa-coins"></i> Performances Financières</h4>
+                <canvas id="creditsChart"></canvas>
+              </div>
             </div>
           </div>
         </div>

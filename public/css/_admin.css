@@ -3,51 +3,63 @@
  * ---------------------------------------------------------------------------------------
  */
 
-/* Mise en page */
-.dashboard-section {
+/* Section du tableau de bord */
+.profile-section {
   max-width: 1200px;
   margin: var(--space-xl) auto;
-  padding: 0 var(--space-md);
+  padding: 0 var(--space-lg);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
 }
 
 .section-intro {
   color: var(--color-text-secondary);
-  text-align: center;
-  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-md);
+  margin-top: var(--space-sm);
 }
 
-/* Grille et cartes */
-.dashboard-grid {
-  display: grid;
-  gap: var(--space-lg);
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  margin-top: var(--space-lg);
-}
-
-.dashboard-card {
+/* Cartes de formulaire */
+.form-card {
   background-color: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-lg);
   box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
 }
 
-.dashboard-card h3 {
+.form-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  background-color: var(--color-bg-secondary);
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.card-header h3 {
   color: var(--color-text-primary);
   font-size: var(--font-size-lg);
-  margin-bottom: var(--space-md);
-  padding-bottom: var(--space-sm);
-  border-bottom: 1px solid var(--color-bg-secondary);
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  margin: 0;
 }
 
-.dashboard-card h3 i {
+.card-header h3 i {
   color: var(--color-primary);
+  font-size: 1.2em;
 }
 
-/* Formulaires */
-.form-group {
+.card-body {
+  padding: var(--space-lg);
+}
+
+* Formulaires */ .form-group {
   display: flex;
   flex-direction: column;
   gap: var(--space-md);
@@ -59,6 +71,14 @@
   gap: var(--space-xs);
 }
 
+.form-field label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
 .form-field label i {
   color: var(--color-primary);
   width: 20px;
@@ -67,11 +87,19 @@
 
 .form-field input {
   padding: var(--space-md);
-  border: 1px solid var(--color-bg-secondary);
+  border: 2px solid var(--color-bg-secondary);
   border-radius: var(--radius-md);
   font-size: var(--font-size-base);
+  transition: var(--transition-base);
 }
 
+.form-field input:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-primary-light);
+}
+
+/* Actions des formulaires */
 .form-actions {
   display: flex;
   justify-content: flex-end;
@@ -79,17 +107,47 @@
   margin-top: var(--space-md);
 }
 
-/* Graphiques */
+/* Bouton danger pour la suspension */
+.btn-danger {
+  background-color: var(--color-error);
+  color: var(--color-bg-primary);
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+/* Section statistiques */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
 .chart-container {
+  background-color: var(--color-bg-primary);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
   height: 300px;
-  margin-top: var(--space-md);
   position: relative;
 }
 
-.chart-container canvas {
-  max-height: 100%;
-  width: 100% !important;
-  height: 100% !important;
+.chart-container h4 {
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.chart-container h4 i {
+  color: var(--color-primary);
 }
 
 /* Responsive Design */
@@ -104,12 +162,20 @@
 }
 
 @media screen and (max-width: 768px) {
+  .profile-section {
+    padding: 0 var(--space-md);
+  }
+
   .dashboard-grid {
     grid-template-columns: 1fr;
   }
 
   .chart-container {
     height: 200px;
+  }
+
+  .form-card {
+    margin-bottom: var(--space-md);
   }
 
   .form-actions {
@@ -122,7 +188,12 @@
 }
 
 @media screen and (max-width: 480px) {
-  .dashboard-card {
+  .profile-section {
+    padding: 0 var(--space-sm);
+  }
+
+  .card-header,
+  .card-body {
     padding: var(--space-md);
   }
 
