@@ -3,7 +3,22 @@
  * ---------------------------------------------------------------------------------------
  */
 
-/* Mise en page Commun */
+/* ---- Mise en page principale ---- */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background-light);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  padding-top: var(--space-lg);
+}
+
+/* Conteneurs et sections */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -14,7 +29,48 @@
   padding: var(--space-xl) 0;
 }
 
-/* Titres */
+/* Section présentation */
+#presentation {
+  padding: var(--space-lg);
+  text-align: center;
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.presentation-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: var(--space-xl);
+  padding: 0 var(--space-md);
+  width: 100%;
+}
+
+/* Gestion des images */
+.image-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 var(--space-md);
+}
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+}
+
+.responsive-image:hover {
+  transform: scale(1.02);
+}
+
+/* En-têtes et typographie */
 .section-title {
   font-size: var(--font-size-xl);
   color: var(--color-text-primary);
@@ -30,7 +86,7 @@
   font-size: var(--font-size-md);
 }
 
-/* Grilles */
+/* Systèmes de grille */
 .grid {
   display: grid;
   gap: var(--space-md);
@@ -48,7 +104,50 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-/* Cartes */
+/* Section des fonctionnalités */
+.features-section {
+  padding: var(--space-xl) 0;
+  background-color: var(--color-bg-secondary);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: var(--grid-columns-desktop);
+  gap: var(--grid-gap);
+  padding: var(--space-lg) 0;
+}
+
+.feature-card {
+  padding: var(--space-lg);
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+  transition: var(--transition-base);
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-card i {
+  font-size: 2.5rem;
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.feature-card h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
+}
+
+.feature-card p {
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+/* Composants cartes */
 .card {
   background-color: var(--color-bg-primary);
   border-radius: var(--radius-md);
@@ -62,7 +161,7 @@
   box-shadow: var(--shadow-lg);
 }
 
-/* Boutons */
+/* Système de boutons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -95,7 +194,29 @@
   background-color: var(--color-bg-tertiary);
 }
 
-/* Formulaires */
+/* Variantes de boutons */
+.btn-outline {
+  border: 2px solid var(--color-primary);
+  color: var(--color-primary);
+  background-color: transparent;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.btn-danger {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+}
+
+.btn-success {
+  background-color: var(--color-success);
+  color: var(--color-white);
+}
+
+/* Système de formulaires */
 .form-container {
   max-width: 600px;
   margin: var(--space-lg) auto;
@@ -115,7 +236,6 @@
   gap: var(--space-sm);
 }
 
-/* Formulaires */
 label,
 .form-label {
   display: flex;
@@ -127,20 +247,13 @@ label,
   margin-bottom: var(--space-xs);
 }
 
-/* Exception pour les labels des checkbox */
 .checkbox-field label {
   font-weight: 400;
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
 }
 
-/* Icones des labels */
-label i,
-.form-label i {
-  color: var(--color-primary);
-  font-size: 1.1em;
-}
-
+/* Champs de formulaire */
 .form-input {
   padding: var(--space-md) var(--space-lg);
   border: 2px solid var(--color-bg-secondary);
@@ -162,45 +275,56 @@ label i,
   box-shadow: 0 0 0 4px var(--color-primary-light);
 }
 
-.form-input::placeholder {
-  color: var(--color-text-secondary);
-  opacity: 0.7;
-}
-
-/* Style pour les champs requis */
-.form-input[required] + .form-label::after {
-  content: "*";
-  color: var(--color-primary);
-  margin-left: var(--space-xs);
-}
-
-/* Style pour les champs désactivés */
-.form-input:disabled {
-  background-color: var(--color-bg-tertiary);
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-/* Style pour les messages d'erreur */
-.error-message {
-  color: var(--color-danger);
-  font-size: var(--font-size-sm);
+/* Messages d'état */
+.alert {
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
-  margin-top: var(--space-xs);
-  animation: fadeIn 0.3s ease-in-out;
+  gap: var(--space-sm);
 }
 
-.success-message {
+.alert-success {
+  background-color: var(--color-success-light);
   color: var(--color-success);
-  font-size: var(--font-size-sm);
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
 }
 
-/* Animation pour les messages */
+.alert-error {
+  background-color: var(--color-danger-light);
+  color: var(--color-danger);
+}
+
+.alert-warning {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+/* Utilitaires de mise en page */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.gap-sm {
+  gap: var(--space-sm);
+}
+.gap-md {
+  gap: var(--space-md);
+}
+.gap-lg {
+  gap: var(--space-lg);
+}
+
+/* Animations communes */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -212,22 +336,41 @@ label i,
   }
 }
 
-/* Responsive Design */
+/* Responsive design */
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0 var(--space-lg);
+  }
+}
+
 @media screen and (max-width: 768px) {
-  .form-container {
-    padding: var(--space-lg);
-    margin: var(--space-md);
+  .container {
+    padding: 0 var(--space-md);
   }
 
-  .form-input {
-    padding: var(--space-sm) var(--space-md);
+  .section {
+    padding: var(--space-lg) 0;
+  }
+
+  .grid {
+    gap: var(--space-sm);
+  }
+
+  .features-grid {
+    grid-template-columns: 1fr;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .btn {
+    width: 100%;
+  }
+
   .form-container {
     padding: var(--space-md);
-    margin: var(--space-sm);
-    border-radius: var(--radius-md);
+  }
+
+  .presentation-content {
+    padding: 0 var(--space-sm);
   }
 }

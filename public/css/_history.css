@@ -1,214 +1,123 @@
 /* ---------------------------------------------------------------------------------------
- *  Styles spécifiques pour history.html
+ * Styles spécifiques pour history.html
  * ---------------------------------------------------------------------------------------
  */
 
-/* Section principale */
 .history-section {
-  padding: var(--space-xl) 0;
+  max-width: 1200px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-lg);
 }
 
-.section-header {
-  text-align: center;
+/* Statistiques globales */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
   margin-bottom: var(--space-xl);
 }
 
-.section-header h2 {
+.stat-card {
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+.stat-card i {
   font-size: var(--font-size-xxl);
-  color: var(--color-text-primary);
+  color: var(--color-primary);
   margin-bottom: var(--space-sm);
 }
 
-.section-description {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-lg);
+.stat-value {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-text-primary);
 }
 
-/* Filtres */
-.form-card {
-  max-width: 900px;
-  margin: 0 auto var(--space-xl);
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-lg);
+/* Filtres de recherche */
+.filters-section {
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-xl);
   box-shadow: var(--shadow-md);
 }
 
-.card-header {
-  padding: var(--space-md) var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
-}
-
-.card-header h3 {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-primary);
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.card-header i {
-  color: var(--color-primary);
-}
-
-.card-body {
-  padding: var(--space-lg);
-}
-
-.filter-group {
-  display: flex;
-  align-items: center;
+.filters-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-md);
-  margin-bottom: var(--space-md);
+  align-items: end;
 }
 
-.filter-group:last-child {
-  margin-bottom: 0;
-}
-
-.filter-group label {
-  min-width: 150px;
-  color: var(--color-text-primary);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.filter-group select,
-.filter-group input {
-  flex: 1;
-  padding: var(--space-sm) var(--space-md);
-  border: 2px solid var(--color-bg-secondary);
-  border-radius: var(--radius-md);
-  background-color: var(--color-bg-secondary);
-  transition: var(--transition-base);
-  font-size: var(--font-size-base);
-}
-
-.filter-group select:hover,
-.filter-group input:hover {
-  border-color: var(--color-primary-light);
-}
-
-.filter-group select:focus,
-.filter-group input:focus {
-  border-color: var(--color-primary);
-  outline: none;
-  background-color: var(--color-white);
-  box-shadow: 0 0 0 4px var(--color-primary-light);
-}
-
-/* Grille des trajets */
-.trips-grid {
+/* Liste des trajets */
+.history-list {
   display: grid;
   gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 var(--space-md);
 }
 
-/* Carte de trajet */
-.trip-card {
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-lg);
+.history-card {
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
-  transition: var(--transition-base);
-  width: 100%;
-  min-width: 320px;
 }
 
-.trip-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.trip-card .card-header {
+.history-header {
+  padding: var(--space-md);
+  background: var(--color-bg-secondary);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: var(--space-md) var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
 }
 
-/* Statut du trajet */
-.trip-status {
+.trajet-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.role {
   padding: var(--space-xs) var(--space-sm);
-  border-radius: var(--radius-sm);
+  border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: var(--space-xs);
 }
 
-.trip-status.completed {
-  background-color: var(--color-success-light);
-  color: var(--color-success);
+.role.conducteur {
+  background: var(--color-primary);
+  color: var(--color-text-light);
 }
 
-.trip-status.canceled {
-  background-color: var(--color-danger-light);
-  color: var(--color-danger);
+.role.passager {
+  background: var(--color-secondary);
+  color: var(--color-text-light);
 }
 
-/* Route du trajet */
-.trip-route {
-  display: flex;
-  flex-direction: column;
+.history-details {
+  padding: var(--space-md);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: var(--space-md);
-  margin: var(--space-md) 0;
-  padding: 0 var(--space-lg);
 }
 
-.departure,
-.arrival {
+.detail-item {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
 }
 
-.departure i,
-.arrival i {
-  color: var(--color-primary);
-  font-size: var(--font-size-lg);
-}
-
-.route-line {
-  width: 2px;
-  height: 30px;
-  background-color: var(--color-primary);
-  margin-left: 7px;
-}
-
-/* Détails du trajet */
-.trip-details {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-  margin: var(--space-md) 0;
-  padding: 0 var(--space-lg);
-}
-
-.trip-details p {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-  color: var(--color-text-secondary);
-}
-
-.trip-details i {
+.detail-item i {
   color: var(--color-primary);
 }
 
-/* Actions du trajet */
-.trip-actions {
+.history-actions {
+  padding: var(--space-md);
+  background: var(--color-bg-secondary);
   display: flex;
-  gap: var(--space-md);
-  margin-top: var(--space-md);
-  padding: var(--space-md) var(--space-lg);
-  border-top: 1px solid var(--color-border);
+  justify-content: flex-end;
+  gap: var(--space-sm);
 }
 
 /* Pagination */
@@ -220,91 +129,32 @@
   margin-top: var(--space-xl);
 }
 
-.page-numbers {
-  display: flex;
-  gap: var(--space-xs);
-}
-
-.page-numbers span {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: var(--transition-base);
-  font-weight: 500;
-}
-
-.page-numbers span.active {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
-}
-
-.page-numbers span:not(.active):hover {
-  background-color: var(--color-bg-secondary);
+.page-info {
+  color: var(--color-text-secondary);
 }
 
 /* Responsive Design */
-@media screen and (max-width: 960px) {
-  .form-card,
-  .trips-grid {
-    max-width: 100%;
-    margin-left: var(--space-md);
-    margin-right: var(--space-md);
-  }
-
-  .trip-card {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 900px;
+@media screen and (max-width: 1024px) {
+  .history-section {
+    padding: 0 var(--space-md);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .trips-grid {
-    gap: var(--space-md);
+  .filters-form {
+    grid-template-columns: 1fr;
   }
 
-  .filter-group {
+  .history-header {
     flex-direction: column;
-    align-items: stretch;
     gap: var(--space-sm);
   }
 
-  .filter-group label {
-    min-width: auto;
-  }
-
-  .trip-actions {
+  .history-actions {
     flex-direction: column;
   }
 
-  .trip-actions .btn {
+  .history-actions button {
     width: 100%;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .trips-grid {
-    gap: var(--space-sm);
-    margin-left: var(--space-sm);
-    margin-right: var(--space-sm);
-  }
-
-  .card-header {
-    flex-direction: column;
-    gap: var(--space-sm);
-    text-align: center;
-  }
-
-  .pagination {
-    flex-direction: column;
-    gap: var(--space-md);
-  }
-
-  .trip-card {
-    min-width: auto;
   }
 }

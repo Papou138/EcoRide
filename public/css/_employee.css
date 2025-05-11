@@ -1,98 +1,175 @@
 /* ---------------------------------------------------------------------------------------
- *  Styles spécifiques pour employee.html
+ * Styles spécifiques pour employee.html
  * ---------------------------------------------------------------------------------------
  */
 
-/* Cartes des avis */
-.avis-card {
-  margin-bottom: var(--space-md);
+.employee-section {
+  max-width: 1200px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-lg);
 }
 
-.avis-header {
+/* Tableau de bord */
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.dashboard-card {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-base);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Gestion des avis */
+.reviews-section {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-xl);
+}
+
+.reviews-header {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: var(--space-sm);
 }
 
-.avis-date {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+.review-filters {
+  display: flex;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--color-bg-secondary);
 }
 
-.avis-content {
-  margin: var(--space-md) 0;
+.review-card {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
 }
 
-.rating {
-  color: var(--color-warning);
-  margin-bottom: var(--space-xs);
-}
-
-/* Cartes des problèmes */
-.probleme-card {
-  margin-bottom: var(--space-md);
-}
-
-.probleme-header {
+.review-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: var(--space-sm);
 }
 
-.probleme-id {
-  font-family: var(--font-mono);
-  color: var(--color-text-secondary);
-}
-
-.probleme-status {
-  padding: var(--space-xs) var(--space-sm);
-  background-color: var(--color-warning-light);
-  border-radius: var(--radius-sm);
-  font-weight: 500;
-  font-size: var(--font-size-sm);
-}
-
-.probleme-details {
-  margin: var(--space-md) 0;
-}
-
-.probleme-details p {
-  margin-bottom: var(--space-xs);
+.review-user {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
 }
 
-.probleme-details i {
-  color: var(--color-primary);
-  width: 20px;
-  text-align: center;
+.review-user img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
-.probleme-description {
-  margin-top: var(--space-sm);
-  padding-top: var(--space-sm);
-  border-top: 1px solid var(--color-border);
+.review-rating {
+  color: var(--color-tertiary);
+  font-size: var(--font-size-lg);
+}
+
+.review-content {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.review-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+/* Gestion des signalements */
+.reports-section {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.report-card {
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.report-severity {
+  display: inline-block;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+}
+
+.severity-high {
+  background-color: var(--color-error);
+  color: var(--color-text-light);
+}
+
+.severity-medium {
+  background-color: var(--color-tertiary);
+  color: var(--color-text-light);
+}
+
+.severity-low {
+  background-color: var(--color-success);
+  color: var(--color-text-light);
+}
+
+/* Modal de modération */
+.moderation-modal {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  max-width: 500px;
+  width: 90%;
+}
+
+.moderation-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
 }
 
 /* Responsive Design */
-@media screen and (max-width: 768px) {
-  .form-actions {
-    flex-direction: column;
+@media screen and (max-width: 1024px) {
+  .employee-section {
+    padding: 0 var(--space-md);
   }
 
-  .form-actions .btn {
-    width: 100%;
+  .review-filters {
+    flex-direction: column;
   }
 }
 
-@media screen and (max-width: 480px) {
-  .avis-header,
-  .probleme-header {
+@media screen and (max-width: 768px) {
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .review-header {
     flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
+  }
+
+  .review-actions {
+    flex-wrap: wrap;
+  }
+
+  .moderation-actions {
+    flex-direction: column;
   }
 }

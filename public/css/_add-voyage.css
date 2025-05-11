@@ -1,98 +1,165 @@
 /* ---------------------------------------------------------------------------------------
- *  Styles spécifiques pour add-voyage.html
+ * Styles spécifiques pour add-voyage.html
  * ---------------------------------------------------------------------------------------
  */
 
-/* Section de formulaire */
-.form-section {
-  margin-bottom: var(--space-xl);
+.voyage-form-section {
+  max-width: 800px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-lg);
 }
 
-/* Titre des sections */
-.form-section h3 {
-  color: var(--color-text-primary);
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--space-lg);
+/* Étapes du formulaire */
+.form-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-xl);
+  position: relative;
+}
+
+.form-steps::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-border);
+  z-index: 1;
+}
+
+.step {
+  position: relative;
+  z-index: 2;
+  background: var(--color-bg-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  justify-content: center;
+  border: 2px solid var(--color-border);
 }
 
-.form-section h3 i {
+.step.active {
+  border-color: var(--color-primary);
   color: var(--color-primary);
 }
 
-/* Grille pour les champs */
-.fields-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: var(--space-md);
+.step.completed {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-text-light);
 }
 
-.field-full {
-  grid-column: 1 / -1;
+/* Formulaire de trajet */
+.voyage-form {
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
 }
 
-/* Préférences de voyage */
-.preferences-grid {
+/* Champs de localisation */
+.location-field {
+  position: relative;
+}
+
+.location-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  z-index: 10;
+  display: none;
+}
+
+.location-suggestions.active {
+  display: block;
+}
+
+.suggestion-item {
+  padding: var(--space-sm);
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background: var(--color-bg-secondary);
+}
+
+/* Options du trajet */
+.journey-options {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-md);
+  margin: var(--space-lg) 0;
 }
 
-/* Aperçu de l'itinéraire */
-.map-container {
-  height: 300px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  margin: var(--space-md) 0;
-  background-color: var(--color-bg-secondary);
-}
-
-.route-preview {
-  background-color: var(--color-bg-secondary);
+.price-calculator {
+  background: var(--color-bg-secondary);
   padding: var(--space-md);
-  border-radius: var(--radius-md);
-  margin-top: var(--space-md);
+  border-radius: var(--radius-sm);
+  margin: var(--space-md) 0;
 }
 
-/* Actions du formulaire */
-.form-actions {
+.price-details {
   display: flex;
-  justify-content: center;
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-  padding-top: var(--space-lg);
-  border-top: 1px solid var(--color-bg-secondary);
+  justify-content: space-between;
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
 }
 
-/* Style spécifique pour l'icône du bouton "Proposer le Voyage" */
-.btn-primary .fa-plus {
-  color: var(--color-white);
-  margin-right: var(--space-xs);
+/* Navigation entre étapes */
+.form-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-xl);
+}
+
+/* Messages d'erreur */
+.field-error {
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+  display: none;
+}
+
+.form-input.error + .field-error {
+  display: block;
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-  .fields-grid {
-    grid-template-columns: 1fr;
+  .voyage-form-section {
+    padding: 0 var(--space-md);
   }
 
-  .form-actions {
-    flex-direction: column;
+  .voyage-form {
+    padding: var(--space-lg);
   }
 
-  .form-actions .btn {
-    width: 100%;
+  .form-steps {
+    overflow-x: auto;
+    padding-bottom: var(--space-md);
   }
 }
 
 @media screen and (max-width: 480px) {
-  .preferences-grid {
-    grid-template-columns: 1fr;
+  .voyage-form {
+    padding: var(--space-md);
   }
 
-  .map-container {
-    height: 250px;
+  .form-navigation {
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .form-navigation button {
+    width: 100%;
   }
 }

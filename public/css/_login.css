@@ -1,0 +1,149 @@
+/* ---------------------------------------------------------------------------------------
+ * Styles spécifiques pour login.html
+ * ---------------------------------------------------------------------------------------
+ */
+
+.login-section {
+  max-width: 500px;
+  margin: var(--space-xl) auto;
+  padding: 0 var(--space-lg);
+}
+
+/* Formulaire de connexion */
+.login-form {
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-xl);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.form-header i {
+  font-size: var(--font-size-xxl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+/* Champs de formulaire */
+.form-field {
+  margin-bottom: var(--space-lg);
+}
+
+.password-container {
+  position: relative;
+}
+
+.toggle-password {
+  position: absolute;
+  right: var(--space-sm);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+/* Case à cocher "Se souvenir de moi" */
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin: var(--space-md) 0;
+}
+
+.checkbox-field input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+}
+
+/* Liens et options */
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: var(--space-md) 0;
+}
+
+.forgot-password {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  transition: color var(--transition-base);
+}
+
+.forgot-password:hover {
+  color: var(--color-primary);
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: var(--space-xl);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Messages d'erreur */
+.error-message {
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+  display: none;
+}
+
+.form-input.error {
+  border-color: var(--color-error);
+}
+
+.form-input.error + .error-message {
+  display: block;
+}
+
+/* Boutons sociaux */
+.social-login {
+  margin-top: var(--space-xl);
+  text-align: center;
+}
+
+.social-login-divider {
+  display: flex;
+  align-items: center;
+  margin: var(--space-lg) 0;
+}
+
+.social-login-divider::before,
+.social-login-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.social-login-divider span {
+  padding: 0 var(--space-md);
+  color: var(--color-text-secondary);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .login-section {
+    padding: 0 var(--space-md);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .login-form {
+    padding: var(--space-lg);
+  }
+
+  .login-options {
+    flex-direction: column;
+    gap: var(--space-sm);
+    text-align: center;
+  }
+}

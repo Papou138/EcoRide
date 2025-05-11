@@ -6,7 +6,6 @@
 /* Import des fichiers de base */
 @import "_variables.css"; /* Importation des variables CSS */
 @import "_reset.css"; /* Importation du reset CSS */
-@import "_layout.css"; /* Importation des styles de mise en page */
 @import "_commun.css"; /* Importation des styles de mise en page commune */
 
 /* Import des composant principaux */

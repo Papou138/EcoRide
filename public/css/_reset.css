@@ -15,7 +15,7 @@
 /* Styles de base */
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Pour un défilement fluide */
 }
 
 body {
@@ -77,6 +77,33 @@ h6 {
 ul,
 ol {
   list-style: none;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* Focus */
+:focus {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* SVG */
+svg {
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+/* Boutons */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 /* Suppression des animations pour les utilisateurs qui les ont désactivées */
