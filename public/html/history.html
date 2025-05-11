@@ -60,37 +60,51 @@
     </header>
 
     <main>
-      <section id="history" class="container">
+      <section class="history-section container">
         <div class="section-header">
-          <h2>Votre Historique de Covoiturages</h2>
+          <h2>
+            <i class="fas fa-history"></i> Votre Historique de Covoiturages
+          </h2>
           <p class="section-description">
             Retrouvez tous vos trajets effectués avec EcoRide
           </p>
         </div>
 
-        <div class="filters">
-          <div class="filter-group">
-            <label for="date-filter">Filtrer par date :</label>
-            <input type="date" id="date-filter" name="date-filter" />
+        <div class="form-card">
+          <div class="card-header">
+            <h3><i class="fas fa-filter"></i> Filtres</h3>
           </div>
-          <div class="filter-group">
-            <label for="status-filter">Statut :</label>
-            <select id="status-filter" name="status-filter">
-              <option value="all">Tous</option>
-              <option value="completed">Terminés</option>
-              <option value="canceled">Annulés</option>
-            </select>
+          <div class="card-body">
+            <div class="filter-group">
+              <label for="date-filter">
+                <i class="fas fa-calendar"></i> Filtrer par date :</label
+              >
+              <input type="date" id="date-filter" name="date-filter" />
+            </div>
+            <div class="filter-group">
+              <label for="status-filter">
+                <i class="fas fa-check-circle"></i> Status :
+              </label>
+              <select id="status-filter" name="status-filter">
+                <option value="all">Tous</option>
+                <option value="completed">Terminés</option>
+                <option value="canceled">Annulés</option>
+              </select>
+            </div>
           </div>
         </div>
 
         <div id="trips-history" class="trips-grid">
-          <!-- Template pour un trajet -->
-          <div class="trip-card">
-            <div class="trip-header">
-              <span class="trip-date">15 avril 2025</span>
-              <span class="trip-status completed">Terminé</span>
+          <div class="trip-card form-card">
+            <div class="card-header">
+              <span class="trip-date"
+                ><i class="fas fa-calendar-day"></i> 15 avril 2025</span
+              >
+              <span class="trip-status completed"
+                ><i class="fas fa-check-circle"></i> Terminé</span
+              >
             </div>
-            <div class="trip-body">
+            <div class="card-body">
               <div class="trip-route">
                 <div class="departure">
                   <i class="fas fa-circle"></i>
@@ -140,14 +154,14 @@
     <footer>
       <div class="footer-content">
         <div class="footer-section">
-          <h3>Contact</h3>
+          <h3><i class="fas fa-envelope"></i> Contact</h3>
           <p>
             Email: <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
           </p>
-          <p>Tél: +33 (0)1 23 45 67 89</p>
+          <p><i class="fas fa-phone"></i> Tél: +33 (0)1 23 45 67 89</p>
         </div>
         <div class="footer-section">
-          <h3>Liens utiles</h3>
+          <h3><i class="fas fa-link"></i> Liens utiles</h3>
           <ul>
             <li><a href="#">Mentions légales</a></li>
             <li><a href="#">Politique de confidentialité</a></li>
@@ -155,7 +169,7 @@
           </ul>
         </div>
         <div class="footer-section">
-          <h3>À propos</h3>
+          <h3><i class="fas fa-info-circle"></i> À propos</h3>
           <p>
             EcoRide s'engage pour une mobilité plus verte et plus économique.
           </p>
@@ -165,7 +179,15 @@
         <p>&copy; 2025 EcoRide - Tous droits réservés</p>
       </div>
     </footer>
-    <script src="../js/modules/notifications.js"></script>
-    <script src="../js/modules/history.js"></script>
+
+    <script type="module">
+      import { initialiserMenu } from "../js/modules/menu.js";
+      import { initialiserHistorique } from "../js/modules/history.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initialiserMenu();
+        initialiserHistorique();
+      });
+    </script>
   </body>
 </html>
