@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Détails du trajet de covoiturage EcoRide - Consultez les informations et réservez votre place"
+    />
     <title>Détails du Covoiturage - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
@@ -53,41 +57,155 @@
         </ul>
       </nav>
     </header>
+
     <main>
-      <section id="covoiturage-details">
-        <h2>Détails du Trajet</h2>
-        <p><strong>Chauffeur :</strong> Jean Dupont</p>
-        <p><strong>Note :</strong> 4.5/5</p>
-        <p><strong>Départ :</strong> Paris</p>
-        <p><strong>Arrivée :</strong> Lyon</p>
-        <p><strong>Date :</strong> 15-04-2025</p>
-        <p><strong>Heure de départ :</strong> 08:00</p>
-        <p><strong>Heure d'arrivée :</strong> 12:00</p>
-        <p><strong>Prix :</strong> 20 €</p>
-        <p><strong>Places restantes :</strong> 3</p>
-        <p><strong>Véhicule :</strong> Tesla Model 3 (Électrique)</p>
-        <p><strong>Préférences :</strong> Non-fumeur, Animaux acceptés</p>
-        <h3>Avis du Conducteur</h3>
-        <p>
-          Conducteur très sympathique et ponctuel. Véhicule propre et
-          confortable.
-        </p>
-        <button id="participer-btn" onclick="participer(tripId)">
-          Participer
-        </button>
+      <section id="covoiturage-details" class="details-section">
+        <div class="section-header">
+          <h2><i class="fas fa-info-circle"></i> Détails du Trajet</h2>
+          <div class="trajet-status">
+            <span class="badge available">Places disponibles</span>
+          </div>
+        </div>
+
+        <div class="detail-container">
+          <!-- Informations principales -->
+          <div class="detail-card primary-info">
+            <div class="driver-info">
+              <img
+                src="../images/default-avatar.png"
+                alt="Profil du conducteur"
+                class="driver-avatar"
+              />
+              <div class="driver-details">
+                <h3><i class="fas fa-user"></i> Chauffeur</h3>
+                <p class="driver-name">Jean Dupont</p>
+                <div class="rating">
+                  <span class="stars">★★★★☆</span>
+                  <span class="rating-value">4.5/5</span>
+                  <span class="reviews-count">(42 avis)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="journey-details">
+              <div class="route-info">
+                <div class="departure">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <div class="location-details">
+                    <h4>Départ</h4>
+                    <p>Paris</p>
+                    <time>08:00</time>
+                  </div>
+                </div>
+                <div class="journey-duration">
+                  <i class="fas fa-clock"></i> 04h00
+                </div>
+                <div class="arrival">
+                  <i class="fas fa-flag-checkered"></i>
+                  <div class="location-details">
+                    <h4>Arrivée</h4>
+                    <p>Lyon</p>
+                    <time>12:00</time>
+                  </div>
+                </div>
+              </div>
+
+              <div class="journey-meta">
+                <div class="meta-item">
+                  <i class="fas fa-calendar"></i>
+                  <p>15 avril 2025</p>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-euro-sign"></i>
+                  <p>120 € par personne</p>
+                </div>
+                <div class="meta-item">
+                  <i class="fas fa-users"></i>
+                  <p>3 places restantes</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Informations secondaires -->
+          <div class="detail-card secondary-info">
+            <div class="vehicle-info">
+              <h3><i class="fas fa-car"></i> Véhicule</h3>
+              <div class="vehicle-details">
+                <p>Tesla Model 3</p>
+                <span class="eco-badge">
+                  <i class="fas fa-leaf"></i> Véhicule électrique
+                </span>
+              </div>
+            </div>
+
+            <div class="preferences">
+              <h3><i class="fas fa-thumbs-up"></i> Préférences</h3>
+              <div class="preference-tags">
+                <span class="tag"
+                  ><i class="fas fa-smoking-ban"></i> Non-fumeur</span
+                >
+                <span class="tag"
+                  ><i class="fas fa-paw"></i> Animaux acceptés</span
+                >
+              </div>
+            </div>
+
+            <div class="reviews">
+              <h3><i class="fas fa-comments"></i> Avis récents</h3>
+              <div class="review-item">
+                <div class="review-header">
+                  <span class="stars">★★★★★</span>
+                  <span class="review-date">10 avril 2025</span>
+                </div>
+                <p class="review-text">
+                  Conducteur très sympathique et ponctuel. Véhicule propre et
+                  confortable.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="action-container">
+          <button
+            id="participer-btn"
+            class="btn btn-primary"
+            onclick="participer(tripId)"
+          >
+            <i class="fas fa-check"></i> Réserver ma place
+          </button>
+          <button
+            id="contact-btn"
+            class="btn btn-secondary"
+            onclick="contacterConducteur(tripId)"
+          >
+            <i class="fas fa-envelope"></i> Contacter le Conducteur
+          </button>
+          <button
+            id="share-btn"
+            class="btn btn-outline"
+            onclick="partagerTrajet(tripId)"
+          >
+            <i class="fas fa-share"></i> Partager
+          </button>
+        </div>
       </section>
     </main>
+
     <footer>
       <div class="footer-content">
-        <div class="footer-section">
-          <h3>Contact</h3>
+        <div class="footer-section contact-section">
+          <h3><i class="fas fa-envelope"></i> Contact</h3>
           <p>
-            Email: <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+            <i class="fas fa-envelope"></i> Email :
+            <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
           </p>
-          <p>Tél: +33 (0)1 23 45 67 89</p>
+          <p><i class="fas fa-phone"></i> Tél : +33 (0)1 23 45 67 89</p>
         </div>
         <div class="footer-section">
-          <h3>Liens utiles</h3>
+          <h3><i class="fas fa-link"></i> Liens utiles</h3>
           <ul>
             <li><a href="#">Mentions légales</a></li>
             <li><a href="#">Politique de confidentialité</a></li>
@@ -95,7 +213,7 @@
           </ul>
         </div>
         <div class="footer-section">
-          <h3>À propos</h3>
+          <h3><i class="fas fa-info-circle"></i> À propos</h3>
           <p>
             EcoRide s'engage pour une mobilité plus verte et plus économique.
           </p>
@@ -105,9 +223,47 @@
         <p>&copy; 2025 EcoRide - Tous droits réservés</p>
       </div>
     </footer>
+
     <script type="module">
-      import { participer } from "../js/participation.js"; // Importer la fonction participer depuis le fichier participation.js
+      import {
+        participer,
+        contacterConducteur,
+        partagerTrajet,
+      } from "../js/modules/voyage.js";
+
       window.participer = participer;
+      window.contacterConducteur = contacterConducteur;
+      window.partagerTrajet = partagerTrajet;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initializeDetailPage();
+      });
+
+      function initializeDetailPage() {
+        // Récupérer l'ID du trajet depuis l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const tripId = urlParams.get("id");
+
+        // Charger les détails du trajet
+        if (tripId) {
+          loadTripDetails(tripId);
+        }
+
+        // Gérer l'état du bouton de réservation
+        updateBookingButton();
+      }
+
+      function updateBookingButton() {
+        const button = document.getElementById("participer-btn");
+        const placesRestantes = parseInt(
+          document.querySelector(".meta-item p").textContent
+        );
+
+        if (placesRestantes === 0) {
+          button.disabled = true;
+          button.innerHTML = '<i class="fas fa-ban"></i> Complet';
+        }
+      }
     </script>
   </body>
 </html>

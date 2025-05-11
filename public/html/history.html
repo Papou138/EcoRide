@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Consultez votre historique de covoiturages sur EcoRide. 
-      Retrouvez tous vos trajets passés et les détails de vos voyages."
+      content="Historique de vos voyages EcoRide - Consultez vos trajets passés"
     />
     <title>Historique des Covoiturages - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
@@ -27,7 +26,7 @@
             height="50"
             loading="lazy"
           />
-          <h1>EcoRide - Historique des Covoiturages</h1>
+          <h1>EcoRide - Historique</h1>
         </div>
         <button id="menu-toggle" aria-label="Menu Principal">
           <span></span>
@@ -60,91 +59,97 @@
     </header>
 
     <main>
-      <section class="history-section container">
+      <section class="history-section">
         <div class="section-header">
-          <h2>
-            <i class="fas fa-history"></i> Votre Historique de Covoiturages
-          </h2>
+          <h2><i class="fas fa-history"></i> Historique des Voyages</h2>
           <p class="section-description">
-            Retrouvez tous vos trajets effectués avec EcoRide
+            Consultez vos trajets passés et vos statistiques
           </p>
         </div>
 
-        <div class="form-card">
-          <div class="card-header">
-            <h3><i class="fas fa-filter"></i> Filtres</h3>
+        <!-- Statistiques -->
+        <div class="stats-container">
+          <div class="stat-card">
+            <i class="fas fa-route"></i>
+            <h3>Total Trajets</h3>
+            <p class="stat-value">24</p>
           </div>
-          <div class="card-body">
-            <div class="filter-group">
-              <label for="date-filter">
-                <i class="fas fa-calendar"></i> Filtrer par date :</label
-              >
-              <input type="date" id="date-filter" name="date-filter" />
+          <div class="stat-card">
+            <i class="fas fa-leaf"></i>
+            <h3>CO₂ Économisé</h3>
+            <p class="stat-value">156 kg</p>
+          </div>
+          <div class="stat-card">
+            <i class="fas fa-euro-sign"></i>
+            <h3>Économies Réalisées</h3>
+            <p class="stat-value">345 €</p>
+          </div>
+        </div>
+
+        <!-- Filtres -->
+        <div class="filters-section">
+          <form class="filters-form">
+            <div class="form-field">
+              <label for="date-debut">Date début</label>
+              <input type="date" id="date-debut" class="form-input" />
             </div>
-            <div class="filter-group">
-              <label for="status-filter">
-                <i class="fas fa-check-circle"></i> Status :
-              </label>
-              <select id="status-filter" name="status-filter">
+            <div class="form-field">
+              <label for="date-fin">Date fin</label>
+              <input type="date" id="date-fin" class="form-input" />
+            </div>
+            <div class="form-field">
+              <label for="type-trajet">Type de trajet</label>
+              <select id="type-trajet" class="form-input">
                 <option value="all">Tous</option>
-                <option value="completed">Terminés</option>
-                <option value="canceled">Annulés</option>
+                <option value="conducteur">Conducteur</option>
+                <option value="passager">Passager</option>
               </select>
             </div>
-          </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-search"></i> Filtrer
+            </button>
+          </form>
         </div>
 
-        <div id="trips-history" class="trips-grid">
-          <div class="trip-card form-card">
-            <div class="card-header">
-              <span class="trip-date"
-                ><i class="fas fa-calendar-day"></i> 15 avril 2025</span
-              >
-              <span class="trip-status completed"
-                ><i class="fas fa-check-circle"></i> Terminé</span
-              >
+        <!-- Liste des trajets -->
+        <div class="history-list">
+          <div class="history-card">
+            <div class="history-header">
+              <div class="trajet-info">
+                <h3><i class="fas fa-map-marker-alt"></i> Paris → Lyon</h3>
+                <span class="date">15 avril 2025</span>
+              </div>
+              <span class="role conducteur">Conducteur</span>
             </div>
-            <div class="card-body">
-              <div class="trip-route">
-                <div class="departure">
-                  <i class="fas fa-circle"></i>
-                  <span>Paris</span>
-                </div>
-                <div class="route-line"></div>
-                <div class="arrival">
-                  <i class="fas fa-map-marker-alt"></i>
-                  <span>Lyon</span>
-                </div>
+            <div class="history-details">
+              <div class="detail-item">
+                <i class="fas fa-users"></i>
+                <span>4 passagers</span>
               </div>
-              <div class="trip-details">
-                <p>
-                  <i class="fas fa-user"></i> Chauffeur :
-                  <span>Jean Dupont</span>
-                </p>
-                <p><i class="fas fa-euro-sign"></i> Prix : <span>20 €</span></p>
+              <div class="detail-item">
+                <i class="fas fa-euro-sign"></i>
+                <span>80€ gagnés</span>
               </div>
-              <div class="trip-actions">
-                <button class="btn btn-secondary">
-                  <i class="fas fa-info-circle"></i> Détails
-                </button>
-                <button class="btn btn-danger">
-                  <i class="fas fa-times"></i> Annuler
-                </button>
+              <div class="detail-item">
+                <i class="fas fa-leaf"></i>
+                <span>7.2 kg CO₂ économisés</span>
               </div>
+            </div>
+            <div class="history-actions">
+              <button class="btn btn-secondary" onclick="showDetails(tripId)">
+                <i class="fas fa-info-circle"></i> Détails
+              </button>
             </div>
           </div>
         </div>
 
+        <!-- Pagination -->
         <div class="pagination">
-          <button class="btn btn-outline" disabled>
+          <button class="btn btn-secondary">
             <i class="fas fa-chevron-left"></i> Précédent
           </button>
-          <div class="page-numbers">
-            <span class="active">1</span>
-            <span>2</span>
-            <span>3</span>
-          </div>
-          <button class="btn btn-outline">
+          <span class="page-info">Page 1 sur 3</span>
+          <button class="btn btn-secondary">
             Suivant <i class="fas fa-chevron-right"></i>
           </button>
         </div>
@@ -153,7 +158,7 @@
 
     <footer>
       <div class="footer-content">
-        <div class="footer-section">
+        <div class="footer-section" contact-section>
           <h3><i class="fas fa-envelope"></i> Contact</h3>
           <p>
             Email: <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>

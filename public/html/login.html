@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Inscription sur EcoRide - Rejoignez notre communauté de covoiturage écologique"
+      content="Connexion à votre compte EcoRide - Accédez à vos voyages et votre profil"
     />
-    <title>Inscription - EcoRide</title>
+    <title>Connexion - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
       rel="stylesheet"
@@ -26,7 +26,7 @@
             height="50"
             loading="lazy"
           />
-          <h1>EcoRide - Inscription</h1>
+          <h1>EcoRide - Connexion</h1>
         </div>
         <button id="menu-toggle" aria-label="Menu Principal">
           <span></span>
@@ -37,7 +37,7 @@
       <nav id="main-nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="register.html" class="active">Inscription</a></li>
+          <li><a href="register.html">Inscription</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">Voyages</a>
             <ul class="dropdown-menu">
@@ -59,61 +59,21 @@
     </header>
 
     <main>
-      <section id="register" class="form-container">
+      <section id="login" class="form-container">
         <div class="form-header">
           <h2 class="section-title">
-            <i class="fas fa-user-plus"></i> Créer un Compte
+            <i class="fas fa-sign-in-alt"></i> Connexion
           </h2>
           <p class="section-subtitle">
-            Rejoignez notre communauté de covoiturage écologique et commencez à
-            voyager de manière responsable.
+            Connectez-vous pour accéder à votre espace personnel
           </p>
         </div>
 
-        <form id="register-form" class="form-group">
-          <!-- Champ NOM -->
-          <div class="form-field">
-            <label for="nom" class="form-label">
-              <i class="fas fa-user"></i>Nom :
-            </label>
-            <input
-              type="text"
-              id="nom"
-              name="nom"
-              class="form-input"
-              required
-              pattern="[A-Za-z\s]{2,50}"
-              title="Le nom doit contenir entre 2 et 50 caractères, uniquement des lettres"
-              placeholder="Votre nom"
-              autocomplete="family-name"
-            />
-            <div id="nom-error" class="error-message"></div>
-          </div>
-
-          <!-- Champ PRENOM -->
-          <div class="form-field">
-            <label for="prenom" class="form-label">
-              <i class="fas fa-user"></i>Prénom :</label
-            >
-            <input
-              type="text"
-              id="prenom"
-              name="prenom"
-              class="form-input"
-              required
-              pattern="[A-Za-z\s]{2,50}"
-              title="Le prénom doit contenir entre 2 et 50 caractères, uniquement des lettres"
-              placeholder="Votre prénom"
-              autocomplete="given-name"
-            />
-            <div id="prenom-error" class="error-message"></div>
-          </div>
-
-          <!-- Champ EMAIL -->
+        <form id="login-form" class="form-group">
           <div class="form-field">
             <label for="email" class="form-label">
-              <i class="fas fa-envelope"></i>Email :</label
-            >
+              <i class="fas fa-envelope"></i> Email :
+            </label>
             <input
               type="email"
               id="email"
@@ -123,14 +83,12 @@
               placeholder="exemple@email.com"
               autocomplete="email"
             />
-            <div id="email-error" class="error-message"></div>
           </div>
 
-          <!-- Champ MOT DE PASSE -->
           <div class="form-field">
             <label for="password" class="form-label">
-              <i class="fas fa-lock"></i>Mot de Passe :</label
-            >
+              <i class="fas fa-lock"></i> Mot de passe :
+            </label>
             <div class="password-container">
               <input
                 type="password"
@@ -138,11 +96,8 @@
                 name="password"
                 class="form-input"
                 required
-                minlength="8"
-                pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
-                title="Le mot de passe doit contenir au moins 8 caractères, incluant des lettres et des chiffres"
                 placeholder="Votre mot de passe"
-                autocomplete="new-password"
+                autocomplete="current-password"
               />
               <button
                 type="button"
@@ -152,28 +107,20 @@
                 <i class="fas fa-eye"></i>
               </button>
             </div>
-            <div id="password-error" class="error-message"></div>
-            <div class="password-strength"></div>
           </div>
 
           <div class="form-field checkbox-field">
-            <input type="checkbox" id="terms" name="terms" required />
-            <label for="terms">
-              J'accepte les <a href="#">conditions d'utilisation</a> et la
-              <a href="#">politique de confidentialité</a>
-            </label>
+            <input type="checkbox" id="remember" name="remember" />
+            <label for="remember">Se souvenir de moi</label>
           </div>
 
-          <button
-            type="submit"
-            class="btn btn-primary"
-            onclick="createUser(nom.value, prenom.value, email.value, password.value)"
-          >
-            <i class="fas fa-user-plus"></i>S'inscrire
+          <button type="submit" class="btn btn-primary" onclick="login(event)">
+            <i class="fas fa-sign-in-alt"></i> Se connecter
           </button>
 
           <p class="form-footer">
-            Déjà membre ? <a href="login.html">Connectez-vous ici</a>
+            <a href="#">Mot de passe oublié ?</a><br />
+            Pas encore membre ? <a href="register.html">Inscrivez-vous ici</a>
           </p>
         </form>
       </section>
@@ -184,9 +131,10 @@
         <div class="footer-section contact-section">
           <h3><i class="fas fa-envelope"></i> Contact</h3>
           <p>
-            Email: <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+            <i class="fas fa-envelope"></i> Email :
+            <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
           </p>
-          <p><i class="fas fa-phone"></i> Tél: +33 (0)1 23 45 67 89</p>
+          <p><i class="fas fa-phone"></i> Tél : +33 (0)1 23 45 67 89</p>
         </div>
         <div class="footer-section">
           <h3><i class="fas fa-link"></i> Liens utiles</h3>
@@ -209,8 +157,8 @@
     </footer>
 
     <script type="module">
-      import { createUser } from "../js/modules/auth.js";
-      window.createUser = createUser;
+      import { login } from "../js/modules/auth.js";
+      window.login = login;
     </script>
   </body>
 </html>

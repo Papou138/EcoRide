@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Gérez vos covoiturages sur EcoRide - Suivez et contrôlez vos trajets en temps réel"
+      content="Gérez vos voyages EcoRide - Modifiez ou supprimer vos trajets de covoiturage"
     />
-    <title>Gestion des Covoiturages - EcoRide</title>
+    <title>Gérer mes Voyages - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
       rel="stylesheet"
@@ -26,7 +26,7 @@
             height="50"
             loading="lazy"
           />
-          <h1>EcoRide - Gestion des Covoiturages</h1>
+          <h1>EcoRide - Gérer mes Voyages</h1>
         </div>
         <button id="menu-toggle" aria-label="Menu Principal">
           <span></span>
@@ -63,7 +63,7 @@
     </header>
 
     <main>
-      <section id="manage-voyage" class="manage-section">
+      <section class="voyages-section">
         <!-- En-tete de section -->
         <div class="section-header">
           <div class="header-text">
@@ -193,6 +193,17 @@
               </button>
             </div>
           </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination">
+          <button class="btn btn-secondary" disabled>
+            <i class="fas fa-chevron-left"></i> Précédent
+          </button>
+          <span class="page-info">Page 1 sur 1</span>
+          <button class="btn btn-secondary" disabled>
+            Suivant <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
       </section>
     </main>
