@@ -58,8 +58,8 @@
       </nav>
     </header>
 
-    <main class="container">
-      <section class="profile-section">
+    <main>
+      <section class="profile-section container">
         <div class="section-header">
           <h2><i class="fas fa-user-circle"></i> Votre Profil</h2>
           <p class="section-description">
@@ -74,67 +74,69 @@
               <h3><i class="fas fa-id-card"></i> Informations Personnelles</h3>
             </div>
             <div class="card-body">
-              <label for="newName"><i class="fas fa-user"></i> Nom :</label>
-              <input
-                type="text"
-                id="newName"
-                name="newName"
-                required
-                pattern="[A-Za-z\s]{2,50}"
-                title="Le nom doit contenir entre 2 et 50 caractères, uniquement des lettres"
-              />
-              <div id="newName-error" class="error-message"></div>
-            </div>
+              <div class="form-group">
+                <label for="newName"><i class="fas fa-user"></i> Nom :</label>
+                <input
+                  type="text"
+                  id="newName"
+                  name="newName"
+                  required
+                  pattern="[A-Za-z\s]{2,50}"
+                  title="Le nom doit contenir entre 2 et 50 caractères, uniquement des lettres"
+                />
+                <div id="newName-error" class="error-message"></div>
+              </div>
 
-            <div class="card-body">
-              <label for="newSurname"
-                ><i class="fas fa-user"></i> Prénom :</label
-              >
-              <input
-                type="text"
-                id="newSurname"
-                name="newSurname"
-                required
-                pattern="[A-Za-z\s]{2,50}"
-                title="Le prénom doit contenir entre 2 et 50 caractères, uniquement des lettres"
-              />
-              <div id="newSurname-error" class="error-message"></div>
-            </div>
+              <div class="form-group">
+                <label for="newSurname"
+                  ><i class="fas fa-user"></i> Prénom :</label
+                >
+                <input
+                  type="text"
+                  id="newSurname"
+                  name="newSurname"
+                  required
+                  pattern="[A-Za-z\s]{2,50}"
+                  title="Le prénom doit contenir entre 2 et 50 caractères, uniquement des lettres"
+                />
+                <div id="newSurname-error" class="error-message"></div>
+              </div>
 
-            <div class="card-body">
-              <label for="newEmail"
-                ><i class="fas fa-envelope"></i> Email :</label
-              >
-              <input
-                type="email"
-                id="newEmail"
-                name="newEmail"
-                required
-                value="utilisateur@exemple.com"
-              />
-              <div id="newEmail-error" class="error-message"></div>
-            </div>
+              <div class="form-group">
+                <label for="newEmail"
+                  ><i class="fas fa-envelope"></i> Email :</label
+                >
+                <input
+                  type="email"
+                  id="newEmail"
+                  name="newEmail"
+                  required
+                  value="utilisateur@exemple.com"
+                />
+                <div id="newEmail-error" class="error-message"></div>
+              </div>
 
-            <div class="card-body">
-              <label for="confirmEmail"
-                ><i class="fas fa-envelope"></i> Confirmer Email :</label
-              >
-              <input
-                type="email"
-                id="confirmEmail"
-                name="confirmEmail"
-                required
-              />
-              <div id="confirmEmail-error" class="error-message"></div>
-            </div>
+              <div class="form-group">
+                <label for="confirmEmail"
+                  ><i class="fas fa-envelope"></i> Confirmer Email :</label
+                >
+                <input
+                  type="email"
+                  id="confirmEmail"
+                  name="confirmEmail"
+                  required
+                />
+                <div id="confirmEmail-error" class="error-message"></div>
+              </div>
 
-            <div class="card-body">
-              <label for="role"><i class="fas fa-user-tag"></i> Rôle :</label>
-              <select id="role" name="role" onchange="toggleChauffeurInfo()">
-                <option value="passager">Passager</option>
-                <option value="chauffeur">Chauffeur</option>
-                <option value="les_deux">Les deux</option>
-              </select>
+              <div class="form-group">
+                <label for="role"><i class="fas fa-user-tag"></i> Rôle :</label>
+                <select id="role" name="role" onchange="toggleChauffeurInfo()">
+                  <option value="passager">Passager</option>
+                  <option value="chauffeur">Chauffeur</option>
+                  <option value="les_deux">Les deux</option>
+                </select>
+              </div>
             </div>
           </div>
 
@@ -144,72 +146,81 @@
               <h3><i class="fas fa-car"></i> Informations Véhicule</h3>
             </div>
             <div class="card-body">
-              <label for="plaque">
-                <i class="fas fa-passport"></i> Plaque d'immatriculation
-                :</label
-              >
-              <input
-                type="text"
-                id="plaque"
-                name="plaque"
-                pattern="[A-Z0-9]{2,10}"
-                title="Format : AA-123-AA"
-              />
-            </div>
+              <div class="form-group">
+                <label for="plaque">
+                  <i class="fas fa-passport"></i> Plaque d'immatriculation
+                  :</label
+                >
+                <input
+                  type="text"
+                  id="plaque"
+                  name="plaque"
+                  pattern="[A-Z0-9]{2,10}"
+                  title="Format : AA-123-AA"
+                />
+              </div>
 
-            <div class="card-body">
-              <label for="date-immat"
-                ><i class="fas fa-calendar-alt"></i> Date de première
-                immatriculation :</label
-              >
-              <input type="date" id="date-immat" name="date-immat" />
-            </div>
+              <div class="card-body">
+                <label for="date-immat"
+                  ><i class="fas fa-calendar-alt"></i> Date de première
+                  immatriculation :</label
+                >
+                <input type="date" id="date-immat" name="date-immat" />
+              </div>
 
-            <div class="card-body">
-              <label for="vehicule"
-                ><i class="fas fa-car-side"></i> Modèle et Marque du Véhicule :
-              </label>
-              <select name="vehicule" id="vehicule">
-                <option value="">Sélectionnez votre véhicule</option>
-                <option value="ioniq5">Hyundai Ioniq 5</option>
-                <option value="ev6">Kia EV6</option>
-                <option value="e208">Peugeot e-208</option>
-                <option value="zoe">Renault Zoe</option>
-                <option value="megane">Renault Megane E-Tech</option>
-                <option value="enyaq">Skoda Enyaq iV</option>
-                <option value="model3">Tesla Model 3</option>
-                <option value="id3">Volkswagen ID.3</option>
-              </select>
-            </div>
-
-            <div class="card-body">
-              <label for="places"
-                ><i class="fas fa-users"></i> Nombre de places :</label
-              >
-              <input type="number" id="places" name="places" min="1" max="8" />
-            </div>
-
-            <div class="card-body">
-              <label for="preferences"
-                ><i class="fas fa-sliders-h"></i> Préférences :</label
-              >
-              <div class="checkbox-group">
-                <label class="checkbox-field">
-                  <input
-                    type="checkbox"
-                    name="preferences"
-                    value="non_fumeur"
-                  />
-                  Non-fumeur
+              <div class="card-body">
+                <label for="vehicule"
+                  ><i class="fas fa-car-side"></i> Modèle et Marque du Véhicule
+                  :
                 </label>
-                <label class="checkbox-field">
-                  <input type="checkbox" name="preferences" value="animaux" />
-                  Animaux acceptés
-                </label>
-                <label class="checkbox-field">
-                  <input type="checkbox" name="preferences" value="musique" />
-                  Musique à bord
-                </label>
+                <select name="vehicule" id="vehicule">
+                  <option value="">Sélectionnez votre véhicule</option>
+                  <option value="ioniq5">Hyundai Ioniq 5</option>
+                  <option value="ev6">Kia EV6</option>
+                  <option value="e208">Peugeot e-208</option>
+                  <option value="zoe">Renault Zoe</option>
+                  <option value="megane">Renault Megane E-Tech</option>
+                  <option value="enyaq">Skoda Enyaq iV</option>
+                  <option value="model3">Tesla Model 3</option>
+                  <option value="id3">Volkswagen ID.3</option>
+                </select>
+              </div>
+
+              <div class="card-body">
+                <label for="places"
+                  ><i class="fas fa-users"></i> Nombre de places :</label
+                >
+                <input
+                  type="number"
+                  id="places"
+                  name="places"
+                  min="1"
+                  max="8"
+                />
+              </div>
+
+              <div class="card-body">
+                <label for="preferences"
+                  ><i class="fas fa-sliders-h"></i> Préférences :</label
+                >
+                <div class="checkbox-group">
+                  <label class="checkbox-field">
+                    <input
+                      type="checkbox"
+                      name="preferences"
+                      value="non_fumeur"
+                    />
+                    Non-fumeur
+                  </label>
+                  <label class="checkbox-field">
+                    <input type="checkbox" name="preferences" value="animaux" />
+                    Animaux acceptés
+                  </label>
+                  <label class="checkbox-field">
+                    <input type="checkbox" name="preferences" value="musique" />
+                    Musique à bord
+                  </label>
+                </div>
               </div>
             </div>
           </div>
