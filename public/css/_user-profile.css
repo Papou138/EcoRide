@@ -10,6 +10,33 @@
   padding: 0 var(--space-lg);
 }
 
+/*En-tête de la section */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.section-header h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.section-header h2 i {
+  color: var(--color-primary);
+}
+
+.section-description {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 /* En-tête du profil avec avatar */
 .profile-header {
   text-align: center;
@@ -70,13 +97,48 @@
 .info-card {
   background: var(--color-bg-primary);
   border-radius: var(--radius-md);
-  padding: var(--space-lg);
+  padding: var(--space-xl);
   box-shadow: var(--shadow-md);
-  transition: transform var(--transition-base);
+  transition: all var(--transition-base); /* Ajout 'All' pour une transition plus fluide */
+  animation: slideIn 0.3s ease-out; /* Animation d'apparition */
+}
+
+.info-card .card-header h3 i,
+.info-card .form-label i,
+.info-card .preference-item i {
+  color: var(--color-primary);
+  font-size: var(--font-size-md);
 }
 
 .info-card:hover {
   transform: translateY(-2px); /* Légère élévation au survol */
+  box-shadow: var(--shadow-lg); /* Ombre plus marquée au survol */
+}
+
+/* Animation pour les transitions */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Style amélioré pour les titres de section */
+.section-title {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.section-title i {
+  color: var(--color-primary);
 }
 
 .card-header {
@@ -98,6 +160,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: var(--space-md);
+  margin-bottom: var(--space-lg);
 }
 
 .preference-item {
@@ -106,7 +169,14 @@
   gap: var(--space-sm);
   padding: var(--space-sm);
   border-radius: var(--radius-sm);
-  transition: background-color var(--transition-base);
+  transition: all var(--transition-base);
+}
+
+.preference-item input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+  margin-right: var(--space-xs);
 }
 
 .preference-item:hover {
@@ -122,7 +192,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
-  margin: var(--space-lg) 0;
+  margin: var(--space-xl) 0;
 }
 
 .stat-item {
@@ -149,6 +219,20 @@
   margin-top: var(--space-xs);
 }
 
+/* Style des boutons dans les cartes */
+.info-card .btn-primary {
+  width: 100%;
+  margin-top: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+.info-card .btn-primary i {
+  color: var(--color-white);
+}
+
 /* Boutons d'action */
 .action-buttons {
   display: flex;
@@ -158,11 +242,22 @@
 
 .action-buttons button {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-weight: 600;
   transition: transform var(--transition-base);
 }
 
 .action-buttons button:hover {
   transform: translateY(-2px);
+}
+
+.action-buttons button i {
+  color: inherit; /* Assure que l'icône prend la couleur du texte */
 }
 
 /* Messages de succès/erreur */
@@ -205,6 +300,25 @@
 
 .form-field {
   margin-bottom: var(--space-md);
+  position: relative;
+}
+
+.form-field input[type="password"] {
+  padding-right: var(--space-xl);
+}
+
+.form-field .password-toggle {
+  position: absolute;
+  right: var(--space-sm);
+  top: 50%; /* Centrer verticalement */
+  transform: translateY(-50%); /* Centrer verticalement */
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base);
+}
+
+.form-field .password-toggle:hover {
+  color: var(--color-primary);
 }
 
 /* Responsive Design */
@@ -228,6 +342,14 @@
   .form-row {
     grid-template-columns: 1fr;
   }
+
+  .info-card {
+    padding: var(--space-lg); /* Réduire le padding sur mobile */
+  }
+
+  .info-card .btn-primary {
+    padding: var(--space-sm) var(--space-md); /* Réduire le padding des boutons */
+  }
 }
 
 @media screen and (max-width: 480px) {
@@ -243,5 +365,10 @@
   .card-header {
     flex-direction: column;
     text-align: center;
+    gap: var(--space-xs);
+  }
+
+  .stat-item {
+    padding: var(--space-sm); /* Réduire le padding sur mobile */
   }
 }

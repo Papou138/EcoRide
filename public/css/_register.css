@@ -63,6 +63,18 @@
   font-size: var(--font-size-sm);
 }
 
+/* Style des boutons du formulaire */
+.btn-primary i {
+  color: var(
+    --color-white
+  ); /* Assure que l'icône est bien visible sur le fond du bouton */
+}
+
+.btn-primary:hover i {
+  transform: scale(1.1); /* Ajoute un léger effet au survol */
+  transition: transform 0.2s ease;
+}
+
 /* Footer du formulaire */
 .form-footer {
   text-align: center;
