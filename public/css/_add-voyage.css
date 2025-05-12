@@ -3,10 +3,42 @@
  * ---------------------------------------------------------------------------------------
  */
 
-.voyage-form-section {
+/* Conteneur principale */
+.form-container {
   max-width: 800px;
   margin: var(--space-xl) auto;
-  padding: 0 var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
+}
+
+/* En-tête du formulaire */
+.form-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.form-header .section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.form-header .section-title i {
+  color: var(--color-primary);
+  font-size: var(--font-size-xl);
+}
+
+.form-header .section-subtitle {
+  max-width: 600px;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
 }
 
 /* Étapes du formulaire */
@@ -53,11 +85,39 @@
 }
 
 /* Formulaire de trajet */
-.voyage-form {
+.form-group {
   background: var(--color-bg-primary);
   border-radius: var(--radius-md);
   padding: var(--space-xl);
   box-shadow: var(--shadow-md);
+}
+
+/* Styles pour les champs de formulaire */
+.form-field {
+  margin-bottom: var(--space-lg);
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.form-label i {
+  color: var(--color-primary);
+  width: 20px;
+  text-align: center;
+}
+
+/* Style pour les lignes de formulaire */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
 }
 
 /* Champs de localisation */
@@ -122,25 +182,43 @@
 }
 
 /* Messages d'erreur */
-.field-error {
+.error-message {
   color: var(--color-error);
   font-size: var(--font-size-sm);
   margin-top: var(--space-xs);
   display: none;
 }
 
-.form-input.error + .field-error {
+.form-input.error + .error-message {
   display: block;
+}
+
+/* Style pour le champ textarea */
+textarea.form-input {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Style pour les boutons d'action */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
 }
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
-  .voyage-form-section {
-    padding: 0 var(--space-md);
+  .form-container {
+    padding: var(--space-lg) var(--space-md);
   }
 
-  .voyage-form {
+  .form-group {
     padding: var(--space-lg);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
   }
 
   .form-steps {
@@ -150,16 +228,19 @@
 }
 
 @media screen and (max-width: 480px) {
-  .voyage-form {
+  .form-container {
     padding: var(--space-md);
   }
 
-  .form-navigation {
-    flex-direction: column;
-    gap: var(--space-md);
+  .form-group {
+    padding: var(--space-md);
   }
 
-  .form-navigation button {
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
     width: 100%;
   }
 }
