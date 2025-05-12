@@ -16,20 +16,27 @@
 .form-header .section-title {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
   gap: var(--space-sm);
   font-size: var(--font-size-xl);
   color: var(--color-text-primary);
+  margin-bottom: 0;
 }
 
 .form-header .section-title i {
   color: var(--color-primary);
   font-size: var(--font-size-xl);
+  margin-bottom: 0;
+  display: inline-flex;
+  align-items: center;
 }
 
 .form-header .section-subtitle {
   max-width: 600px;
   color: var(--color-text-secondary);
   line-height: 1.5;
+  text-align: center;
 }
 
 /* Section inscription */
