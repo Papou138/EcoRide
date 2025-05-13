@@ -110,11 +110,6 @@
   font-size: var(--font-size-md);
 }
 
-.info-card:hover {
-  transform: translateY(-2px); /* Légère élévation au survol */
-  box-shadow: var(--shadow-lg); /* Ombre plus marquée au survol */
-}
-
 /* Animation pour les transitions */
 @keyframes slideIn {
   from {

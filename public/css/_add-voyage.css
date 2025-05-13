@@ -203,7 +203,11 @@ textarea.form-input {
   display: flex;
   justify-content: flex-end;
   gap: var(--space-md);
-  margin-top: var(--space-xl);
+  margin-top: var(--space-lg);
+}
+
+.form-actions button {
+  min-width: 140px;
 }
 
 /* Responsive Design */
@@ -223,6 +227,18 @@ textarea.form-input {
   .form-steps {
     overflow-x: auto;
     padding-bottom: var(--space-md);
+  }
+
+  .form-actions,
+  .form-navigation {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-md);
+  }
+
+  .form-actions button,
+  .form-navigation button {
+    width: 100%;
   }
 }
 

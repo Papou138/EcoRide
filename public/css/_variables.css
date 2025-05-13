@@ -27,6 +27,7 @@
 
   /* Couleurs d'état */
   --color-success: #28a745; /* Succès */
+  --color-success-dark: #218838; /* Succès foncé */
   --color-error: #dc3545; /* Erreur */
   --color-warning: #ffc107; /* Avertissement */
   --color-warning-light: #fff3cc; /* Avertissement léger */
@@ -34,7 +35,7 @@
 
   /* Couleurs d'état pour les boutons */
   --color-danger: #dc3545;
-  --color-danger-dark: #bd2130;
+  --color-danger-dark: #c82333;
   --color-danger-light: #f8d7da;
 
   /* Espacements */

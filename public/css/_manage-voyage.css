@@ -139,16 +139,12 @@
 .form-actions {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   gap: var(--space-md);
   margin-top: var(--space-lg);
-  grid-column: 1 / -1; /* S'étend sur toutes les colonnes */
 }
 
 .form-actions button {
-  min-width: 120px;
-  padding: var(--space-sm) var(--space-lg);
-  transition: all 0.3s ease;
+  min-width: 140px;
 }
 
 .form-actions .btn-primary {
@@ -337,14 +333,6 @@
 
 .voyage-actions button {
   min-width: 140px;
-  padding: var(--space-sm) var(--space-lg);
-  border-radius: var(--radius-md);
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-sm);
-  transition: all 0.3s ease;
 }
 
 .voyage-actions button:hover {
@@ -419,7 +407,7 @@
   }
 }
 
-/* Media Queries */
+/* Responsive design */
 @media screen and (max-width: 1200px) {
   .voyages-section {
     max-width: 960px;
@@ -480,11 +468,13 @@
     grid-template-columns: 1fr;
   }
 
+  .form-actions,
   .voyage-actions {
     flex-direction: column;
-    padding: var(--space-md);
+    width: 100%;
   }
 
+  .form-actions button,
   .voyage-actions button {
     width: 100%;
   }
