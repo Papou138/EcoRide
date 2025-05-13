@@ -1,164 +1,279 @@
 /* ---------------------------------------------------------------------------------------
- *  Styles spécifiques pour manage-voyage.html
+ * Styles spécifiques pour manage-voyage.html
  * ---------------------------------------------------------------------------------------
  */
 
 /* Section de gestion */
-.manage-section {
+.voyages-section {
   max-width: 1200px;
   margin: var(--space-xl) auto;
-  padding: 0 var(--space-lg);
+  padding: var(--space-xl) var(--space-lg);
 }
 
-/* Filtres de recherche */
-.filters-bar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-md);
-  margin-bottom: var(--space-xl);
-  padding: var(--space-md);
-  background: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
-}
-
-.filter-group {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-/* Liste des voyages */
-.voyages-grid {
-  display: grid;
-  gap: var(--space-lg);
-  margin-bottom: var(--space-xl);
-}
-
-.voyage-card {
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  overflow: hidden; /* Pour éviter le débordement */
-  transition: transform var(--transition-base);
-}
-
-.voyage-card:hover {
-  transform: translateX(-4px);
-}
-
-.voyage-header {
-  padding: var(--space-md);
-  background: var(--color-bg-secondary);
+/* En-tête de section */
+.section-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: var(--space-xl);
+  flex-wrap: wrap;
+  gap: var(--space-md);
 }
 
-.voyage-status {
+/* Filtres de recherche */
+.voyage-filters {
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.voyage-filters h3 {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-primary);
+}
+
+.filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+/* Liste des voyages */
+.voyages-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+/* Carte de voyage */
+.voyage-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-bg-primary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.voyage-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Détails du voyage */
+.voyage-details {
+  padding: var(--space-lg);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+}
+
+.detail-group h3 {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.detail-group p {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Les statuts */
+.status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
   font-weight: 500;
 }
 
-.status-upcoming {
-  background-color: var(--color-primary);
+.status-tag.ongoing {
+  background-color: var(--color-warning);
   color: var(--color-text-light);
 }
 
-.status-ongoing {
-  background: var(--color-secondary);
-  color: var(--color-text-light);
-}
-
-.status-completed {
-  background: var(--color-success);
-  color: var(--color-text-light);
-}
-
-.status-cancelled {
-  background: var(--color-error);
-  color: var(--color-text-light);
-}
-
-.voyage-content {
-  padding: var(--space-md);
-}
-
-.voyage-info {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-md);
-  margin-bottom: var(--space-md);
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.info-item i {
-  color: var(--color-primary);
-}
-
-/* Actions du voyage */
-.voyage-actions {
-  display: flex;
-  gap: var(--space-sm);
-  padding: var(--space-md);
-  background: var(--color-bg-secondary);
-}
-
-/* Modal passagers */
-.passengers-modal {
-  background: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  padding: var(--space-lg);
-  max-width: 600px;
-  width: 90%;
-}
-
+/* Liste des passagers */
 .passenger-list {
-  margin: var(--space-md) 0;
+  padding: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
 }
 
 .passenger-item {
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  padding: var(--space-sm) 0;
-  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-sm);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-primary);
 }
 
-/* Responsive Design */
+.passenger-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.passenger-info {
+  flex: 1;
+}
+
+.passenger-name {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.passenger-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--font-size-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+}
+
+.passenger-status.confirmed {
+  background-color: var(--color-success);
+  color: var(--color-text-light);
+}
+
+/* Actions du voyage */
+.voyage-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-bg-secondary);
+  justify-content: flex-end;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+}
+
+.page-info {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+/* Media Queries - REFONTE COMPLÈTE */
+@media screen and (max-width: 1200px) {
+  .voyages-section {
+    max-width: 960px;
+  }
+}
+
 @media screen and (max-width: 1024px) {
-  .manage-section {
-    padding: 0 var(--space-md);
+  .voyages-section {
+    padding: var(--space-lg);
   }
 
-  .filters-bar {
-    flex-direction: column;
+  .voyage-filters {
+    padding: var(--space-lg);
   }
 
-  .filter-group {
-    width: 100%;
+  .filter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .voyages-list {
+    gap: var(--space-lg);
   }
 }
 
 @media screen and (max-width: 768px) {
+  .voyages-section {
+    padding: var(--space-md);
+  }
+
+  .section-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .header-text {
+    text-align: center;
+    width: 100%;
+  }
+
+  .add-voyage-btn {
+    width: 100%;
+  }
+
+  .voyage-filters {
+    padding: var(--space-md);
+  }
+
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .voyage-details {
+    padding: var(--space-md);
+    grid-template-columns: 1fr;
+  }
+
+  .passenger-items {
+    grid-template-columns: 1fr;
+  }
+
   .voyage-actions {
     flex-direction: column;
+    padding: var(--space-md);
   }
 
   .voyage-actions button {
     width: 100%;
   }
+
+  .pagination {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
 }
 
 @media screen and (max-width: 480px) {
-  .voyage-info {
-    grid-template-columns: 1fr;
+  .voyages-section {
+    padding: var(--space-sm);
+  }
+
+  .section-header {
+    gap: var(--space-sm);
+  }
+
+  .voyage-filters {
+    padding: var(--space-sm);
+  }
+
+  .voyage-details,
+  .passenger-list {
+    padding: var(--space-sm);
+  }
+
+  .voyage-card {
+    font-size: var(--font-size-sm);
+  }
+
+  .detail-group p {
+    flex-wrap: wrap;
   }
 }
