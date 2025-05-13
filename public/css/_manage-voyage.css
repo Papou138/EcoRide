@@ -5,9 +5,10 @@
 
 /* Section de gestion */
 .voyages-section {
-  max-width: 1200px;
+  max-width: 1024px;
   margin: var(--space-xl) auto;
   padding: var(--space-xl) var(--space-lg);
+  animation: fadeIn 0.5s ease-out; /* Animation d'apparition */
 }
 
 /* En-tête de section */
@@ -16,32 +17,170 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-xl);
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Pour les petits écrans */
   gap: var(--space-md);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.header-text h2 {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.header-text h2 i {
+  color: var(--color-primary);
+  transform: translateX(-1px); /* Animation d'icône */
+}
+
+.section-subtitle {
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
+  font-size: var(--font-size-md);
+}
+
+/* Bouton Nouveau Voyage */
+.add-voyage-btn {
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+  border: none;
+  color: var(--color-text-light);
+  font-weight: 500;
+}
+
+.add-voyage-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(
+    45deg,
+    var(--color-primary-light),
+    var(--color-primary)
+  );
+  color: var(--color-text-light);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Filtres de recherche */
 .voyage-filters {
-  background: var(--color-bg-primary);
-  border-radius: var(--radius-md);
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg-primary),
+    var(--color-bg-secondary)
+  );
+  border-radius: var(--radius-lg);
   padding: var(--space-xl);
   margin-bottom: var(--space-xl);
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+  transition: all 0.3s ease;
 }
-
 .voyage-filters h3 {
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  margin-bottom: var(--space-lg);
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  margin-bottom: var(--space-lg);
-  color: var(--color-text-primary);
+  padding-bottom: var(--space-sm);
+  border-bottom: 2px solid var(--color-primary);
 }
 
 .filter-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-lg);
   margin-bottom: var(--space-lg);
+}
+
+.form-field {
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.form-field:hover {
+  transform: translateY(-2px);
+}
+
+.form-field label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+}
+
+.form-field input,
+.form-field select {
+  width: 100%;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+  transition: all 0.3s ease;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px var(--color-primary-light);
+  outline: none;
+}
+
+/* Styles pour la classe form-actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  grid-column: 1 / -1; /* S'étend sur toutes les colonnes */
+}
+
+.form-actions button {
+  min-width: 120px;
+  padding: var(--space-sm) var(--space-lg);
+  transition: all 0.3s ease;
+}
+
+.form-actions .btn-primary {
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+  color: var(--color-text-light);
+  border: none;
+}
+
+.form-actions .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  background: linear-gradient(
+    45deg,
+    var(--color-primary-light),
+    var(--color-primary)
+  );
+}
+
+.form-actions .btn-secondary {
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+}
+
+.form-actions .btn-secondary:hover {
+  background: var(--color-bg-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Liste des voyages */
@@ -54,39 +193,44 @@
 
 /* Carte de voyage */
 .voyage-card {
-  display: flex;
-  flex-direction: column;
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-base);
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-border);
   overflow: hidden;
 }
 
-.voyage-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-/* Détails du voyage */
 .voyage-details {
-  padding: var(--space-lg);
+  padding: var(--space-xl);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--space-lg);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: var(--space-xl);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-primary),
+    var(--color-bg-secondary)
+  );
 }
 
 .detail-group h3 {
   font-size: var(--font-size-lg);
   color: var(--color-text-primary);
-  margin-bottom: var(--space-sm);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 .detail-group p {
   display: flex;
   align-items: center;
   gap: var(--space-sm);
-  color: var(--color-text-secondary);
+  margin-bottom: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-primary);
+  box-shadow: var(--shadow-sm);
 }
 
 /* Les statuts */
@@ -97,35 +241,63 @@
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-full);
   font-size: var(--font-size-sm);
-  font-weight: 500;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .status-tag.ongoing {
-  background-color: var(--color-warning);
+  background: linear-gradient(45deg, var(--color-warning), #ffa726);
   color: var(--color-text-light);
+  box-shadow: 0 2px 4px rgba(255, 167, 38, 0.3);
 }
 
 /* Liste des passagers */
 .passenger-list {
-  padding: var(--space-lg);
-  border-top: 1px solid var(--color-border);
+  padding: var(--space-xl);
   background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+}
+
+.passenger-list h4 {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.passenger-items {
+  display: grid;
+  gap: var(--space-md);
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: var(--space-sm);
 }
 
 .passenger-item {
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
   display: flex;
   align-items: center;
   gap: var(--space-md);
-  padding: var(--space-sm);
-  border-radius: var(--radius-sm);
-  background: var(--color-bg-primary);
+  transition: all 0.3s ease;
+  border: 1px solid var(--color-border);
 }
 
 .passenger-avatar {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
+  border: 2px solid var(--color-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.passenger-avatar:hover {
+  transform: scale(1.1);
 }
 
 .passenger-info {
@@ -133,7 +305,7 @@
 }
 
 .passenger-name {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--color-text-primary);
 }
 
@@ -144,21 +316,59 @@
   font-size: var(--font-size-sm);
   padding: var(--space-xs) var(--space-sm);
   border-radius: var(--radius-full);
+  transition: transform 0.2s ease;
 }
 
 .passenger-status.confirmed {
-  background-color: var(--color-success);
+  background: linear-gradient(45deg, var(--color-success), #66bb6a);
   color: var(--color-text-light);
+  box-shadow: 0 2px 4px rgba(102, 187, 106, 0.3);
 }
 
-/* Actions du voyage */
+/* Boutons Actions du voyage */
 .voyage-actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  padding: var(--space-md);
-  background: var(--color-bg-secondary);
   justify-content: flex-end;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+}
+
+.voyage-actions button {
+  min-width: 140px;
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  transition: all 0.3s ease;
+}
+
+.voyage-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.voyage-actions .btn-danger {
+  background: linear-gradient(
+    45deg,
+    var(--color-danger),
+    var(--color-danger-dark)
+  );
+  color: white;
+}
+
+.voyage-actions .btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(
+    45deg,
+    var(--color-danger-dark),
+    var(--color-danger)
+  );
 }
 
 /* Pagination */
@@ -170,12 +380,46 @@
   margin-top: var(--space-xl);
 }
 
-.page-info {
-  color: var(--color-text-secondary);
-  font-size: var(--font-size-sm);
+.pagination button {
+  min-width: 120px;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  transition: all 0.2s ease;
+  padding: var(--space-sm) var(--space-md);
 }
 
-/* Media Queries - REFONTE COMPLÈTE */
+.pagination button:hover:not(:disabled) {
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  transform: translateY(-2px);
+}
+
+.pagination button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.page-info {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-sm);
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Media Queries */
 @media screen and (max-width: 1200px) {
   .voyages-section {
     max-width: 960px;

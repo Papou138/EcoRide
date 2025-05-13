@@ -103,7 +103,6 @@
   gap: var(--space-xs);
   margin-bottom: var(--space-xs);
   color: var(--color-text-primary);
-  font-weight: 500;
 }
 
 .form-label i {
