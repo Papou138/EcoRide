@@ -37,8 +37,35 @@
       <nav id="main-nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <li><a href="register.html">Inscription</a></li>
-          <li class="dropdown active">
+          <!-- Ajout du menu utilisateur -->
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">
+              <i class="fas fa-user"></i> Mon Compte
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="login.html"
+                  ><i class="fas fa-sign-in-alt"></i> Connexion</a
+                >
+              </li>
+              <li>
+                <a href="register.html"
+                  ><i class="fas fa-user-plus"></i> Inscription</a
+                >
+              </li>
+              <li>
+                <a href="user-profile.html"
+                  ><i class="fas fa-user-circle"></i> Mon Profil</a
+                >
+              </li>
+              <li>
+                <a href="#" id="logout"
+                  ><i class="fas fa-sign-out-alt"></i> Déconnexion</a
+                >
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
             <a href="#" class="dropdown-toggle active">Voyages</a>
             <ul class="dropdown-menu">
               <li><a href="add-voyage.html">Proposer un Voyage</a></li>
@@ -46,7 +73,6 @@
               <li><a href="history.html" class="active">Historique</a></li>
             </ul>
           </li>
-          <li><a href="user-profile.html">Mon Profil</a></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">Administration</a>
             <ul class="dropdown-menu">
