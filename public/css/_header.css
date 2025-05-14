@@ -72,33 +72,35 @@ nav ul li a:hover {
 }
 
 /* Menu hamburger */
-#menu-toggle {
+.menu-toggle {
   display: none; /* Masque le bouton par défaut */
   background: none; /* Supprime le fond */
   border: none; /* Supprime la bordure */
   cursor: pointer; /* Curseur en main pour le bouton */
   padding: var(--spacing-md); /* Espace autour du bouton */
+  z-index: 1000; /* Assure que le bouton est au-dessus des autres éléments */
 }
 
-#menu-toggle span {
-  display: block; /* Affiche les barres du menu hamburger comme des blocs */
-  width: 25px; /* Largeur des barres */
-  height: 3px; /* Hauteur des barres */
-  background-color: white; /* Couleur des barres */
-  margin: 5px 0; /* Espace entre les barres */
-  transition: var(--transition-base); /* Transition pour les effets */
+.hamburger-line {
+  display: block;
+  width: 25px;
+  height: 2px;
+  margin: 5px 0;
+  background-color: var(--color-text-primary);
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-#menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(-5px, 6px); /* Rotation de la première barre */
+/* État actif du menu */
+.menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
 }
 
-#menu-toggle.active span:nth-child(2) {
-  opacity: 0; /* Masque la deuxième barre */
+.menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(2) {
+  opacity: 0;
 }
 
-#menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(-5px, -6px); /* Rotation de la troisième barre */
+.menu-toggle[aria-expanded="true"] .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* Dropdown - Menu déroulant */
@@ -157,18 +159,6 @@ nav ul li a:hover {
   transform: rotate(180deg); /* Rotation de la flèche au survol */
 }
 
-.dropdown-menu li {
-  padding: 0; /* Supprime le remplissage */
-}
-
-.dropdown-menu a {
-  padding: 0.75rem 1rem; /* Espace autour du texte */
-  display: block; /* Affiche le lien comme un bloc */
-  color: var(--color-text); /* Couleur du texte */
-  text-decoration: none; /* Supprime le soulignement */
-  transition: background-color 0.3s ease; /* Transition pour la couleur de fond */
-}
-
 .dropdown-toggle {
   content: "▼"; /* Flèche pour indiquer le menu déroulant */
   margin-left: 0.5rem; /* Espace à gauche */
@@ -185,4 +175,29 @@ nav ul li a:hover {
   ); /* Couleur de fond pour l'état actif */
   color: var(--color-text-primary); /* Couleur du texte pour l'état actif */
   border-radius: var(--radius-sm); /* Arrondi des coins pour l'état actif */
+}
+
+/* Media query pour l'affichage mobile */
+@media screen and (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #main-nav {
+    display: none;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-bg-primary);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-md);
+  }
+
+  #main-nav.active {
+    display: block;
+  }
 }
