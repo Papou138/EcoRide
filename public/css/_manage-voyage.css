@@ -17,9 +17,17 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--space-xl);
-  flex-wrap: wrap; /* Pour les petits écrans */
-  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
   animation: fadeIn 0.3s ease-out;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
 }
 
 .header-text h2 {
@@ -28,6 +36,7 @@
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  margin: 0;
 }
 
 .header-text h2 i {
@@ -73,25 +82,42 @@
 .voyage-filters {
   background: linear-gradient(
     to bottom,
-    var(--color-bg-primary),
-    var(--color-bg-secondary)
+    var(--color-bg-primary) 0%,
+    var(--color-bg-secondary) 100%
   );
   border-radius: var(--radius-lg);
   padding: var(--space-xl);
   margin-bottom: var(--space-xl);
   box-shadow: var(--shadow-lg);
   border: 1px solid var(--color-border);
-  transition: all 0.3s ease;
+  animation: slideDown 0.3s ease-out;
 }
+
 .voyage-filters h3 {
-  font-size: var(--font-size-lg);
-  color: var(--color-primary);
-  margin-bottom: var(--space-lg);
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--space-sm);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-lg);
   padding-bottom: var(--space-sm);
-  border-bottom: 2px solid var(--color-primary);
+}
+
+.voyage-filters h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: var(--radius-sm);
+}
+
+.voyage-filters h3 i {
+  color: var(--color-primary);
+  transition: transform 0.3s ease;
 }
 
 .filter-grid {
@@ -99,40 +125,51 @@
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--space-lg);
   margin-bottom: var(--space-lg);
+  animation: fadeIn 0.3s ease-out;
 }
 
-.form-field {
+.filter-grid .form-field {
   position: relative;
-  transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  transition: transform 0.2s ease-out;
 }
 
-.form-field:hover {
+.filter-grid .form-field:hover {
   transform: translateY(-2px);
 }
 
-.form-field label {
+.filter-grid .form-field label {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  margin-bottom: var(--space-xs);
   color: var(--color-text-primary);
+  font-weight: 500;
 }
 
-.form-field input,
-.form-field select {
+.form-label i {
+  color: var(--color-primary);
+  width: 20px;
+  text-align: center;
+}
+
+.filter-grid .form-field input,
+.filter-grid .form-field select {
   width: 100%;
-  padding: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background: var(--color-bg-primary);
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
-.form-field input:focus,
-.form-field select:focus {
+.filter-grid .form-field input:focus,
+.filter-grid .form-field select:focus {
   border-color: var(--color-primary);
   box-shadow: 0 0 0 2px var(--color-primary-light);
   outline: none;
+  transform: translateY(-1px);
 }
 
 /* Styles pour la classe form-actions */
@@ -141,6 +178,7 @@
   justify-content: flex-end;
   gap: var(--space-md);
   margin-top: var(--space-lg);
+  padding: inherit; /* Utiliser le même padding que le conteneur parent */
 }
 
 .form-actions button {
@@ -189,12 +227,13 @@
 
 /* Carte de voyage */
 .voyage-card {
-  background: var(--color-bg-primary);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
   border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  transition: all 0.3s ease;
-  border: 1px solid var(--color-border);
   overflow: hidden;
+  box-shadow: var(--shadow-md);
+  animation: fadeIn 0.3s ease-out;
 }
 
 .voyage-details {
@@ -203,10 +242,27 @@
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--space-xl);
   background: linear-gradient(
-    135deg,
-    var(--color-bg-primary),
-    var(--color-bg-secondary)
+    to bottom,
+    var(--color-bg-primary) 0%,
+    var(--color-bg-secondary) 100%
   );
+  position: relative;
+}
+
+/* Effet de superposition subtil */
+.voyage-details::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    45deg,
+    var(--color-primary),
+    var(--color-primary-dark)
+  );
+  opacity: 0.8;
 }
 
 .detail-group h3 {
@@ -407,6 +463,17 @@
   }
 }
 
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Responsive design */
 @media screen and (max-width: 1200px) {
   .voyages-section {
@@ -457,6 +524,11 @@
 
   .filter-grid {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .filter-grid .form-field label {
+    font-size: var(--font-size-sm);
   }
 
   .voyage-details {
@@ -496,6 +568,15 @@
 
   .voyage-filters {
     padding: var(--space-sm);
+  }
+
+  .voyage-filters h3 {
+    font-size: var(--font-size-md);
+  }
+
+  .filter-grid .form-field input,
+  .filter-grid .form-field select {
+    padding: var(--space-xs) var(--space-sm);
   }
 
   .voyage-details,

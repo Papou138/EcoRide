@@ -4,16 +4,19 @@
  */
 
 /* En-tête du formulaire */
-.form-header {
+.section-header {
   text-align: center;
   margin-bottom: var(--space-xl);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-md);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
 }
 
-.form-header .section-title {
+.section-header .section-title {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,15 +27,7 @@
   margin-bottom: 0;
 }
 
-.form-header .section-title i {
-  color: var(--color-primary);
-  font-size: var(--font-size-xl);
-  margin-bottom: 0;
-  display: inline-flex;
-  align-items: center;
-}
-
-.form-header .section-subtitle {
+.section-header .section-subtitle {
   max-width: 600px;
   color: var(--color-text-secondary);
   line-height: 1.5;
@@ -178,6 +173,7 @@ button[type="submit"].btn-primary i {
   gap: var(--space-xs);
   color: var(--color-danger);
   font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
   opacity: 0;
   transform: translateY(-10px);
   transition: all 0.3s ease-in-out;
@@ -186,6 +182,10 @@ button[type="submit"].btn-primary i {
 .error-message.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.error-message i {
+  color: var(--color-danger);
 }
 
 /* Responsive Design */

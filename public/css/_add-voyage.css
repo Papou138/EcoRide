@@ -43,7 +43,7 @@
 }
 
 /* En-tête du formulaire */
-.form-header {
+.section-header {
   text-align: center;
   margin-bottom: var(--space-xl);
   display: flex;
@@ -52,9 +52,11 @@
   gap: var(--space-md);
   position: relative;
   padding-bottom: var(--space-lg);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
 }
 
-.form-header .section-title {
+.section-header .section-title {
   font-size: var(--font-size-xl);
   color: var(--color-text-primary);
   display: flex;
@@ -63,9 +65,32 @@
   margin-bottom: var(--space-sm);
 }
 
-.form-header .section-title i {
+.section-header .section-subtitle {
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Labels de formulaire */
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+}
+
+.form-label i {
   color: var(--color-primary);
-  transform: translateX(-1px);
+  width: 20px;
+  text-align: center;
+}
+
+/* Style spécifique pour le textarea */
+textarea.form-input {
+  min-height: 100px;
+  resize: vertical;
 }
 
 /* Étapes du formulaire */
@@ -203,6 +228,24 @@
     var(--color-primary-light),
     var(--color-primary)
   );
+}
+
+/* Messages d'erreur */
+.error-message {
+  color: var(--color-danger);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+  display: none;
+}
+
+.error-message.visible {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.error-message i {
+  color: var(--color-danger);
 }
 
 /* Responsive Design */
