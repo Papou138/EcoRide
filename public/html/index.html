@@ -121,10 +121,10 @@
       </section>
 
       <section id="recherche" class="search-section">
-        <div class="search-container">
+        <div class="search-container animate-slideUp">
           <h2>Rechercher un itinéraire</h2>
 
-          <form aria-label="Recherche de trajets">
+          <form id="search-form" aria-label="Recherche de trajets">
             <!-- Champs principaux -->
             <div class="search-main-fields">
               <div class="form-group">
@@ -181,20 +181,36 @@
                   required
                   min=""
                   aria-labelledby="date-label"
+                  aria-describedby="date-error"
                   aria-required="true"
                   aria-invalid="false"
                 />
+                <div id="date-error" class="error-message" role="alert"></div>
               </div>
             </div>
 
             <!-- Filtres avancés -->
             <div class="advanced-filters">
-              <button type="button" class="toggle-filters" id="toggle-filters">
-                <i class="fas fa-sliders-h"></i> Filtres avancés
+              <button
+                type="button"
+                class="toggle-filters"
+                id="toggle-filters"
+                aria-expanded="false"
+                aria-controls="filters-content"
+                aria-label="Afficher ou masquer les filtres avancés"
+              >
+                <i class="fas fa-sliders-h" aria-hidden="true"></i> Filtres
+                avancés
               </button>
 
-              <div class="filters-content" id="filters-content">
+              <div
+                class="filters-content"
+                id="filters-content"
+                aria-hidden="true"
+                aria-labelledby="toggle-filters"
+              >
                 <div class="filters-grid">
+                  <!-- Type de véhicule -->
                   <div class="form-group">
                     <label for="ecologique">
                       <i class="fas fa-leaf"></i> Type de véhicule
@@ -204,6 +220,8 @@
                       id="ecologique"
                       class="form-input"
                       aria-labelledby="ecologique-label"
+                      aria-required="false"
+                      aria-invalid="false"
                     >
                       <option value="">Tous les véhicules</option>
                       <option value="oui">Véhicules écologiques</option>
@@ -211,9 +229,11 @@
                     </select>
                   </div>
 
+                  <!-- Prix Max -->
                   <div class="form-group">
-                    <label for="prix">
-                      <i class="fas fa-euro-sign"></i> Prix Max
+                    <label for="prix" id="prix-label">
+                      <i class="fas fa-euro-sign" aria-hidden="true"></i> Prix
+                      Max
                     </label>
                     <input
                       type="number"
@@ -224,12 +244,19 @@
                       min="0"
                       max="1000"
                       step="0.01"
+                      aria-labelledby="prix-label"
+                      aria-describedby="prix-help"
                     />
+                    <div id="prix-help" class="help-text">
+                      Entrer un montant entre 0 et 1000 €
+                    </div>
                   </div>
 
+                  <!-- Durée Max -->
                   <div class="form-group">
-                    <label for="duree">
-                      <i class="fas fa-clock"></i> Durée Max (heures)
+                    <label for="duree" id="duree-label">
+                      <i class="fas fa-clock" aria-hidden="true"></i> Durée Max
+                      (heures)
                     </label>
                     <input
                       type="number"
@@ -239,12 +266,19 @@
                       placeholder="Ex: 5"
                       min="0"
                       max="24"
+                      aria-labelledby="duree-label"
+                      aria-describedby="duree-help"
                     />
+                    <div id="duree-help" class="help-text">
+                      Entrer une durée entre 0 et 24 heures
+                    </div>
                   </div>
 
+                  <!-- Note Minimale -->
                   <div class="form-group">
-                    <label for="note">
-                      <i class="fas fa-star"></i> Note minimale
+                    <label for="note" id="note-label">
+                      <i class="fas fa-star" aria-hidden="true"></i> Note
+                      minimale
                     </label>
                     <input
                       type="number"
@@ -255,7 +289,12 @@
                       min="0"
                       max="5"
                       step="0.5"
+                      aria-labelledby="note-label"
+                      aria-describedby="note-help"
                     />
+                    <div id="note-help" class="help-text">
+                      Entrer une note entre 0 et 5
+                    </div>
                   </div>
                 </div>
               </div>

@@ -24,12 +24,36 @@ import { participer } from "./modules/participer.js";
 import { initialiserMenu } from "./modules/menu.js";
 import { initialiserRecherche } from "./modules/recherche.js";
 
-// Gestion globale des erreurs fetch
+// Constants pour les messages d'erreur
+const ERROR_MESSAGES = {
+  FETCH: "Une erreur est survenue lors de la communication avec le serveur.",
+  VALIDATION: "Veuillez vérifier les informations saisies.",
+  SERVER: "Le serveur est temporairement indisponible.",
+  GENERIC: "Une erreur inattendue s'est produite.",
+};
+
+// Gestion globale des erreurs fetch avec style amélioré
 function handleFetchError(error) {
-  console.error("Erreur : ", error);
-  alert(
-    "Une erreur est survenue lors de la communication avec le serveur. Veuillez réessayer."
-  );
+  console.error("Erreur :", error);
+
+  const errorDiv = document.createElement("div");
+  errorDiv.className = "error-message visible";
+  errorDiv.setAttribute("role", "alert");
+  errorDiv.style.cssText = `
+    background-color: var(--color-danger-light);
+    color: var(--color-error);
+    padding: var(--space-sm);
+    border-radius: var(--radius-sm);
+    margin: var(--space-sm);
+  `;
+  errorDiv.textContent = ERROR_MESSAGES.FETCH;
+
+  const container =
+    document.querySelector(".search-container") || document.body;
+  container.prepend(errorDiv);
+
+  // Auto-suppression après 5 secondes
+  setTimeout(() => errorDiv.remove(), 5000);
 }
 
 // Expose les fonctions pour les utiliser dans le HTML
@@ -37,6 +61,18 @@ window.createUser = createUser;
 window.updateUser = updateUser;
 window.deleteUser = deleteUser;
 window.fetchUsers = fetchUsers;
+window.createVoyage = createVoyage;
+window.startVoyage = startVoyage;
+window.stopVoyage = stopVoyage;
+window.annulVoyage = annulVoyage;
+window.updateProfile = updateProfile;
+window.toggleChauffeurInfo = toggleChauffeurInfo;
+window.approveReview = approveReview;
+window.rejectReview = rejectReview;
+window.resolveIssue = resolveIssue;
+window.createEmployeeAccount = createEmployeeAccount;
+window.suspendAccount = suspendAccount;
+window.participer = participer;
 
 // Initialisation unique lors du chargement du DOM
 // Cette fonction est appelée lorsque le DOM est complètement chargé

@@ -108,6 +108,29 @@
   font-size: 1.1em; /* Taille de la police de l'icône */
 }
 
+/* Etats des erreurs */
+.form-input.error {
+  border: 2px solid var(--color-error); /* Bordure rouge pour les erreurs */
+  background-color: var(--color-danger-light); /* Fond rouge clair */
+  box-shadow: 0 0 0 3px var(--color-error); /* Ombre rouge */
+  transition: var(--transition-fast); /* Transition rapide */
+}
+
+.error-message {
+  display: none;
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--color-danger-light);
+  border-radius: var(--radius-sm);
+}
+
+.error-message.visible {
+  display: block;
+  animation: fadeIn 0.3s ease-out;
+}
+
 /* Filtres avancés */
 .advanced-filters {
   margin-top: var(--space-lg); /* Espacement supérieur */
@@ -137,11 +160,15 @@
 .filters-content {
   display: none; /* Masquer le contenu par défaut */
   padding: var(--space-lg) 0; /* Espacement supérieur et inférieur */
+  transition: var(--transition-base);
+  background-color: var(--color-bg-tertiary);
+  border-radius: var(--radius-md);
+  margin-top: var(--space-md);
 }
 
 .filters-content.active {
   display: block; /* Afficher le contenu actif */
-  animation: fadeIn 0.3s ease-out; /* Animation de fondu */
+  animation: fadeIn var(--transition-base); /* Animation de fondu */
 }
 
 .filters-grid {
@@ -174,6 +201,17 @@
 }
 
 /* Animation Keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes slideInLeft {
   from {
     opacity: 0; /* Opacité initiale */
