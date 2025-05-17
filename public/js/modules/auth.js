@@ -2,12 +2,12 @@
  * Configuration principale
  */
 const CONFIG = {
-  API_URL: "../../backend",
+  API_URL: "../../backend", // URL de l'API
   MIN_PASSWORD_LENGTH: 8,
 };
 
 /**
- * Messages d'erreur
+ * Messages d'erreur standardisés
  */
 const MESSAGES = {
   CHAMPS_OBLIGATOIRES: "Tous les champs sont obligatoires",
@@ -28,12 +28,6 @@ export async function login(event) {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
   const remember = document.getElementById("remember").checked;
-
-  // Validation basique
-  if (!email || !password) {
-    afficherErreur("email-error", MESSAGES.CHAMPS_OBLIGATOIRES);
-    return;
-  }
 
   try {
     // Préparation des données

@@ -4,6 +4,10 @@
  * ------------------------------------
  */
 
+const CONFIG = {
+  API_URL: "../../backend",
+};
+
 // Fonction pour mettre à jour le profil d'un utilisateur
 export function updateProfile(userId, newName, newSurname, role) {
   // Validation des champs obligatoires
@@ -148,4 +152,58 @@ export function loadProfileData(userId) {
     .catch((error) => {
       console.error("Erreur lors du chargement du profil : ", error);
     });
+}
+
+// Fonction pour charger le profil
+export async function chargerProfil() {
+  try {
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
+
+    const response = await fetch(`${CONFIG.API_URL}/profile.php`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
+
+    // Remplir les champs du formulaire
+    document.getElementById("nom").value = data.user.nom;
+    document.getElementById("prenom").value = data.user.prenom;
+    document.getElementById("email").value = data.user.email;
+    document.getElementById("telephone").value = data.user.telephone || "";
+  } catch (error) {
+    afficherErreur("profile-error", error.message);
+  }
+}
+
+// Fonction pour mettre à jour le profil
+export async function mettreAJourProfil(event) {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+  formData.append("action", "update");
+
+  try {
+    const token =
+      localStorage.getItem("token") || sessionStorage.getItem("token");
+
+    const response = await fetch(`${CONFIG.API_URL}/profile.php`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.message);
+
+    afficherMessage("profile-success", "Profil mis à jour avec succès");
+  } catch (error) {
+    afficherErreur("profile-error", error.message);
+  }
 }

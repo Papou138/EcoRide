@@ -1,10 +1,11 @@
 <?php
+<?php
 require_once 'db_connect.php';
 
 header('Content-Type: application/json');
 
 /**
- * Fonction pour envoyer une réponse JSON
+ * Fonction pour envoyer une réponse JSON standardisée
  */
 function sendResponse($success, $message, $data = null) {
     echo json_encode([
@@ -13,19 +14,6 @@ function sendResponse($success, $message, $data = null) {
         'data' => $data
     ]);
     exit;
-}
-
-/**
- * Gestion de la connexion
- */
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
-    switch ($_POST['action']) {
-        case 'login':
-            handleLogin();
-            break;
-        default:
-            sendResponse(false, 'Action non reconnue');
-    }
 }
 
 /**
@@ -58,7 +46,7 @@ function handleLogin() {
         // Création du token JWT
         $token = generateToken($user);
 
-        // Envoi de la réponse
+        // Envoi de la réponse succès
         sendResponse(true, 'Connexion réussie', [
             'token' => $token,
             'user' => [
@@ -72,6 +60,19 @@ function handleLogin() {
 
     } catch (PDOException $e) {
         sendResponse(false, 'Erreur serveur : ' . $e->getMessage());
+    }
+}
+
+/*
+ * Routage des actions
+ */
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
+    switch ($_POST['action']) {
+        case 'login':
+            handleLogin();
+            break;
+        default:
+            sendResponse(false, 'Action non reconnue');
     }
 }
 
@@ -100,3 +101,5 @@ function generateToken($user) {
 
     return "$header.$payload.$signature";
 }
+
+?>
