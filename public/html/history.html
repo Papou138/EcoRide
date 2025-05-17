@@ -7,6 +7,8 @@
       name="description"
       content="Historique de vos voyages EcoRide - Consultez vos trajets passés"
     />
+    <meta name="csrf-token" content="" />
+    <!-- AJOUT: token CSRF -->
     <title>Historique des Covoiturages - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
@@ -99,27 +101,13 @@
         </div>
 
         <!-- Statistiques -->
-        <div class="stats-container">
-          <div class="stat-card">
-            <i class="fas fa-route"></i>
-            <h3>Total Trajets</h3>
-            <p class="stat-value">24</p>
-          </div>
-          <div class="stat-card">
-            <i class="fas fa-leaf"></i>
-            <h3>CO₂ Économisé</h3>
-            <p class="stat-value">156 kg</p>
-          </div>
-          <div class="stat-card">
-            <i class="fas fa-euro-sign"></i>
-            <h3>Économies Réalisées</h3>
-            <p class="stat-value">345 €</p>
-          </div>
+        <div id="statistiques" class="stats-container">
+          <!-- Le contenu sera généré dynamiquement via JavaScript -->
         </div>
 
         <!-- Filtres -->
         <div class="filters-section">
-          <form class="filters-form">
+          <form id="filter-form" class="filters-form">
             <div class="form-field">
               <label for="date-debut">Date début</label>
               <input type="date" id="date-debut" class="form-input" />
@@ -131,56 +119,49 @@
             <div class="form-field">
               <label for="type-trajet">Type de trajet</label>
               <select id="type-trajet" class="form-input">
-                <option value="all">Tous</option>
+                <option value="">Tous</option>
                 <option value="conducteur">Conducteur</option>
                 <option value="passager">Passager</option>
               </select>
             </div>
-            <button type="submit" class="btn btn-primary">
-              <i class="fas fa-search"></i> Filtrer
-            </button>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                <i class="fas fa-filter"></i> Filtrer
+              </button>
+              <button type="reset" class="btn btn-secondary">
+                <i class="fas fa-undo"></i> Réinitialiser
+              </button>
+            </div>
           </form>
         </div>
 
         <!-- Liste des trajets -->
         <div class="history-list">
-          <div class="history-card">
-            <div class="history-header">
-              <div class="trajet-info">
-                <h3><i class="fas fa-map-marker-alt"></i> Paris → Lyon</h3>
-                <span class="date">15 avril 2025</span>
-              </div>
-              <span class="role conducteur">Conducteur</span>
-            </div>
-            <div class="history-details">
-              <div class="detail-item">
-                <i class="fas fa-users"></i>
-                <span>4 passagers</span>
-              </div>
-              <div class="detail-item">
-                <i class="fas fa-euro-sign"></i>
-                <span>80€ gagnés</span>
-              </div>
-              <div class="detail-item">
-                <i class="fas fa-leaf"></i>
-                <span>7.2 kg CO₂ économisés</span>
-              </div>
-            </div>
-            <div class="history-actions">
-              <button class="btn btn-secondary" onclick="showDetails(tripId)">
-                <i class="fas fa-info-circle"></i> Détails
-              </button>
-            </div>
+          <div id="voyages-conducteur" class="voyages-section">
+            <h3>
+              <i class="fas fa-car"></i> Mes voyages en tant que conducteur
+            </h3>
+            <!-- Le contenu sera généré dynamiquement -->
+          </div>
+
+          <div id="voyages-passager" class="voyages-section">
+            <h3>
+              <i class="fas fa-user"></i> Mes voyages en tant que passager
+            </h3>
+            <!-- Le contenu sera généré dynamiquement -->
           </div>
         </div>
 
         <!-- Pagination -->
         <div class="pagination">
-          <button class="btn btn-secondary">
+          <button id="prev-page" class="btn btn-secondary" disabled>
             <i class="fas fa-chevron-left"></i> Précédent
           </button>
-          <span class="page-info">Page 1 sur 3</span>
-          <button class="btn btn-secondary">
+          <span class="page-info">
+            Page <span id="current-page">1</span> sur
+            <span id="total-pages">1</span>
+          </span>
+          <button id="next-page" class="btn btn-secondary">
             Suivant <i class="fas fa-chevron-right"></i>
           </button>
         </div>
@@ -217,12 +198,12 @@
     </footer>
 
     <script type="module">
+      import { TripHistory } from "../js/modules/history.js";
       import { initialiserMenu } from "../js/modules/menu.js";
-      import { initialiserHistorique } from "../js/modules/history.js";
 
       document.addEventListener("DOMContentLoaded", () => {
         initialiserMenu();
-        initialiserHistorique();
+        new TripHistory();
       });
     </script>
   </body>
