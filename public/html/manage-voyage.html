@@ -111,16 +111,17 @@
         <!-- Filtres de recherche -->
         <div class="voyage-filters">
           <h3><i class="fas fa-filter"></i> Filtres</h3>
-          <form class="filter-grid">
+          <form id="filter-form" class="filter-grid">
             <div class="form-field">
               <label for="status" class="form-label">
                 <i class="fas fa-tag"></i> Statut</label
               >
               <select id="status" class="form-input">
                 <option value="">Tous les statuts</option>
-                <option value="upcoming">À venir</option>
-                <option value="completed">Terminés</option>
-                <option value="cancelled">Annulés</option>
+                <option value="PROPOSED">À venir</option>
+                <option value="STARTED">En cours</option>
+                <option value="COMPLETED">Terminés</option>
+                <option value="CANCELLED">Annulés</option>
               </select>
             </div>
             <div class="form-field">
@@ -152,53 +153,51 @@
         </div>
 
         <!-- Liste des voyages -->
-        <div class="voyages-list">
-          <!-- Exemple de carte voyage -->
+        <div id="voyages-list" class="voyages-list">
+          <!-- Le contenu sera généré dynamiquement -->
+        </div>
+
+        <!-- Template pour les cartes de voyage -->
+        <template id="voyage-template">
           <article class="voyage-card">
             <div class="voyage-details">
               <div class="detail-group">
-                <h3><i class="fas fa-map-marker-alt"></i> Paris → Lyon</h3>
-                <p><i class="fas fa-calendar"></i> 15 mai 2025</p>
-                <p><i class="fas fa-clock"></i> 08:00</p>
-                <p><i class="fas fa-users"></i> 3/4 places</p>
+                <h3>
+                  <i class="fas fa-map-marker-alt" aria-hidden="true"></i
+                  ><span class="voyage-trajet">Trajet à venir</span>
+                </h3>
+                <p>
+                  <i class="fas fa-calendar"></i>
+                  <span class="voyage-date"></span>
+                </p>
+                <p>
+                  <i class="fas fa-clock"></i>
+                  <span class="voyage-heure"></span>
+                </p>
+                <p>
+                  <i class="fas fa-users"></i>
+                  <span class="voyage-places"></span>
+                </p>
               </div>
               <div class="detail-group">
-                <p><i class="fas fa-euro-sign"></i> 25€ par personne</p>
-                <p><i class="fas fa-info-circle"></i> Voiture climatisée</p>
-                <span class="status-tag ongoing">
-                  <i class="fas fa-clock"></i> En cours
-                </span>
+                <p>
+                  <i class="fas fa-euro-sign"></i>
+                  <span class="voyage-prix"></span>
+                </p>
+                <span class="status-tag"></span>
               </div>
             </div>
             <div class="passenger-list">
               <h4><i class="fas fa-users"></i> Passagers</h4>
               <div class="passenger-items">
-                <div class="passenger-item">
-                  <img
-                    src="../images/avatar_img.png"
-                    alt="Avatar"
-                    class="passenger-avatar"
-                  />
-                  <div class="passenger-info">
-                    <p class="passenger-name">Jean Dupont</p>
-                    <span class="passenger-status confirmed">
-                      <i class="fas fa-check"></i> Confirmé
-                    </span>
-                  </div>
-                </div>
-                <!-- ... autres passagers ... -->
+                <!-- Les passagers seront ajoutés dynamiquement -->
               </div>
             </div>
             <div class="voyage-actions">
-              <button class="btn btn-secondary">
-                <i class="fas fa-edit"></i> Modifier
-              </button>
-              <button class="btn btn-danger">
-                <i class="fas fa-times"></i> Annuler
-              </button>
+              <!-- Les boutons seront ajoutés en fonction du statut -->
             </div>
           </article>
-        </div>
+        </template>
 
         <!-- Pagination -->
         <div class="pagination">
@@ -214,9 +213,9 @@
     </main>
 
     <!-- Message de confirmation/erreur -->
-    <div class="alert success" style="display: none">
+    <div id="alert-message" class="alert" style="display: none">
       <i class="fas fa-check-circle"></i>
-      <span>Opération réussie !</span>
+      <span></span>
     </div>
 
     <footer>
@@ -252,27 +251,86 @@
     <!-- Scripts JS -->
     <script type="module">
       import {
+        VOYAGE_STATUS,
+        loadVoyages,
+        filterVoyages,
         startVoyage,
-        endVoyage,
+        stopVoyage,
         annulVoyage,
       } from "../js/modules/voyage.js";
 
-      window.startVoyage = startVoyage;
-      window.endVoyage = endVoyage;
-      window.annulVoyage = annulVoyage;
+      // Variables globales pour la pagination
+      let currentPage = 1;
+      const itemsPerPage = 6;
+      let totalItems = 0;
 
+      // Initialisation au chargement de la page
       document.addEventListener("DOMContentLoaded", () => {
-        // Initialisation des gestionnaires d'événements et autres fonctionnalités
         initialiseFilters();
+        loadVoyages(currentPage, itemsPerPage);
+        initialisePagination();
       });
 
+      // Initialisation des filtres
       function initialiseFilters() {
-        const filterForm = document.querySelector(".voyage-filters form");
-        filterForm.addEventListener("submit", (e) => {
+        const filterForm = document.getElementById("filter-form");
+        filterForm.addEventListener("submit", async (e) => {
           e.preventDefault();
-          // Logique de filtrage à implémenter
+          currentPage = 1;
+          await filterVoyages({
+            status: document.getElementById("status").value,
+            date: document.getElementById("date").value,
+            depart: document.getElementById("depart").value,
+            page: currentPage,
+            limit: itemsPerPage,
+          });
+          updatePagination();
+        });
+
+        filterForm.addEventListener("reset", async () => {
+          currentPage = 1;
+          await loadVoyages(currentPage, itemsPerPage);
+          updatePagination();
         });
       }
+
+      // Initialisation de la pagination
+      function initialisePagination() {
+        document
+          .getElementById("prev-page")
+          .addEventListener("click", async () => {
+            if (currentPage > 1) {
+              currentPage--;
+              await loadVoyages(currentPage, itemsPerPage);
+              updatePagination();
+            }
+          });
+
+        document
+          .getElementById("next-page")
+          .addEventListener("click", async () => {
+            if (currentPage < Math.ceil(totalItems / itemsPerPage)) {
+              currentPage++;
+              await loadVoyages(currentPage, itemsPerPage);
+              updatePagination();
+            }
+          });
+      }
+
+      // Mise à jour de la pagination
+      function updatePagination() {
+        const totalPages = Math.ceil(totalItems / itemsPerPage);
+        document.getElementById("current-page").textContent = currentPage;
+        document.getElementById("total-pages").textContent = totalPages;
+        document.getElementById("prev-page").disabled = currentPage === 1;
+        document.getElementById("next-page").disabled =
+          currentPage === totalPages;
+      }
+
+      // Export des fonctions pour les boutons
+      window.startVoyage = startVoyage;
+      window.stopVoyage = stopVoyage;
+      window.annulVoyage = annulVoyage;
     </script>
   </body>
 </html>
