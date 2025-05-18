@@ -75,6 +75,11 @@
             <ul class="dropdown-menu">
               <li><a href="add-voyage.html">Proposer un Voyage</a></li>
               <li><a href="manage-voyage.html">Gérer mes Voyages</a></li>
+              <li>
+                <a href="notation.html"
+                  ><i class="fas fa-star"></i> Avis et Notations</a
+                >
+              </li>
               <li><a href="history.html">Historique</a></li>
             </ul>
           </li>
@@ -208,6 +213,13 @@
             <i class="fas fa-check"></i> Réserver ma place
           </button>
           <button
+            id="noter-btn"
+            class="btn btn-secondary"
+            onclick="noterVoyage(tripId)"
+          >
+            <i class="fas fa-star"></i> Noter ce voyage
+          </button>
+          <button
             id="contact-btn"
             class="btn btn-secondary"
             onclick="contacterConducteur(tripId)"
@@ -262,13 +274,34 @@
         partagerTrajet,
       } from "../js/modules/voyage.js";
 
+      // Ajout de l'import pour la notation
+      import { NotationManager } from "../js/modules/notation.js";
+
       window.participer = participer;
       window.contacterConducteur = contacterConducteur;
       window.partagerTrajet = partagerTrajet;
 
+      // Fonction pour gérer la notation
+      window.noterVoyage = function (tripId) {
+        // Redirection vers la page de notation avec l'ID du voyage
+        window.location.href = `notation.html?voyage=${tripId}`;
+      };
+
       document.addEventListener("DOMContentLoaded", () => {
         initializeDetailPage();
+        // Masquer le bouton de notation si le voyage n'est pas terminé
+        updateNotationButton();
       });
+
+      function updateNotationButton() {
+        const noterBtn = document.getElementById("noter-btn");
+        const voyageStatus = document.querySelector(".badge").textContent;
+
+        // Le bouton de notation n'est visible que pour les voyages terminés
+        if (voyageStatus !== "Terminé") {
+          noterBtn.style.display = "none";
+        }
+      }
 
       function initializeDetailPage() {
         // Récupérer l'ID du trajet depuis l'URL

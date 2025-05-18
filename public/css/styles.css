@@ -19,6 +19,8 @@
 @import "_user-profile.css"; /* Importation des styles de la page de profil utilisateur */
 @import "_add-voyage.css"; /* Importation des styles de la page d'ajout de voyage */
 @import "_manage-voyage.css"; /* Importation des styles de la page de gestion des voyages */
+@import "_details.css"; /* Importation des styles de la page de détails d'un voyage */
+@import "_notation.css"; /* Importation des styles de la page de notation */
 @import "_history.css"; /* Importation des styles de la page d'historique */
 @import "_admin.css"; /* Importation des styles de la page d'administration */
 @import "_employee.css"; /* Importation des styles de la page d'employé */

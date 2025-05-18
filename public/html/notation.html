@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Historique de vos voyages EcoRide - Consultez vos trajets passés"
+      content="Système de notation des trajets EcoRide - Évaluez vos expériences de covoiturage"
     />
-    <meta name="csrf-token" content="" />
-    <!-- AJOUT: token CSRF -->
-    <title>Historique des Covoiturages - EcoRide</title>
+    <title>Notations et Avis - EcoRide</title>
     <link rel="stylesheet" href="../css/styles.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
   </head>
   <body>
@@ -28,7 +26,7 @@
             height="50"
             loading="lazy"
           />
-          <h1>EcoRide - Historique</h1>
+          <h1>EcoRide - Avis et Notations</h1>
         </div>
         <button
           id="menu-toggle"
@@ -44,22 +42,11 @@
       <nav id="main-nav">
         <ul>
           <li><a href="index.html">Accueil</a></li>
-          <!-- Ajout du menu utilisateur -->
           <li class="dropdown">
             <a href="#" class="dropdown-toggle">
               <i class="fas fa-user"></i> Mon Compte
             </a>
             <ul class="dropdown-menu">
-              <li>
-                <a href="login.html"
-                  ><i class="fas fa-sign-in-alt"></i> Connexion</a
-                >
-              </li>
-              <li>
-                <a href="register.html"
-                  ><i class="fas fa-user-plus"></i> Inscription</a
-                >
-              </li>
               <li>
                 <a href="user-profile.html"
                   ><i class="fas fa-user-circle"></i> Mon Profil</a
@@ -73,23 +60,11 @@
             </ul>
           </li>
           <li class="dropdown">
-            <a href="#" class="dropdown-toggle active">Voyages</a>
+            <a href="#" class="dropdown-toggle">Voyages</a>
             <ul class="dropdown-menu">
               <li><a href="add-voyage.html">Proposer un Voyage</a></li>
               <li><a href="manage-voyage.html">Gérer mes Voyages</a></li>
-              <li>
-                <a href="notation.html"
-                  ><i class="fas fa-star"></i> Avis et Notations</a
-                >
-              </li>
-              <li><a href="history.html" class="active">Historique</a></li>
-            </ul>
-          </li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle">Administration</a>
-            <ul class="dropdown-menu">
-              <li><a href="employee.html">Espace Employé</a></li>
-              <li><a href="admin.html">Administration</a></li>
+              <li><a href="history.html">Historique</a></li>
             </ul>
           </li>
         </ul>
@@ -97,64 +72,58 @@
     </header>
 
     <main>
-      <section class="history-section">
+      <section class="notations-section">
         <div class="section-header">
-          <h2><i class="fas fa-history"></i> Historique des Voyages</h2>
+          <h2><i class="fas fa-star"></i> Avis et Notations</h2>
           <p class="section-description">
-            Consultez vos trajets passés et vos statistiques
+            Consultez et donnez votre avis sur vos expériences de covoiturage
           </p>
         </div>
 
         <!-- Statistiques -->
-        <div id="statistiques" class="stats-container">
-          <!-- Le contenu sera généré dynamiquement via JavaScript -->
+        <div id="stats-container" class="stats-container">
+          <!-- Les statistiques seront générées dynamiquement -->
         </div>
 
-        <!-- Filtres -->
-        <div class="filters-section">
-          <form id="filter-form" class="filters-form">
-            <div class="form-field">
-              <label for="date-debut">Date début</label>
-              <input type="date" id="date-debut" class="form-input" />
+        <!-- Formulaire de notation -->
+        <div
+          id="notation-form-container"
+          class="notation-form-container"
+          style="display: none"
+        >
+          <h3><i class="fas fa-pen"></i> Donner votre avis</h3>
+          <form id="notation-form" class="notation-form">
+            <div class="star-rating">
+              <input type="radio" id="star5" name="note" value="5" />
+              <label for="star5" title="5 étoiles"></label>
+              <input type="radio" id="star4" name="note" value="4" />
+              <label for="star4" title="4 étoiles"></label>
+              <input type="radio" id="star3" name="note" value="3" />
+              <label for="star3" title="3 étoiles"></label>
+              <input type="radio" id="star2" name="note" value="2" />
+              <label for="star2" title="2 étoiles"></label>
+              <input type="radio" id="star1" name="note" value="1" />
+              <label for="star1" title="1 étoile"></label>
             </div>
             <div class="form-field">
-              <label for="date-fin">Date fin</label>
-              <input type="date" id="date-fin" class="form-input" />
+              <label for="commentaire">Votre commentaire :</label>
+              <textarea
+                id="commentaire"
+                name="commentaire"
+                rows="4"
+                required
+                placeholder="Partagez votre expérience..."
+              ></textarea>
             </div>
-            <div class="form-field">
-              <label for="type-trajet">Type de trajet</label>
-              <select id="type-trajet" class="form-input">
-                <option value="">Tous</option>
-                <option value="conducteur">Conducteur</option>
-                <option value="passager">Passager</option>
-              </select>
-            </div>
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">
-                <i class="fas fa-filter"></i> Filtrer
-              </button>
-              <button type="reset" class="btn btn-secondary">
-                <i class="fas fa-undo"></i> Réinitialiser
-              </button>
-            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fas fa-paper-plane"></i> Envoyer
+            </button>
           </form>
         </div>
 
-        <!-- Liste des trajets -->
-        <div class="history-list">
-          <div id="voyages-conducteur" class="voyages-section">
-            <h3>
-              <i class="fas fa-car"></i> Mes voyages en tant que conducteur
-            </h3>
-            <!-- Le contenu sera généré dynamiquement -->
-          </div>
-
-          <div id="voyages-passager" class="voyages-section">
-            <h3>
-              <i class="fas fa-user"></i> Mes voyages en tant que passager
-            </h3>
-            <!-- Le contenu sera généré dynamiquement -->
-          </div>
+        <!-- Liste des avis -->
+        <div id="notations-container" class="notations-container">
+          <!-- Les avis seront générés dynamiquement -->
         </div>
 
         <!-- Pagination -->
@@ -175,12 +144,13 @@
 
     <footer>
       <div class="footer-content">
-        <div class="footer-section" contact-section>
+        <div class="footer-section contact-section">
           <h3><i class="fas fa-envelope"></i> Contact</h3>
           <p>
-            Email: <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
+            <i class="fas fa-envelope"></i> Email :
+            <a href="mailto:contact@ecoride.com">contact@ecoride.com</a>
           </p>
-          <p><i class="fas fa-phone"></i> Tél: +33 (0)1 23 45 67 89</p>
+          <p><i class="fas fa-phone"></i> Tél : +33 (0)1 23 45 67 89</p>
         </div>
         <div class="footer-section">
           <h3><i class="fas fa-link"></i> Liens utiles</h3>
@@ -203,13 +173,22 @@
     </footer>
 
     <script type="module">
-      import { TripHistory } from "../js/modules/history.js";
+      import { NotationManager } from "../js/modules/notation.js";
       import { initialiserMenu } from "../js/modules/menu.js";
 
       document.addEventListener("DOMContentLoaded", () => {
         initialiserMenu();
-        new TripHistory();
+        new NotationManager();
       });
+
+      // Fonction globale pour afficher le formulaire de notation
+      window.afficherFormulaireNotation = function (voyageId) {
+        const container = document.getElementById("notation-form-container");
+        if (container) {
+          container.style.display = "block";
+          document.getElementById("notation-form").dataset.voyageId = voyageId;
+        }
+      };
     </script>
   </body>
 </html>
